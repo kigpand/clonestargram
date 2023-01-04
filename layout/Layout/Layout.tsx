@@ -1,12 +1,11 @@
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
+import Menu from '../Menu/Menu';
 import styles from './Layout.module.scss';
 
-const Layout = () => {
+const Layout = ({component }: any) => {
     return (
         <div className={styles.layout}>
-            <Header />
-            <Footer />
+            <Menu />
+            {component}
         </div>
     )
 }
