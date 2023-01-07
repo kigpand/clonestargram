@@ -1,0 +1,9 @@
+@import '../../styles/utils.scss';
+@import '../../styles/variables.scss';
+
+.homeFollow {
+    @include border;
+    width: 300px;
+    height: 100px;
+    background-color: $listColor;
+}

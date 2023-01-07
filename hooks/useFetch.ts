@@ -16,7 +16,6 @@ type Action<T> =
 function useFetch<T = unknown>(url?: string, options?: RequestInit): State<T> {
     const cache = useRef<Cache<T>>({})
 
-    // Used to prevent state update if the component is unmounted
     const cancelRequest = useRef<boolean>(false)
 
     const initialState: State<T> = {
