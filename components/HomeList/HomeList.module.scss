@@ -1,9 +1,0 @@
-@import '../../styles/utils.scss';
-@import '../../styles/variables.scss';
-
-.homeList {
-    @include border;
-    width: 300px;
-    height: 500px;
-    background-color: $listColor;
-}
