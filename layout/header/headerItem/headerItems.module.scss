@@ -1,0 +1,43 @@
+.headerItems {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-left: 300px;
+
+  .homeBtn,
+  .friendBtn,
+  .profileBtn,
+  .logOutBtn {
+    padding: 3px;
+    border-radius: 50%;
+  }
+
+  .homeBtn,
+  .friendBtn,
+  .logOutBtn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .profileBtn {
+    width: 20px;
+    height: 20px;
+    border: 1px solid gray;
+  }
+
+  .contentBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .homeBtn:hover,
+  .friendBtn:hover,
+  .profileBtn:hover,
+  .contentBtn:hover,
+  .logOutBtn:hover {
+    cursor: pointer;
+    background-color: lightgray;
+  }
+}
