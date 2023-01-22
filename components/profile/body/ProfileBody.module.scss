@@ -1,0 +1,68 @@
+.profileBody {
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 4px;
+  background-color: white;
+
+  .imgText {
+    display: flex;
+    align-items: center;
+
+    .profileImage {
+      margin: 0 0 1rem 0;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background-color: pink;
+      margin-right: 3rem;
+      cursor: pointer;
+    }
+
+    .texts {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .introContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .introLabel {
+    font-weight: bold;
+  }
+
+  .intro {
+    margin-top: 0.5rem;
+    width: 600px;
+    height: 300px;
+    resize: none;
+    font-size: 1.2rem;
+    border: 1px solid gray;
+    border-radius: 20px;
+    padding: 1rem;
+    outline: none;
+  }
+
+  .editBtn {
+    width: 100px;
+    height: 50px;
+    margin-top: 2rem;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    background-color: rgb(180, 125, 21);
+    color: white;
+  }
+
+  .editBtn:hover {
+    cursor: pointer;
+    background-color: rgb(107, 79, 28);
+  }
+}
