@@ -1,11 +1,13 @@
-import type { NextPage } from 'next';
-import styles from '../styles/Home.module.scss';
+import type { NextPage } from "next";
+import Contents from "../components/contents/Contents";
+import styles from "../styles/Home.module.scss";
 
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>
-    </div>  
-  )
-}
+      <Contents />
+    </div>
+  );
+};
 
-export default Home
+export default Home;

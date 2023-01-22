@@ -1,0 +1,16 @@
+@import "../../styles/utils.scss";
+
+.contents {
+  width: 100vw;
+  height: 100%;
+  overflow-y: auto;
+  @include flexSort;
+
+  .lists {
+    width: 70%;
+    height: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
