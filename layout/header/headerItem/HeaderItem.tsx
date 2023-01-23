@@ -1,10 +1,15 @@
+import { useRouter } from "next/router";
 import React from "react";
 import styles from "./headerItems.module.scss";
 
 const HeaderItems = () => {
+  const router = useRouter();
+
   const homeBtn = () => {};
 
-  const profileBtn = () => {};
+  const profileBtn = () => {
+    router.push("/profile");
+  };
 
   const followBtn = () => {};
 

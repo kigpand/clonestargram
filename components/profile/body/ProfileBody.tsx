@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import ProfileInput from "../input/ProfileInput";
 import styles from "./ProfileBody.module.scss";
 
@@ -6,6 +6,22 @@ const inputItem = ["ID", "NICK", "PHONE", "EMAIL"];
 
 const ProfileBody = () => {
   const imgRef = useRef<HTMLInputElement>(null);
+  const [profile, setProfile] = useState<any>({
+    ID: "",
+    NICK: "",
+    PHONE: "",
+    EMAIL: "",
+  });
+
+  const onProfileChange = (title: string, input: string) => {
+    const data = { ...profile };
+    data[title] = input;
+    setProfile(data);
+  };
+
+  useEffect(() => {
+    console.log(profile);
+  }, [profile]);
 
   return (
     <div className={styles.profileBody}>
@@ -20,7 +36,13 @@ const ProfileBody = () => {
         </div>
         <div className={styles.texts}>
           {inputItem.map((item: string, i: number) => {
-            return <ProfileInput type={item} key={i} />;
+            return (
+              <ProfileInput
+                type={item}
+                onProfileChange={onProfileChange}
+                key={i}
+              />
+            );
           })}
         </div>
       </div>
