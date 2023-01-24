@@ -1,0 +1,18 @@
+.makeHeader {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+  padding: 1rem;
+
+  .img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+
+  .nickname {
+    margin-left: 1rem;
+  }
+}

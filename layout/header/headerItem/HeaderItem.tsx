@@ -13,7 +13,9 @@ const HeaderItems = () => {
 
   const followBtn = () => {};
 
-  const contentBtn = () => {};
+  const contentBtn = () => {
+    router.push("/makeContent");
+  };
 
   const logoutBtn = () => {};
 

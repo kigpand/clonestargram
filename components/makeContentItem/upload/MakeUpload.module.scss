@@ -1,0 +1,19 @@
+.makeUpload {
+  width: 100%;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+
+  .uploadBtn {
+    background-color: white;
+    border: 1px solid lightgray;
+    padding: 0.5rem;
+    outline: none;
+
+    &:hover {
+      cursor: pointer;
+      background-color: lightgray;
+    }
+  }
+}

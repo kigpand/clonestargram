@@ -1,0 +1,33 @@
+.makeTag {
+  width: 100%;
+  padding: 1rem;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+
+  .insert {
+    .tagText {
+      width: 300px;
+      margin-right: 1rem;
+    }
+
+    .tagSubmit,
+    .tagCancle {
+      background-color: white;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      padding: 5px;
+      margin-right: 0.5rem;
+    }
+
+    .tagSubmit:hover {
+      cursor: pointer;
+      background-color: skyblue;
+    }
+
+    .tagCancle:hover {
+      cursor: pointer;
+      background-color: rgb(255, 123, 123);
+    }
+  }
+}
