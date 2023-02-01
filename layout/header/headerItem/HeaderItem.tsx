@@ -11,7 +11,9 @@ const HeaderItems = () => {
     router.push("/profile");
   };
 
-  const followBtn = () => {};
+  const followBtn = () => {
+    router.push("/follow");
+  };
 
   const contentBtn = () => {
     router.push("/makeContent");
