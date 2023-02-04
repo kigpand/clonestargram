@@ -1,16 +1,15 @@
 import React from "react";
 import styles from "./FollowContainer.module.scss";
+import FollowWrap from "./followWrap/FollowWrap";
 
 const FollowContaier = () => {
+  const dummy = ["1", "2", "3"];
+
   return (
     <div className={styles.container}>
-      <div className={styles.list}>
-        <div className={styles.title}>팔로워 리스트</div>
-      </div>
+      <FollowWrap list={dummy} title="팔로워 리스트" />
       <div className={styles.line}></div>
-      <div className={styles.list}>
-        <div className={styles.title}>팔로잉 리스트</div>
-      </div>
+      <FollowWrap list={dummy} title="팔로잉 리스트" />
     </div>
   );
 };

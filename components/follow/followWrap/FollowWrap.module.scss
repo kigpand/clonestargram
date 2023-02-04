@@ -1,0 +1,13 @@
+.followWrap {
+  width: 500px;
+  height: 100%;
+  margin: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .title {
+    margin-top: 5rem;
+    font-weight: bold;
+  }
+}
