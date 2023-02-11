@@ -1,13 +1,10 @@
 import React, { ChangeEvent, useState } from "react";
+import { useInput } from "../../hooks/useInput";
 import styles from "./header.module.scss";
 import HeaderItems from "./headerItem/HeaderItem";
 
 const Header = () => {
-  const [searchValue, setSearchValue] = useState("");
-
-  const onChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value);
-  };
+  const inputData = useInput("");
 
   return (
     <div className={styles.header}>
@@ -16,7 +13,7 @@ const Header = () => {
         className={styles.text}
         type="text"
         placeholder="검색.."
-        onChange={onChangeSearch}
+        onChange={inputData.onChange}
       />
       <HeaderItems />
     </div>
