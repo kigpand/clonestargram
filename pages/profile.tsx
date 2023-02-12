@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import ProfileMain from "../components/profile/ProfileMain";
+import ProfileMain from "../components/desktop/profile/ProfileMain";
 import styles from "../styles/Home.module.scss";
 
 const Profile: NextPage = () => {

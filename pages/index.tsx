@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import Contents from "../components/contents/Contents";
+import Contents from "../components/desktop/contents/Contents";
 import styles from "../styles/Home.module.scss";
 
 const Home: NextPage = () => {

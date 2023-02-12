@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useInput } from "../../../hooks/useInput";
+import { useInput } from "../../../../hooks/useInput";
 import styles from "./ProfileInput.module.scss";
 
 interface IProfileInput {
