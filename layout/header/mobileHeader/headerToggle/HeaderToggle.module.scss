@@ -1,0 +1,55 @@
+.headerToggle {
+  position: absolute;
+  right: 0;
+  width: 50px;
+  padding: 10px 5px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  animation: toggleAnim 0.5s linear forwards;
+
+  .homeBtn,
+  .friendBtn,
+  .profileBtn,
+  .logOutBtn {
+    padding: 3px;
+    border-radius: 50%;
+  }
+
+  .homeBtn,
+  .friendBtn,
+  .logOutBtn {
+    width: 100%;
+    height: 50px;
+  }
+
+  .profileBtn {
+    width: 100%;
+    height: 50px;
+    border: 1px solid gray;
+  }
+
+  .contentBtn {
+    width: 100%;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  .homeBtn:hover,
+  .friendBtn:hover,
+  .profileBtn:hover,
+  .contentBtn:hover,
+  .logOutBtn:hover {
+    cursor: pointer;
+  }
+}
+
+@keyframes toggleAnim {
+  0% {
+    top: -200px;
+  }
+
+  100% {
+    top: 40px;
+  }
+}
