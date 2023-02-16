@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import ProfileInput from "../input/ProfileInput";
 import styles from "./ProfileBody.module.scss";
 
@@ -18,10 +18,6 @@ const ProfileBody = () => {
     data[title] = input;
     setProfile(data);
   };
-
-  useEffect(() => {
-    console.log(profile);
-  }, [profile]);
 
   return (
     <div className={styles.profileBody}>
