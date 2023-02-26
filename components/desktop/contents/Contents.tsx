@@ -1,6 +1,3 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { useEffect, useState } from "react";
-import { onLoadPost } from "../../../load/post";
 import usePosts from "../../../store/post";
 import styles from "./Contents.module.scss";
 import ContentsItem from "./contentsItem/ContentsItem";
