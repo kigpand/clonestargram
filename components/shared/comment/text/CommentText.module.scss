@@ -1,0 +1,28 @@
+@import "../../../../styles/func.scss";
+
+.commentText {
+  width: 100%;
+  font-size: rem(13px);
+  margin-left: rem(5px);
+
+  .text {
+    width: 100%;
+    display: flex;
+
+    .nickName {
+      width: rem(100px);
+      font-weight: bold;
+    }
+
+    .content {
+      width: 40%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .time {
+    color: gray;
+  }
+}
