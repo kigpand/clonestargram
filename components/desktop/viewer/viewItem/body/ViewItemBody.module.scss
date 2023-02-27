@@ -1,0 +1,32 @@
+@import "../../../../../styles/func.scss";
+@import "../../../../../styles/variables.scss";
+
+.viewItemBody {
+  width: 100%;
+  height: 30%;
+  border-bottom: 1px solid $borderColor;
+  padding: rem(10px);
+  position: relative;
+
+  .content {
+    font-size: rem(13px);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    bottom: rem(10px);
+
+    .tag {
+      margin-right: rem(5px);
+      font-size: rem(13px);
+      color: rgb(47, 47, 255);
+
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+}
