@@ -7,10 +7,6 @@ interface IComment {
 }
 
 const Comment = ({ info }: IComment) => {
-  useEffect(() => {
-    console.log(info);
-  }, [info]);
-
   return (
     <div className={styles.comment}>
       <img src="profileImg.png" alt="profile" className={styles.img} />

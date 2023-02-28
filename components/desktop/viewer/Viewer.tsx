@@ -17,9 +17,10 @@ const Viewer = () => {
   };
 
   return (
-    <div className={styles.viewer} onClick={clearCurrentContent}>
+    <div className={styles.viewer}>
       <img className={styles.img} src="noImg.png" alt="viewerImg" />
       <ViewItem />
+      <div className={styles.back} onClick={clearCurrentContent} />
     </div>
   );
 };

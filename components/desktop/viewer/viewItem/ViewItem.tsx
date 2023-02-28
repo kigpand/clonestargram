@@ -1,3 +1,4 @@
+import AddComment from "../../../shared/addComment/AddComment";
 import ViewItemBody from "./body/ViewItemBody";
 import ViewItemComment from "./comment/ViewItemComment";
 import ViewItemHeader from "./header/ViewItemHeader";
@@ -9,6 +10,7 @@ const ViewItem = () => {
       <ViewItemHeader />
       <ViewItemBody />
       <ViewItemComment />
+      <AddComment />
     </div>
   );
 };

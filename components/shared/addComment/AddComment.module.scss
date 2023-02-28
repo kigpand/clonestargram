@@ -1,0 +1,32 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/func.scss";
+
+.addComment {
+  width: 100%;
+  height: rem(50px);
+  position: absolute;
+  bottom: 0;
+  border-top: 1px solid $borderColor;
+  padding: rem(10px);
+  display: flex;
+  align-items: center;
+
+  .img {
+    height: rem(25px);
+    margin-right: rem(5px);
+    object-fit: contain;
+  }
+
+  .input {
+    width: rem(150px);
+    border: none;
+    outline: none;
+  }
+
+  .add {
+    font-size: rem(13px);
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+  }
+}
