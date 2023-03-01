@@ -1,27 +1,28 @@
 @import "../../../../styles/utils.scss";
+@import "../../../../styles/func.scss";
 
 .profileMini {
-  width: 250px;
-  height: 700px;
+  width: get-vw(150px);
+  height: get-vh(750px);
   margin-right: 10px;
 
   .container {
     border-radius: 4px;
-    height: 300px;
+    height: get-vh(300px);
     background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
 
     .headerNick {
-      margin-top: 1rem;
+      margin-top: 15px;
       font-weight: bold;
     }
 
     .headerImg {
-      margin-top: 1rem;
-      width: 100px;
-      height: 100px;
+      margin-top: 15px;
+      height: get-vh(100px);
+      object-fit: contain;
       border-radius: 50%;
     }
 

@@ -1,21 +1,25 @@
+@import "../../../../../styles/func.scss";
+
 .followList {
   width: 100%;
   display: flex;
   align-items: center;
-  margin-top: 0.5rem;
+  margin-top: 10px;
   border: 1px solid lightgray;
-  padding: 0.5rem 0;
+  padding: 10px 0;
   background-color: white;
 
   .profileImg {
-    width: 30px;
-    height: 30px;
-    margin: 0 1rem;
-    border-radius: 50%;
+    height: get-vh(25px);
+    object-fit: contain;
+    margin: 0 10px;
   }
 
-  .nickname:hover {
-    cursor: pointer;
-    text-decoration: underline;
+  .nickname {
+    font-size: rem(14px);
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
   }
 }

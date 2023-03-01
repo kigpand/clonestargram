@@ -12,13 +12,13 @@
   align-items: center;
 
   .img {
-    height: rem(25px);
+    height: get-vh(25px);
     margin-right: rem(5px);
     object-fit: contain;
   }
 
   .input {
-    width: rem(150px);
+    width: get-vw(150px);
     border: none;
     outline: none;
   }

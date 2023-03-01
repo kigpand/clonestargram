@@ -11,7 +11,7 @@
 
   .img {
     margin-left: rem(10px);
-    height: rem(25px);
+    height: get-vh(25px);
     object-fit: contain;
   }
 

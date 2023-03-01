@@ -1,17 +1,19 @@
+@import "../../../../styles/func.scss";
+
 .inputContainer {
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
 
   .label {
-    width: 100px;
+    width: get-vw(50px);
     font-size: 0.8rem;
     margin: 0.5rem 0.5rem;
     font-weight: bold;
   }
 
   .input {
-    width: 200px;
+    width: get-vw(150px);
     height: 30px;
     border: 1px solid gray;
     border-radius: 8px;

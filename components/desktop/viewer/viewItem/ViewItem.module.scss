@@ -1,6 +1,8 @@
+@import "../../../../styles/func.scss";
+
 .viewItem {
-  width: 20%;
-  height: 70%;
+  width: get-vw(200px);
+  height: get-vh(600px);
   background-color: white;
   position: relative;
 }

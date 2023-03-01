@@ -1,3 +1,5 @@
+@import "../../../../styles/func.scss";
+
 .makeTag {
   width: 100%;
   padding: 1rem;
@@ -6,7 +8,7 @@
 
   .insert {
     .tagText {
-      width: 300px;
+      width: get-vw(200px);
       margin-right: 1rem;
     }
 

@@ -1,3 +1,5 @@
+@import "../../../styles/func.scss";
+
 .viewer {
   position: fixed;
   top: 0;
@@ -10,8 +12,8 @@
   justify-content: center;
 
   .img {
-    width: 40vw;
-    height: 70vh;
+    width: get-vw(400px);
+    height: get-vh(600px);
   }
 
   .back {

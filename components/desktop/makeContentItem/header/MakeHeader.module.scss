@@ -1,18 +1,21 @@
+@import "../../../../styles/func.scss";
+
 .makeHeader {
   width: 100%;
-  height: 50px;
+  height: get-vh(50px);
   display: flex;
   align-items: center;
   border-bottom: 1px solid lightgray;
   padding: 1rem;
 
   .img {
-    width: 30px;
-    height: 30px;
+    height: get-vh(25px);
+    object-fit: contain;
     border-radius: 50%;
   }
 
   .nickname {
-    margin-left: 1rem;
+    font-size: rem(14px);
+    margin-left: 10px;
   }
 }

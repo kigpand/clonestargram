@@ -1,3 +1,5 @@
+@import "../../../styles/func.scss";
+
 .makeContentItem {
   width: 100vw;
   height: 100vh;
@@ -7,7 +9,7 @@
   background-color: rgb(245, 245, 245);
 
   .container {
-    width: 800px;
+    width: get-vw(500px);
     background-color: white;
     border: 3px solid lightgray;
 

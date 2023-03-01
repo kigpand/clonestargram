@@ -7,3 +7,13 @@ $base-rem-size: 16px;
 @function rem($px) {
   @return (remove-unit($px / $base-rem-size)) * 1rem;
 }
+
+@function get-vw($target) {
+  $vw-context: (1000 * 0.01) * 1px;
+  @return ($target/$vw-context) * 1vw;
+}
+
+@function get-vh($target) {
+  $vh-context: (1000 * 0.01) * 1px;
+  @return ($target/$vh-context) * 1vh;
+}
