@@ -1,0 +1,22 @@
+@import "./utils.scss";
+@import "./func.scss";
+
+.error {
+  width: 100vw;
+  height: 100vh;
+  @include flexSort;
+  flex-direction: column;
+  font-size: rem(14px);
+
+  .title {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  .back {
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+}

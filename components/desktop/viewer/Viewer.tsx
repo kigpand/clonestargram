@@ -14,7 +14,19 @@ const Viewer = () => {
 
   return (
     <div className={styles.viewer}>
-      <img className={styles.img} src="noImg.png" alt="viewerImg" />
+      <img
+        className={styles.img}
+        src={
+          currentContent.Images.length > 0
+            ? `${
+                process.env.NEXT_PUBLIC_API_URL +
+                "/" +
+                currentContent.Images[0].src
+              }`
+            : "/noimg.png"
+        }
+        alt="viewerImg"
+      />
       <ViewItem />
       <div className={styles.back} onClick={clearCurrentContent} />
     </div>
