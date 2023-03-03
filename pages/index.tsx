@@ -6,14 +6,17 @@ import type {
 import { useEffect } from "react";
 import Contents from "../components/desktop/contents/Contents";
 import Viewer from "../components/desktop/viewer/Viewer";
-import { onLoadPost } from "../load/post";
+import DeskLogin from "../components/login/desktop/DeskLogin";
+import { onLoadPost } from "../service/post";
 import useContent from "../store/content";
 import usePosts from "../store/post";
+import useUser from "../store/user";
 import styles from "../styles/Home.module.scss";
 
 const Home: NextPage = ({
   post,
 }: InferGetServerSidePropsType<GetServerSideProps>) => {
+  const { user } = useUser();
   const { setPosts } = usePosts();
   const { currentContent } = useContent();
   useEffect(() => {
@@ -24,14 +27,14 @@ const Home: NextPage = ({
   }, [post]);
 
   return (
-    <div className={styles.container}>
-      <Contents />
+    <div className={styles.container} style={{ height: user ? "95%" : "100%" }}>
+      {user ? <Contents /> : <DeskLogin />}
       {currentContent && <Viewer />}
     </div>
   );
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await onLoadPost();
   const post = res.data;
 

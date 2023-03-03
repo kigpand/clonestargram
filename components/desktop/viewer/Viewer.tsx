@@ -8,10 +8,6 @@ const Viewer = () => {
   const [comment, setComment] = useState();
   const textarea = useRef<HTMLTextAreaElement>(null);
 
-  useEffect(() => {
-    console.log(currentContent);
-  }, [currentContent]);
-
   const commentText = (e: any) => {
     setComment(e.target.value);
   };
