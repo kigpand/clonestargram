@@ -1,11 +1,16 @@
 import { useRouter } from "next/router";
 import React from "react";
+import { onLogout } from "../../../service/auth";
+import useUser from "../../../store/user";
 import styles from "./headerItems.module.scss";
 
 const HeaderItems = () => {
   const router = useRouter();
+  const { setUser } = useUser();
 
-  const homeBtn = () => {};
+  const homeBtn = () => {
+    router.push("/");
+  };
 
   const profileBtn = () => {
     router.push("/profile");
@@ -19,7 +24,11 @@ const HeaderItems = () => {
     router.push("/makeContent");
   };
 
-  const logoutBtn = () => {};
+  const logoutBtn = async () => {
+    await onLogout().then((data: any) => {
+      setUser(null);
+    });
+  };
 
   return (
     <div className={styles.headerItems}>

@@ -6,7 +6,7 @@ import type {
 import { useEffect } from "react";
 import Contents from "../components/desktop/contents/Contents";
 import Viewer from "../components/desktop/viewer/Viewer";
-import DeskLogin from "../components/login/desktop/DeskLogin";
+import Login from "../components/login/Login";
 import { onLoadPost } from "../service/post";
 import useContent from "../store/content";
 import usePosts from "../store/post";
@@ -28,7 +28,7 @@ const Home: NextPage = ({
 
   return (
     <div className={styles.container} style={{ height: user ? "95%" : "100%" }}>
-      {user ? <Contents /> : <DeskLogin />}
+      {user ? <Contents /> : <Login />}
       {currentContent && <Viewer />}
     </div>
   );
