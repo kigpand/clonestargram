@@ -1,7 +1,11 @@
 import { useRouter } from "next/router";
 import styles from "./MakeBtns.module.scss";
 
-const MakeBtns = () => {
+interface IMakeBtns {
+  onSubmit: () => void;
+}
+
+const MakeBtns = ({ onSubmit }: IMakeBtns) => {
   const router = useRouter();
 
   const onCancleBtn = () => {
@@ -10,7 +14,9 @@ const MakeBtns = () => {
 
   return (
     <div className={styles.makeBtns}>
-      <button className={styles.submitBtn}>등록</button>
+      <button className={styles.submitBtn} onClick={onSubmit}>
+        등록
+      </button>
       <button className={styles.cancleBtn} onClick={onCancleBtn}>
         취소
       </button>

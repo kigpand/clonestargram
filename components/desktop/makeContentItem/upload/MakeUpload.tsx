@@ -1,7 +1,11 @@
 import { useCallback, useRef } from "react";
 import styles from "./MakeUpload.module.scss";
 
-const MakeUpload = () => {
+interface IMakeUpload {
+  onUploadImg: (e: any) => void;
+}
+
+const MakeUpload = ({ onUploadImg }: IMakeUpload) => {
   const imgRef = useRef<HTMLInputElement>(null);
 
   const onClickImageUpload = useCallback(() => {
@@ -12,7 +16,13 @@ const MakeUpload = () => {
 
   return (
     <div className={styles.makeUpload}>
-      <input type="file" name="image" ref={imgRef} hidden multiple />
+      <input
+        type="file"
+        name="image"
+        ref={imgRef}
+        hidden
+        onChange={onUploadImg}
+      />
       <button className={styles.uploadBtn} onClick={onClickImageUpload}>
         이미지 업로드
       </button>
