@@ -1,29 +1,53 @@
 @import "../../../../styles/func.scss";
+@import "../../../../styles/variables.scss";
+@import "../../../../styles/utils.scss";
 
 .makeTag {
   width: 100%;
   padding: 1rem;
   border-bottom: 1px solid lightgray;
   display: flex;
+  align-items: center;
 
   .insert {
+    display: flex;
+    align-items: center;
+
     .tagText {
       width: get-vw(200px);
+      height: rem(25px);
       margin-right: 1rem;
+      border: 1px solid $borderColor;
+      outline: none;
     }
 
     .tagSubmit {
+      @include flexSort;
       background-color: white;
-      border-radius: 8px;
-      border: none;
+      height: rem(25px);
       outline: none;
       padding: 5px;
-      margin-right: 0.5rem;
+      border: 1px solid $borderColor;
+      font-size: rem(12px);
+      margin-right: 20px;
     }
 
     .tagSubmit:hover {
       cursor: pointer;
-      background-color: skyblue;
+    }
+  }
+
+  .tagPlace {
+    display: flex;
+    font-size: rem(13px);
+    color: blue;
+
+    div {
+      margin-right: rem(10px);
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
     }
   }
 }

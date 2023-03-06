@@ -1,4 +1,4 @@
 export interface IAddContentItem {
   tag: string[];
-  imgUrl: string;
+  imgUrl: string[];
 }

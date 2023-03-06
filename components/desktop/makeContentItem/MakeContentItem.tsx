@@ -1,6 +1,8 @@
+import { useRouter } from "next/router";
 import React, { useCallback, useRef, useState } from "react";
 import { IAddContentItem } from "../../../interface/IAddContentItem";
-import { onImgUpload } from "../../../service/post";
+import { onAddPost, onImgUpload } from "../../../service/post";
+import useUser from "../../../store/user";
 import MakeBtns from "./btns/MakeBtns";
 import MakeHeader from "./header/MakeHeader";
 import styles from "./MakeContentItem.module.scss";
@@ -8,21 +10,19 @@ import MakeTag from "./tag/MakeTag";
 import MakeUpload from "./upload/MakeUpload";
 
 const MakeContentItem = () => {
+  const { user } = useUser();
   const textRef = useRef<HTMLTextAreaElement>(null);
-  const [contentItem, setContentItem] = useState<IAddContentItem>({
-    tag: [],
-    imgUrl: "",
-  });
+  const [imgUrl, setImgUrl] = useState<string[]>([]);
+  const [tags, setTags] = useState<string[]>([]);
+  const router = useRouter();
 
   const onAddTag = (item: string) => {
-    if (contentItem) {
-      const tagArr = [...contentItem.tag];
-      if (tagArr.find((tag: string) => tag === item)) {
-        return;
-      }
-      tagArr.push(item);
-      setContentItem({ ...contentItem, tag: tagArr });
+    const tagArr = [...tags];
+    if (tagArr.find((tag: string) => tag === item)) {
+      return;
     }
+    tagArr.push(item);
+    setTags(tagArr);
   };
 
   const onUploadImg = useCallback(async (e: any) => {
@@ -32,13 +32,25 @@ const MakeContentItem = () => {
     });
 
     const result = await onImgUpload(imageFormData);
-    console.log(result);
+    setImgUrl(result.data);
   }, []);
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     if (textRef && textRef.current) {
-      const item = { ...contentItem, text: textRef.current.value };
-      console.log(item);
+      const formData = new FormData();
+      imgUrl.forEach((data) => {
+        formData.append("image", data);
+      });
+      formData.append("tag", tags.toString().replaceAll(",", ""));
+      formData.append("content", textRef.current.value);
+      formData.append("id", user.data.id);
+      formData.append("nickname", user.data.nickname);
+      try {
+        await onAddPost(formData);
+        router.push("/");
+      } catch (e) {
+        alert("게시글 등록에 실패했습니다");
+      }
     }
   };
 
@@ -47,7 +59,7 @@ const MakeContentItem = () => {
       <div className={styles.container}>
         <MakeHeader />
         <MakeUpload onUploadImg={onUploadImg} />
-        <MakeTag onAddTag={onAddTag} />
+        <MakeTag tags={tags} onAddTag={onAddTag} />
         <div className={styles.contentBox}>
           <textarea
             ref={textRef}

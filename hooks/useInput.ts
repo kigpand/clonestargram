@@ -19,5 +19,8 @@ export const useInput = (
       }
     }
   };
-  return { value, onChange };
+  const onClear = () => {
+    setValue("");
+  };
+  return { value, onChange, onClear };
 };

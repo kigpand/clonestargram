@@ -7,3 +7,7 @@ export const onLoadPost = () => {
 export const onImgUpload = (data: any) => {
   return axios.post(`${process.env.NEXT_PUBLIC_API_URL}/post/images`, data);
 };
+
+export const onAddPost = (data: any) => {
+  return axios.post(`${process.env.NEXT_PUBLIC_API_URL}/post`, data);
+};
