@@ -16,14 +16,15 @@
     display: flex;
     align-items: center;
 
-    .profileImage {
-      margin: 0 0 1rem 0;
-      height: get-vh(180px);
-      object-fit: contain;
-      border-radius: 50%;
-      background-color: pink;
-      margin-right: 20px;
-      cursor: pointer;
+    .imgProfile {
+      .profileImage {
+        margin: 0 0 10px 10px;
+        width: get-vw(140px);
+        height: get-vh(180px);
+        border-radius: 50%;
+        margin-right: 10px;
+        cursor: pointer;
+      }
     }
 
     .texts {

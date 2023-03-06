@@ -1,12 +1,25 @@
+import { useEffect } from "react";
 import useContent from "../../../../../store/content";
 import styles from "./ViewItemHeader.module.scss";
 
 const ViewItemHeader = () => {
   const { currentContent } = useContent();
 
+  useEffect(() => {
+    console.log(currentContent);
+  }, [currentContent]);
+
   return (
     <div className={styles.viewItemHeader}>
-      <img src="/profileImg.png" alt="prifle" className={styles.img} />
+      <img
+        src={
+          currentContent && currentContent.User.userImg
+            ? `${process.env.NEXT_PUBLIC_API_URL}/${currentContent.User.userImg}`
+            : "/profileImg.png"
+        }
+        alt="prifle"
+        className={styles.img}
+      />
       <div className={styles.text}>{currentContent.User.nickname}</div>
     </div>
   );

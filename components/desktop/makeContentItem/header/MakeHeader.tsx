@@ -6,8 +6,16 @@ const MakeHeader = () => {
 
   return (
     <div className={styles.makeHeader}>
-      <img src="/profileImg.png" className={styles.img} alt="contentImg"></img>
-      <div className={styles.nickname}>{user.data.nickname}</div>
+      <img
+        src={
+          user && user.userImg
+            ? `${process.env.NEXT_PUBLIC_API_URL}/${user.userImg}`
+            : "/profileImg.png"
+        }
+        className={styles.img}
+        alt="contentImg"
+      ></img>
+      <div className={styles.nickname}>{user!.nickname}</div>
     </div>
   );
 };

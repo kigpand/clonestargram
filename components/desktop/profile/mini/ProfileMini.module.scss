@@ -21,8 +21,8 @@
 
     .headerImg {
       margin-top: 15px;
-      height: get-vh(100px);
-      object-fit: contain;
+      width: get-vw(100px);
+      height: get-vh(120px);
       border-radius: 50%;
     }
 

@@ -4,6 +4,7 @@ import styles from "./ProfileInput.module.scss";
 
 interface IProfileInput {
   type: string;
+  value: string;
   onProfileChange: Function;
 }
 
@@ -14,8 +15,8 @@ const typeItem: any = {
   EMAIL: "이메일",
 };
 
-const ProfileInput = ({ type, onProfileChange }: IProfileInput) => {
-  const input = useInput("");
+const ProfileInput = ({ type, value, onProfileChange }: IProfileInput) => {
+  const input = useInput(value);
 
   useEffect(() => {
     onProfileChange(type, input.value);

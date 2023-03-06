@@ -1,11 +1,12 @@
+import { IUser } from "./../interface/IUser";
 import create from "zustand";
 
-interface IUser {
-  user: any;
+interface IUserStore {
+  user: IUser | null;
   setUser: (info: any) => void;
 }
 
-const useUser = create<IUser>((set) => ({
+const useUser = create<IUserStore>((set) => ({
   user: null,
   setUser: (info: any) => set({ user: info }),
 }));

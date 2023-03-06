@@ -1,3 +1,4 @@
+import { IFollow } from "../../../../interface/IFollow";
 import FollowList from "./followList/FollowList";
 import styles from "./FollowWrap.module.scss";
 
@@ -10,8 +11,8 @@ const FollowWrap = ({ list, title }: IFollowWrap) => {
   return (
     <div className={styles.followWrap}>
       <div className={styles.title}>{title}</div>
-      {list.map((data: string) => (
-        <FollowList key={data} />
+      {list.map((data: IFollow, i: number) => (
+        <FollowList follow={data} key={i} />
       ))}
     </div>
   );

@@ -11,7 +11,9 @@ const LoginComponents = () => {
 
   const onSubmit = async () => {
     const result = await onLogin(id.value, pw.value);
-    setUser(result);
+    if (result) {
+      setUser(result.data);
+    }
   };
 
   return (

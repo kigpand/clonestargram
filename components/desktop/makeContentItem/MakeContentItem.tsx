@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import React, { useCallback, useRef, useState } from "react";
-import { IAddContentItem } from "../../../interface/IAddContentItem";
 import { onAddPost, onImgUpload } from "../../../service/post";
 import useUser from "../../../store/user";
 import MakeBtns from "./btns/MakeBtns";
@@ -40,6 +39,7 @@ const MakeContentItem = () => {
   }, []);
 
   const onSubmit = async () => {
+    if (!user) return;
     if (textRef && textRef.current) {
       const formData = new FormData();
       imgUrl.forEach((data) => {
@@ -47,8 +47,8 @@ const MakeContentItem = () => {
       });
       formData.append("tag", tags.toString().replaceAll(",", ""));
       formData.append("content", textRef.current.value);
-      formData.append("id", user.data.id);
-      formData.append("nickname", user.data.nickname);
+      formData.append("id", String(user.id));
+      formData.append("nickname", user.nickname);
       try {
         await onAddPost(formData);
         router.push("/");

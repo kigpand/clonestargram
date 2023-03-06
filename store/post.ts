@@ -1,14 +1,15 @@
 import create from "zustand";
+import { IPost } from "../interface/IPost";
 
 interface IPostsStore {
-  posts: any;
-  setPosts: (item: any) => void;
+  posts: IPost[];
+  setPosts: (item: IPost[]) => void;
   clearPosts: () => void;
 }
 
 const usePosts = create<IPostsStore>((set) => ({
   posts: [],
-  setPosts: (item: any) => set({ posts: item }),
+  setPosts: (item: IPost[]) => set({ posts: item }),
   clearPosts: () => set({ posts: [] }),
 }));
 

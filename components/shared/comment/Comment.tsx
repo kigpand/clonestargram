@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import styles from "./Comments.module.scss";
 import CommentText from "./text/CommentText";
 
