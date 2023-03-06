@@ -1,16 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
 import useContent from "../../../store/content";
 import styles from "./Viewer.module.scss";
 import ViewItem from "./viewItem/ViewItem";
 
 const Viewer = () => {
   const { currentContent, clearCurrentContent } = useContent();
-  const [comment, setComment] = useState();
-  const textarea = useRef<HTMLTextAreaElement>(null);
-
-  const commentText = (e: any) => {
-    setComment(e.target.value);
-  };
 
   return (
     <div className={styles.viewer}>

@@ -34,7 +34,7 @@ const Home: NextPage = ({
   );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await onLoadPost();
   const post = res.data;
 

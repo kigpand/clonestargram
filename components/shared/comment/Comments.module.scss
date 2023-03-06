@@ -6,7 +6,8 @@
   padding: rem(10px);
 
   .img {
+    border-radius: 50%;
+    width: rem(25px);
     height: rem(25px);
-    object-fit: contain;
   }
 }

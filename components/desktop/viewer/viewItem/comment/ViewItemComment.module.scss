@@ -1,2 +1,14 @@
 .viewItemComment {
+  height: 50%;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: gray;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: lightgray;
+  }
 }

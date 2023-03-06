@@ -11,3 +11,10 @@ export const onImgUpload = (data: any) => {
 export const onAddPost = (data: any) => {
   return axios.post(`${process.env.NEXT_PUBLIC_API_URL}/post`, data);
 };
+
+export const onAddComment = (data: any) => {
+  return axios.post(
+    `${process.env.NEXT_PUBLIC_API_URL}/post/${data.postid}/comment`,
+    data
+  );
+};

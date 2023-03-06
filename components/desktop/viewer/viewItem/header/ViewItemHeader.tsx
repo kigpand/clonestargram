@@ -5,10 +5,6 @@ import styles from "./ViewItemHeader.module.scss";
 const ViewItemHeader = () => {
   const { currentContent } = useContent();
 
-  useEffect(() => {
-    console.log(currentContent);
-  }, [currentContent]);
-
   return (
     <div className={styles.viewItemHeader}>
       <img
