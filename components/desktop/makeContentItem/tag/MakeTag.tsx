@@ -10,6 +10,7 @@ const MakeTag = ({ tags, onAddTag }: IMakeTag) => {
   const text = useInput("");
 
   const onSubmit = () => {
+    if (tags.length === 3) return alert("태그는 3개이상 등록 불가능합니다!");
     if (text.value !== "") {
       onAddTag("#" + text.value);
       text.onClear();

@@ -3,9 +3,11 @@ import styles from "./MakeUpload.module.scss";
 
 interface IMakeUpload {
   onUploadImg: (e: any) => void;
+  loading: boolean;
+  imgUrl: string[];
 }
 
-const MakeUpload = ({ onUploadImg }: IMakeUpload) => {
+const MakeUpload = ({ onUploadImg, loading, imgUrl }: IMakeUpload) => {
   const imgRef = useRef<HTMLInputElement>(null);
 
   const onClickImageUpload = useCallback(() => {
@@ -23,9 +25,24 @@ const MakeUpload = ({ onUploadImg }: IMakeUpload) => {
         hidden
         onChange={onUploadImg}
       />
-      <button className={styles.uploadBtn} onClick={onClickImageUpload}>
-        이미지 업로드
-      </button>
+      {loading ? (
+        <div>로딩중</div>
+      ) : (
+        <button className={styles.uploadBtn} onClick={onClickImageUpload}>
+          {loading ? (
+            <div className={styles.loadingSpinner}></div>
+          ) : (
+            "이미지 업로드"
+          )}
+        </button>
+      )}
+      {imgUrl.length > 0 && (
+        <img
+          className={styles.uploadImg}
+          src={process.env.NEXT_PUBLIC_API_URL + "/" + imgUrl}
+          alt="img"
+        />
+      )}
     </div>
   );
 };

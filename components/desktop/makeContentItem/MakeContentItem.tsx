@@ -14,6 +14,7 @@ const MakeContentItem = () => {
   const textRef = useRef<HTMLTextAreaElement>(null);
   const [imgUrl, setImgUrl] = useState<string[]>([]);
   const [tags, setTags] = useState<string[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
 
   const onAddTag = (item: string) => {
@@ -31,8 +32,11 @@ const MakeContentItem = () => {
       imageFormData.append("image", f);
     });
 
+    setLoading(true);
     const result = await onImgUpload(imageFormData);
     setImgUrl(result.data);
+    alert("이미지가 업로드완료됬습니다");
+    setLoading(false);
   }, []);
 
   const onSubmit = async () => {
@@ -58,7 +62,11 @@ const MakeContentItem = () => {
     <div className={styles.makeContentItem}>
       <div className={styles.container}>
         <MakeHeader />
-        <MakeUpload onUploadImg={onUploadImg} />
+        <MakeUpload
+          onUploadImg={onUploadImg}
+          loading={loading}
+          imgUrl={imgUrl}
+        />
         <MakeTag tags={tags} onAddTag={onAddTag} />
         <div className={styles.contentBox}>
           <textarea
