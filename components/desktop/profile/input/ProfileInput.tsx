@@ -5,21 +5,23 @@ import styles from "./ProfileInput.module.scss";
 interface IProfileInput {
   type: string;
   value: string;
-  onProfileChange: Function;
+  onProfileChange?: Function;
 }
 
 const typeItem: any = {
   ID: "아이디",
-  NICK: "닉네임",
-  PHONE: "전화 번호",
-  EMAIL: "이메일",
+  nickname: "닉네임",
+  phone: "전화 번호",
+  email: "이메일",
 };
 
 const ProfileInput = ({ type, value, onProfileChange }: IProfileInput) => {
   const input = useInput(value);
 
   useEffect(() => {
-    onProfileChange(type, input.value);
+    if (onProfileChange) {
+      onProfileChange(type, input.value);
+    }
   }, [input.value]);
 
   return (

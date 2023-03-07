@@ -1,15 +1,13 @@
 @import "../../../../styles/func.scss";
+@import "../../../../styles/utils.scss";
 
 .profileBody {
   width: get-vw(400px);
-  height: get-vh(750px);
-  display: flex;
+  height: 100%;
+  @include flexSort;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   padding: 20px;
-  border-radius: 4px;
-  background-color: white;
+  background-color: lightgray;
 
   .imgText {
     padding: 10px;
