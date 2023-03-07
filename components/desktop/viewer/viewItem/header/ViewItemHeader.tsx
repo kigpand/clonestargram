@@ -1,9 +1,26 @@
-import { useEffect } from "react";
+import { onDeletePost, onLoadPost } from "../../../../../service/post";
 import useContent from "../../../../../store/content";
+import usePosts from "../../../../../store/post";
+import useUser from "../../../../../store/user";
 import styles from "./ViewItemHeader.module.scss";
 
 const ViewItemHeader = () => {
-  const { currentContent } = useContent();
+  const { currentContent, clearCurrentContent } = useContent();
+  const { setPosts } = usePosts();
+  const { user } = useUser();
+
+  const onDeleteBtn = async () => {
+    try {
+      await onDeletePost(currentContent.id, { id: user!.id }).then(async () => {
+        const res = await onLoadPost();
+        const post = res.data;
+        setPosts(post);
+        clearCurrentContent();
+      });
+    } catch {
+      alert("게시글 삭제에 실패했습니다");
+    }
+  };
 
   return (
     <div className={styles.viewItemHeader}>
@@ -17,6 +34,18 @@ const ViewItemHeader = () => {
         className={styles.img}
       />
       <div className={styles.text}>{currentContent.User.nickname}</div>
+      <div className={styles.btn}>
+        {user?.id === currentContent.User.id ? (
+          <img
+            src="/delete.png"
+            alt="delete"
+            className={styles.delete}
+            onClick={onDeleteBtn}
+          />
+        ) : (
+          <div>follow</div>
+        )}
+      </div>
     </div>
   );
 };

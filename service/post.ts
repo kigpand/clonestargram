@@ -18,3 +18,9 @@ export const onAddComment = (data: any) => {
     data
   );
 };
+
+export const onDeletePost = (id: number, data: any) => {
+  return axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/post/${id}`, {
+    data,
+  });
+};

@@ -12,7 +12,7 @@
   .img {
     margin-left: rem(10px);
     width: get-vw(20px);
-    height: get-vh(25px);
+    height: get-vw(20px);
     border-radius: 50%;
   }
 
@@ -20,5 +20,16 @@
     font-size: rem(13px);
     font-weight: bold;
     margin-left: rem(5px);
+  }
+
+  .btn {
+    position: absolute;
+    right: 20px;
+
+    .delete {
+      height: get-vw(20px);
+      object-fit: contain;
+      cursor: pointer;
+    }
   }
 }
