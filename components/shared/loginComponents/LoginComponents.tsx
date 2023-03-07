@@ -3,11 +3,17 @@ import styles from "./LoginComponents.module.scss";
 import { useInput } from "../../../hooks/useInput";
 import { onLogin } from "../../../service/auth";
 import useUser from "../../../store/user";
+import Join from "../join/Join";
 
 const LoginComponents = () => {
   const id = useInput("");
   const pw = useInput("");
+  const [join, setJoin] = useState<boolean>(false);
   const { setUser } = useUser();
+
+  const unJoin = () => {
+    setJoin(false);
+  };
 
   const onSubmit = async () => {
     const result = await onLogin(id.value, pw.value);
@@ -36,8 +42,11 @@ const LoginComponents = () => {
         Sign in
       </button>
       <div className={styles.others}>
-        <div className={styles.join}>회원가입</div>
+        <div className={styles.join} onClick={() => setJoin(true)}>
+          회원가입
+        </div>
       </div>
+      {join && <Join unJoin={unJoin} />}
     </div>
   );
 };

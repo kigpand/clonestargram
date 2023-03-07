@@ -1,0 +1,55 @@
+@import "../../../styles/utils.scss";
+@import "../../../styles/func.scss";
+
+.join {
+  @include flexSort;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+
+  .container {
+    width: get-vw(300px);
+    height: get-vh(700px);
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: rem(40px);
+    position: relative;
+
+    .title {
+      font-size: rem(20px);
+      font-weight: bold;
+      margin-bottom: rem(20px);
+    }
+
+    .joinBtn {
+      position: absolute;
+      bottom: 30px;
+      width: 70%;
+      height: get-vh(50px);
+      background-color: rgb(8, 184, 184);
+      color: white;
+      font-weight: bold;
+      @include flexSort;
+
+      &:hover {
+        cursor: pointer;
+        background-color: rgb(14, 109, 109);
+      }
+    }
+
+    .closeBtn {
+      position: absolute;
+      top: rem(15px);
+      right: rem(15px);
+      width: get-vw(10px);
+      height: get-vh(15px);
+      cursor: pointer;
+    }
+  }
+}

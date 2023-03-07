@@ -1,0 +1,6 @@
+@import "../../../../styles/utils.scss";
+@import "../../../../styles/func.scss";
+
+.idInput {
+  @include input;
+}

@@ -1,0 +1,11 @@
+@import "../../../../styles/utils.scss";
+@import "../../../../styles/func.scss";
+
+.pwInput {
+  @include input;
+
+  .warning {
+    font-size: rem(12px);
+    color: red;
+  }
+}
