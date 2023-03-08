@@ -70,7 +70,7 @@ const ProfileBody = () => {
         const result = await onGetUser(user.id);
         if (result) {
           setUser(result);
-          router.push("/");
+          router.push("/post");
         } else {
           alert("유저 정보를 업데이트하는데 실패했습니다");
         }

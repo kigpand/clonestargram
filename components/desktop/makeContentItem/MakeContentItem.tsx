@@ -51,7 +51,7 @@ const MakeContentItem = () => {
       formData.append("nickname", user.nickname);
       try {
         await onAddPost(formData);
-        router.push("/");
+        router.push("/post");
       } catch (e) {
         alert("게시글 등록에 실패했습니다");
       }

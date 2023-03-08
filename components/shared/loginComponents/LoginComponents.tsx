@@ -4,12 +4,14 @@ import { useInput } from "../../../hooks/useInput";
 import { onLogin } from "../../../service/auth";
 import useUser from "../../../store/user";
 import Join from "../join/Join";
+import { useRouter } from "next/router";
 
 const LoginComponents = () => {
   const id = useInput("");
   const pw = useInput("");
   const [join, setJoin] = useState<boolean>(false);
   const { setUser } = useUser();
+  const router = useRouter();
 
   const unJoin = () => {
     setJoin(false);
@@ -18,8 +20,8 @@ const LoginComponents = () => {
   const onSubmit = async () => {
     const result = await onLogin(id.value, pw.value);
     if (result) {
-      delete result.data.password;
       setUser(result.data);
+      router.push("/post");
     }
   };
 

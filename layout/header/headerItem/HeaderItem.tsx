@@ -9,7 +9,7 @@ const HeaderItems = () => {
   const { setUser } = useUser();
 
   const homeBtn = () => {
-    router.push("/");
+    router.push("/post");
   };
 
   const profileBtn = () => {

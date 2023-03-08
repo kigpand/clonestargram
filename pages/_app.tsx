@@ -4,9 +4,11 @@ import Layout from "../layout/Layout/Layout";
 import { MOBILE_SIZE } from "../utils/common";
 import useData from "../store/data";
 import { useEffect } from "react";
+import axios from "axios";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { setMobile } = useData();
+  axios.defaults.withCredentials = true;
 
   useEffect(() => {
     window.addEventListener("resize", () => {

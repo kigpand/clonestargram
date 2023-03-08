@@ -9,7 +9,7 @@ const MakeBtns = ({ onSubmit }: IMakeBtns) => {
   const router = useRouter();
 
   const onCancleBtn = () => {
-    router.push("/");
+    router.push("/post");
   };
 
   return (
