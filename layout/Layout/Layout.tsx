@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useWindowSize } from "../../hooks/useWindowHook";
 import useUser from "../../store/user";
 import { MOBILE_SIZE } from "../../utils/common";
@@ -11,6 +11,11 @@ const Layout = ({ component }: any) => {
   const windowWidth = useWindowSize();
   const { user } = useUser();
   const router = useRouter();
+  const [rendering, setRendering] = useState<boolean>(false);
+
+  useEffect(() => {
+    setRendering(true);
+  }, []);
 
   useEffect(() => {
     if (!user) {
@@ -18,11 +23,13 @@ const Layout = ({ component }: any) => {
     }
   }, [user]);
 
-  return (
+  return rendering ? (
     <div className={styles.layout}>
       {user && (windowWidth < MOBILE_SIZE ? <MobileHeader /> : <Header />)}
       {component}
     </div>
+  ) : (
+    <></>
   );
 };
 

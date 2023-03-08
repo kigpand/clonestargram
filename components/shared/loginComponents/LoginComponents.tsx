@@ -18,6 +18,7 @@ const LoginComponents = () => {
   const onSubmit = async () => {
     const result = await onLogin(id.value, pw.value);
     if (result) {
+      delete result.data.password;
       setUser(result.data);
     }
   };

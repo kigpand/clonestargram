@@ -19,6 +19,7 @@ const Home: NextPage = ({
   const { user } = useUser();
   const { setPosts } = usePosts();
   const { currentContent } = useContent();
+
   useEffect(() => {
     if (post) {
       setPosts(post);

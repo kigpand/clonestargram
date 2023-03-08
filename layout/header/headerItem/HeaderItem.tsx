@@ -25,7 +25,7 @@ const HeaderItems = () => {
   };
 
   const logoutBtn = async () => {
-    await onLogout().then((data: any) => {
+    await onLogout().then(() => {
       setUser(null);
       router.push("/");
     });

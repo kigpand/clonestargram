@@ -13,7 +13,7 @@ const MobileHeader = () => {
 
   return (
     <div className={styles.mobileHeader}>
-      <input
+      {/* <input
         className={styles.text}
         type="text"
         placeholder="검색.."
@@ -22,7 +22,7 @@ const MobileHeader = () => {
       <div className={styles.toggleBtn} onClick={onToggle}>
         O
       </div>
-      {toggle && <HeaderToggle />}
+      {toggle && <HeaderToggle />} */}
     </div>
   );
 };
