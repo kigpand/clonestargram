@@ -67,7 +67,7 @@ const ProfileBody = () => {
       }
 
       await onUserUpdate(data).then(async () => {
-        const result = await onGetUser(user.id);
+        const result = await onGetUser();
         if (result) {
           setUser(result);
           router.push("/post");

@@ -53,11 +53,9 @@ export const onUserUpdate = async (data: any) => {
   }
 };
 
-export const onGetUser = async (data: any) => {
+export const onGetUser = async () => {
   try {
-    const result = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/user/${data}`
-    );
+    const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/user`);
     return result.data;
   } catch {
     return false;

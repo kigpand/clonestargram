@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { IFollow } from "../../../../../interface/IFollow";
 import styles from "./FollowList.module.scss";
 
@@ -7,9 +6,6 @@ interface IFollowList {
 }
 
 const FollowList = ({ follow }: IFollowList) => {
-  useEffect(() => {
-    console.log(follow);
-  }, []);
   return (
     <div className={styles.followList}>
       <img

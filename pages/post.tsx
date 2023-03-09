@@ -33,11 +33,6 @@ const Post: NextPage = ({
 };
 
 export async function getServerSideProps(context: any) {
-  //   const cookie = context.req ? context.req.headers.cookie : "";
-  //   axios.defaults.headers.Cookie = "";
-  //   if (context.req && cookie) {
-  //     axios.defaults.headers.Cookie = cookie;
-  //   }
   const res = await onLoadPost();
   const post = res.data;
 

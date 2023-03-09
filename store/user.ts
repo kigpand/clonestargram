@@ -7,14 +7,9 @@ interface IUserStore {
   setUser: (info: any) => void;
 }
 
-const useUser = create<any>(
-  persist(
-    (set) => ({
-      user: null,
-      setUser: (info: any) => set({ user: info }),
-    }),
-    { name: "user" }
-  )
-);
+const useUser = create<IUserStore>((set) => ({
+  user: null,
+  setUser: (info: any) => set({ user: info }),
+}));
 
 export default useUser;

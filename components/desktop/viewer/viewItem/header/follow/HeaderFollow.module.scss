@@ -1,0 +1,16 @@
+.headerFollow {
+  .followBtn,
+  .unfollowBtn {
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .followBtn {
+    color: rgb(43, 213, 255);
+  }
+
+  .unfollowBtn {
+    color: gray;
+  }
+}

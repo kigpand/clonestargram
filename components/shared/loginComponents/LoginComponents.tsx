@@ -10,8 +10,14 @@ const LoginComponents = () => {
   const id = useInput("");
   const pw = useInput("");
   const [join, setJoin] = useState<boolean>(false);
-  const { setUser } = useUser();
+  const { user, setUser } = useUser();
   const router = useRouter();
+
+  useEffect(() => {
+    if (user) {
+      router.push("/post");
+    }
+  }, [user]);
 
   const unJoin = () => {
     setJoin(false);
