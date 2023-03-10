@@ -1,7 +1,9 @@
 import axios from "axios";
 
-export const onLoadPost = () => {
-  return axios.get(`${process.env.NEXT_PUBLIC_API_URL}/posts`);
+export const onLoadPost = (lastId: number) => {
+  return axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/posts?lastId=${lastId || 0}`
+  );
 };
 
 export const onImgUpload = (data: any) => {

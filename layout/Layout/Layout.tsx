@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useWindowSize } from "../../hooks/useWindowHook";
 import { onGetUser } from "../../service/user";
+import usePosts from '../../store/post';
 import useUser from "../../store/user";
 import { MOBILE_SIZE } from "../../utils/common";
 import Header from "../header/Header";

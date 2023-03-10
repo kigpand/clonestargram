@@ -1,8 +1,9 @@
 import usePosts from "../../../store/post";
 import styles from "./Contents.module.scss";
 import ContentsItem from "./contentsItem/ContentsItem";
+import React from "react";
 
-const Contents = () => {
+const Contents = React.memo(() => {
   const { posts } = usePosts();
 
   return (
@@ -14,6 +15,8 @@ const Contents = () => {
       </div>
     </div>
   );
-};
+});
+
+Contents.displayName = "Contents";
 
 export default Contents;

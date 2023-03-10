@@ -1,6 +1,7 @@
 .viewItemComment {
   height: 50%;
   overflow-y: auto;
+  overflow-x: hidden;
 
   &::-webkit-scrollbar {
     width: 3px;
