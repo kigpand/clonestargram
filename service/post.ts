@@ -26,3 +26,7 @@ export const onDeletePost = (id: number, data: any) => {
     data,
   });
 };
+
+export const onSearchHashTag = (text: string) => {
+  return axios.get(`${process.env.NEXT_PUBLIC_API_URL}/hashtag/${text}`);
+};

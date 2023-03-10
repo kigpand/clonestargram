@@ -1,6 +1,6 @@
 import usePosts from "../../../store/post";
 import styles from "./Contents.module.scss";
-import ContentsItem from "./contentsItem/ContentsItem";
+import ContentsItem from "../../shared/contentsItem/ContentsItem";
 import React from "react";
 
 const Contents = React.memo(() => {

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import useContent from "../../../../store/content";
+import useContent from "../../../store/content";
 import styles from "./ContentsItem.module.scss";
 
 const ContentsItem = ({ post }: any) => {
