@@ -6,4 +6,5 @@ export interface IPost {
   nickname: string;
   tag: string;
   updatedAt: string;
+  Images: any;
 }

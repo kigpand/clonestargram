@@ -27,7 +27,7 @@
       border-radius: 50%;
       border: 2px solid lightgray;
       border-top: 2px solid gray;
-      animation: loading 1s linear forwards infinite;
+      @include loading;
     }
   }
 
@@ -35,14 +35,5 @@
     margin-left: rem(20px);
     height: get-vh(50px);
     object-fit: contain;
-  }
-
-  @keyframes loading {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
   }
 }

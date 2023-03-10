@@ -8,6 +8,7 @@ import Contents from "../components/desktop/contents/Contents";
 import Viewer from "../components/desktop/viewer/Viewer";
 import { onLoadPost } from "../service/post";
 import useContent from "../store/content";
+import useData from "../store/data";
 import usePosts from "../store/post";
 import styles from "../styles/Home.module.scss";
 
@@ -16,6 +17,7 @@ const Post: NextPage = ({
 }: InferGetServerSidePropsType<GetServerSideProps>) => {
   const { posts, setPosts } = usePosts();
   const { currentContent } = useContent();
+  const { setLoading } = useData();
   const [flag, setFlag] = useState<boolean>(false);
 
   useEffect(() => {
@@ -34,8 +36,10 @@ const Post: NextPage = ({
       ) {
         if (flag) {
           const lastId = posts[posts.length - 1] && posts[posts.length - 1].id;
+          setLoading(true);
           const res = await onLoadPost(lastId);
           setPosts([...posts, ...res.data]);
+          setLoading(false);
           if (res.data.length !== 9) {
             setFlag(false);
           }

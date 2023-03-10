@@ -1,0 +1,21 @@
+@import "../../../styles/utils.scss";
+
+.loading {
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  @include flexSort;
+
+  .spinner {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 5px solid white;
+    border-top: 5px solid lightgray;
+    @include loading;
+  }
+}
