@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 // input hooks method
 export const useInput = (
@@ -6,7 +6,7 @@ export const useInput = (
   validator?: (value: string) => boolean
 ) => {
   const [value, setValue] = useState(initialState);
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { value },
     } = event;
@@ -18,9 +18,11 @@ export const useInput = (
         setValue(value);
       }
     }
-  };
-  const onClear = () => {
+  }, []);
+
+  const onClear = useCallback(() => {
     setValue("");
-  };
+  }, []);
+
   return { value, onChange, onClear };
 };

@@ -1,11 +1,10 @@
-import { useEffect } from "react";
-import { useInput } from "../../../../hooks/useInput";
+import React, { useEffect } from "react";
 import styles from "./ProfileInput.module.scss";
 
 interface IProfileInput {
   type: string;
   value: string;
-  onProfileChange?: Function;
+  onChange: any;
 }
 
 const typeItem: any = {
@@ -15,15 +14,7 @@ const typeItem: any = {
   email: "이메일",
 };
 
-const ProfileInput = ({ type, value, onProfileChange }: IProfileInput) => {
-  const input = useInput(value);
-
-  useEffect(() => {
-    if (onProfileChange) {
-      onProfileChange(type, input.value);
-    }
-  }, [input.value]);
-
+const ProfileInput = React.memo(({ type, value, onChange }: IProfileInput) => {
   return (
     <div className={styles.inputContainer}>
       <label className={styles.label}>{typeItem[type]}</label>
@@ -31,11 +22,13 @@ const ProfileInput = ({ type, value, onProfileChange }: IProfileInput) => {
         type="text"
         className={styles.input}
         disabled={type === "ID" ? true : false}
-        value={input.value || ""}
-        onChange={input.onChange}
+        value={value}
+        onChange={onChange}
       ></input>
     </div>
   );
-};
+});
+
+ProfileInput.displayName = "profileInput";
 
 export default ProfileInput;

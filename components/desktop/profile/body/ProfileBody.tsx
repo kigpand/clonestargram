@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useInput } from "../../../../hooks/useInput";
 import {
   onGetUser,
   onUserImgUpload,
@@ -15,22 +16,13 @@ const ProfileBody = () => {
   const imgRef = useRef<HTMLInputElement>(null);
   const textRef = useRef<HTMLTextAreaElement>(null);
   const [imgUrl, setImgUrl] = useState<string>("");
-  const [profile, setProfile] = useState<any>({
-    ID: "",
-    nickname: "",
-    phone: "",
-    email: "",
-  });
+  const id = useInput(user!.userid);
+  const nickname = useInput(user!.nickname);
+  const phone = useInput(user!.phone);
+  const email = useInput(user!.email);
 
   useEffect(() => {
     if (user) {
-      setProfile({
-        ID: user.userid,
-        nickname: user.nickname,
-        phone: user.phone,
-        email: user.email,
-      });
-
       if (user.userImg) {
         setImgUrl(user.userImg);
       }
@@ -53,19 +45,18 @@ const ProfileBody = () => {
     }
   };
 
-  const onProfileChange = (title: string, input: string) => {
-    const data = { ...profile };
-    data[title] = input;
-    setProfile(data);
-  };
-
   const onUpdateUser = async () => {
     if (textRef.current && user) {
-      let data = { ...profile, id: user.id, intro: textRef.current.value };
+      let data: any = {
+        id: user.id,
+        intro: textRef.current.value,
+        nickname: nickname.value,
+        phone: phone.value,
+        email: email.value,
+      };
       if (imgUrl !== "") {
         data = { ...data, userImg: imgUrl };
       }
-
       await onUserUpdate(data).then(async () => {
         const result = await onGetUser();
         if (result) {
@@ -101,22 +92,10 @@ const ProfileBody = () => {
           />
         </div>
         <div className={styles.texts}>
-          <ProfileInput type="ID" value={user ? user.userid : ""} />
-          <ProfileInput
-            type="nickname"
-            value={user ? user.nickname : ""}
-            onProfileChange={onProfileChange}
-          />
-          <ProfileInput
-            type="phone"
-            value={user ? user.phone : ""}
-            onProfileChange={onProfileChange}
-          />
-          <ProfileInput
-            type="email"
-            value={user ? user.email : ""}
-            onProfileChange={onProfileChange}
-          />
+          <ProfileInput type="ID" {...id} />
+          <ProfileInput type="nickname" {...nickname} />
+          <ProfileInput type="phone" {...phone} />
+          <ProfileInput type="email" {...email} />
         </div>
       </div>
       <div className={styles.introContainer}>
