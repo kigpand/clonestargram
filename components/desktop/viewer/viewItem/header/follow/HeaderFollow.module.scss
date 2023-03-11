@@ -1,3 +1,5 @@
+@import "../../../../../../styles/variables.scss";
+
 .headerFollow {
   .followBtn,
   .unfollowBtn {
@@ -7,10 +9,18 @@
   }
 
   .followBtn {
-    color: rgb(43, 213, 255);
+    color: $blueColor;
+
+    &:hover {
+      color: $blueHoverColor;
+    }
   }
 
   .unfollowBtn {
-    color: gray;
+    color: $cancleColor;
+
+    &:hover {
+      color: $cancleHoverColor;
+    }
   }
 }

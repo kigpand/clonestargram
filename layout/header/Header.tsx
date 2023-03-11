@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { useInput } from "../../hooks/useInput";
 import { onSearchHashTag } from "../../service/post";
 import useData from "../../store/data";
@@ -12,6 +12,12 @@ const Header = () => {
   const { setSearchTag } = useData();
   const inputData = useInput("");
   const router = useRouter();
+
+  useEffect(() => {
+    router.events.on("routeChangeComplete", () => {
+      inputData.onClear();
+    });
+  }, []);
 
   const onEnter = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && inputData.value !== "") {
@@ -33,6 +39,7 @@ const Header = () => {
         className={styles.text}
         type="text"
         placeholder="검색.."
+        value={inputData.value}
         onChange={inputData.onChange}
         onKeyDown={onEnter}
       />

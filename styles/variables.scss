@@ -1,6 +1,10 @@
 $backgroundColor: rgb(223, 223, 223);
 $listColor: #ffffff;
 $borderColor: #cccccc;
+$blueColor: rgb(43, 213, 255);
+$blueHoverColor: rgb(60, 60, 255);
+$cancleColor: rgb(167, 167, 167);
+$cancleHoverColor: rgb(146, 146, 146);
 
 @mixin backgroudColor {
   background-color: whitesmoke;

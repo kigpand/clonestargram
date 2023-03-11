@@ -71,32 +71,30 @@ const ProfileBody = () => {
 
   return (
     <div className={styles.profileBody}>
-      <div className={styles.imgText}>
-        <div className={styles.imgProfile}>
-          <img
-            src={
-              imgUrl !== ""
-                ? `${process.env.NEXT_PUBLIC_API_URL}/${imgUrl}`
-                : "/profileImg.png"
-            }
-            className={styles.profileImage}
-            alt="profileImg"
-            onClick={onClickImageUpload}
-          ></img>
-          <input
-            type="file"
-            name="image"
-            hidden
-            ref={imgRef}
-            onChange={changeImages}
-          />
-        </div>
-        <div className={styles.texts}>
-          <ProfileInput type="ID" {...id} />
-          <ProfileInput type="nickname" {...nickname} />
-          <ProfileInput type="phone" {...phone} />
-          <ProfileInput type="email" {...email} />
-        </div>
+      <div className={styles.imgProfile}>
+        <img
+          src={
+            imgUrl !== ""
+              ? `${process.env.NEXT_PUBLIC_API_URL}/${imgUrl}`
+              : "/profileImg.png"
+          }
+          className={styles.profileImage}
+          alt="profileImg"
+          onClick={onClickImageUpload}
+        ></img>
+        <input
+          type="file"
+          name="image"
+          hidden
+          ref={imgRef}
+          onChange={changeImages}
+        />
+      </div>
+      <div className={styles.texts}>
+        <ProfileInput type="ID" {...id} />
+        <ProfileInput type="nickname" {...nickname} />
+        <ProfileInput type="phone" {...phone} />
+        <ProfileInput type="email" {...email} />
       </div>
       <div className={styles.introContainer}>
         <label className={styles.introLabel}>소개</label>
@@ -108,9 +106,19 @@ const ProfileBody = () => {
           ref={textRef}
         ></textarea>
       </div>
-      <button className={styles.editBtn} onClick={onUpdateUser}>
-        편집
-      </button>
+      <div className={styles.btns}>
+        <button
+          className={styles.cancleBtn}
+          onClick={() => {
+            router.push("/post");
+          }}
+        >
+          취소
+        </button>
+        <button className={styles.editBtn} onClick={onUpdateUser}>
+          편집
+        </button>
+      </div>
     </div>
   );
 };

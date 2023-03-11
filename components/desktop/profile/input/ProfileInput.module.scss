@@ -3,7 +3,8 @@
 .inputContainer {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  width: 100%;
+  padding: 5px;
 
   .label {
     width: get-vw(50px);
@@ -13,10 +14,10 @@
   }
 
   .input {
-    width: get-vw(150px);
-    height: 30px;
-    border: 1px solid gray;
-    border-radius: 8px;
+    width: 80%;
+    height: 40px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
     outline: none;
   }
 }
