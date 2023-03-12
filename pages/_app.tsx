@@ -15,6 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       if (window.innerWidth <= MOBILE_SIZE) {
         setMobile(true);
       } else {
+        console.log("test");
         setMobile(false);
       }
     });
