@@ -13,7 +13,7 @@ const ViewItemHeader = () => {
   const onDeleteBtn = async () => {
     try {
       await onDeletePost(currentContent.id, { id: user!.id }).then(async () => {
-        const res = await onLoadPost();
+        const res = await onLoadPost(0);
         const post = res.data;
         setPosts(post);
         clearCurrentContent();

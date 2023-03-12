@@ -11,8 +11,8 @@
 
   .img {
     margin-left: rem(10px);
-    width: get-vw(20px);
-    height: get-vw(20px);
+    width: get-vw(15px);
+    height: get-vw(15px);
     border-radius: 50%;
   }
 
@@ -27,7 +27,7 @@
     right: 20px;
 
     .delete {
-      height: get-vw(20px);
+      height: get-vw(15px);
       object-fit: contain;
       cursor: pointer;
     }

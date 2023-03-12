@@ -1,5 +1,6 @@
 @import "../../../../styles/func.scss";
 @import "../../../../styles/variables.scss";
+@import "../../../../styles/utils.scss";
 
 .makeBtns {
   display: flex;
@@ -9,8 +10,7 @@
 
   .submitBtn,
   .cancleBtn {
-    width: get-vw(50px);
-    height: get-vh(30px);
+    padding: 5px 10px;
     border: none;
     border-radius: 4px;
     color: white;

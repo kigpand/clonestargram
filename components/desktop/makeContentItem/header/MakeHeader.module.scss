@@ -1,4 +1,5 @@
 @import "../../../../styles/func.scss";
+@import "../../../../styles/utils.scss";
 
 .makeHeader {
   width: 100%;
@@ -9,13 +10,20 @@
   padding: 1rem;
 
   .img {
-    width: get-vw(20px);
-    height: get-vh(25px);
+    width: get-vw(15px);
+    height: get-vw(15px);
     border-radius: 50%;
   }
 
   .nickname {
     font-size: rem(14px);
     margin-left: 10px;
+  }
+
+  @include mobile {
+    .img {
+      width: get-vw(30px);
+      height: get-vw(30px);
+    }
   }
 }

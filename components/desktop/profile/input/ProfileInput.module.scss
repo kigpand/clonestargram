@@ -1,4 +1,5 @@
 @import "../../../../styles/func.scss";
+@import "../../../../styles/utils.scss";
 
 .inputContainer {
   display: flex;
@@ -19,5 +20,12 @@
     border: 1px solid lightgray;
     border-radius: 4px;
     outline: none;
+  }
+
+  @include mobile {
+    .label {
+      width: 15%;
+      font-size: 10px;
+    }
   }
 }
