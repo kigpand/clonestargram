@@ -1,0 +1,17 @@
+@import "../../../../styles/variables.scss";
+
+.contentItem {
+  width: 100%;
+  height: 600px;
+  border: 1px solid $borderColor;
+
+  .img {
+    width: 100%;
+    height: 50%;
+  }
+
+  .texts {
+    width: 100%;
+    height: 40%;
+  }
+}

@@ -1,18 +1,22 @@
-import { onDeletePost, onLoadPost } from "../../../../../service/post";
-import useContent from "../../../../../store/content";
-import usePosts from "../../../../../store/post";
-import useUser from "../../../../../store/user";
+import { onDeletePost, onLoadPost } from "../../../../service/post";
+import useContent from "../../../../store/content";
+import usePosts from "../../../../store/post";
+import useUser from "../../../../store/user";
 import HeaderFollow from "./follow/HeaderFollow";
 import styles from "./ViewItemHeader.module.scss";
 
-const ViewItemHeader = () => {
-  const { currentContent, clearCurrentContent } = useContent();
+interface IViewItemHeader {
+  viewItem: any;
+}
+
+const ViewItemHeader = ({ viewItem }: IViewItemHeader) => {
+  const { clearCurrentContent } = useContent();
   const { setPosts } = usePosts();
   const { user } = useUser();
 
   const onDeleteBtn = async () => {
     try {
-      await onDeletePost(currentContent.id, { id: user!.id }).then(async () => {
+      await onDeletePost(viewItem.id, { id: user!.id }).then(async () => {
         const res = await onLoadPost(0);
         const post = res.data;
         setPosts(post);
@@ -27,16 +31,16 @@ const ViewItemHeader = () => {
     <div className={styles.viewItemHeader}>
       <img
         src={
-          currentContent && currentContent.User.userImg
-            ? `${process.env.NEXT_PUBLIC_API_URL}/${currentContent.User.userImg}`
+          viewItem && viewItem.User.userImg
+            ? `${process.env.NEXT_PUBLIC_API_URL}/${viewItem.User.userImg}`
             : "/profileImg.png"
         }
         alt="prifle"
         className={styles.img}
       />
-      <div className={styles.text}>{currentContent.User.nickname}</div>
+      <div className={styles.text}>{viewItem.User.nickname}</div>
       <div className={styles.btn}>
-        {user?.id === currentContent.User.id ? (
+        {user?.id === viewItem.User.id ? (
           <img
             src="/delete.png"
             alt="delete"
@@ -44,7 +48,7 @@ const ViewItemHeader = () => {
             onClick={onDeleteBtn}
           />
         ) : (
-          <HeaderFollow />
+          <HeaderFollow viewItem={viewItem} />
         )}
       </div>
     </div>

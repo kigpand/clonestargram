@@ -5,9 +5,13 @@ import useContent from "../../../store/content";
 import useUser from "../../../store/user";
 import styles from "./AddComment.module.scss";
 
-const AddComment = () => {
+interface IAddComment {
+  viewItem: any;
+  setViewItem: any;
+}
+
+const AddComment = ({ viewItem, setViewItem }: IAddComment) => {
   const { user } = useUser();
-  const { currentContent, setCurrentContent } = useContent();
   const [addFlag, setAddFlag] = useState<boolean>(false);
   const input = useInput("");
 
@@ -24,7 +28,7 @@ const AddComment = () => {
       id: user?.id,
       nickname: user?.nickname,
       comment: input.value,
-      postid: currentContent.id,
+      postid: viewItem.id,
     };
     try {
       const result = await onAddComment(data);
@@ -36,9 +40,9 @@ const AddComment = () => {
           userImg: user?.userImg,
         },
       };
-      const comments = [comment, ...currentContent.Comments];
-      const newItem = { ...currentContent, Comments: comments };
-      setCurrentContent(newItem);
+      const comments = [comment, ...viewItem.Comments];
+      const newItem = { ...viewItem, Comments: comments };
+      setViewItem(newItem);
       input.onClear();
     } catch {
       alert("댓글 등록에 실패했습니다");

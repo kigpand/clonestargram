@@ -1,6 +1,6 @@
-@import "../../../../../styles/func.scss";
-@import "../../../../../styles/utils.scss";
-@import "../../../../../styles/variables.scss";
+@import "../../../../styles/func.scss";
+@import "../../../../styles/utils.scss";
+@import "../../../../styles/variables.scss";
 
 .viewItemHeader {
   border-bottom: 1px solid $borderColor;
@@ -30,6 +30,20 @@
       height: get-vw(15px);
       object-fit: contain;
       cursor: pointer;
+    }
+  }
+
+  @include mobile {
+    .img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .btn {
+      .delete {
+        width: 15px;
+        height: 15px;
+      }
     }
   }
 }

@@ -6,6 +6,10 @@ interface IFollowList {
 }
 
 const FollowList = ({ follow }: IFollowList) => {
+  const onTest = () => {
+    console.log(follow);
+  };
+
   return (
     <div className={styles.followList}>
       <img
@@ -17,7 +21,9 @@ const FollowList = ({ follow }: IFollowList) => {
         className={styles.profileImg}
         alt="followImg"
       ></img>
-      <div className={styles.nickname}>{follow.nickname}</div>
+      <div className={styles.nickname} onClick={onTest}>
+        {follow.nickname}
+      </div>
     </div>
   );
 };

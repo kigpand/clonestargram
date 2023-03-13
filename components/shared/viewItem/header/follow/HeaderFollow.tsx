@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react";
-import { IFollow } from "../../../../../../interface/IFollow";
-import { onAddFollow, onDeleteFollow } from "../../../../../../service/follow";
-import { onGetUser } from "../../../../../../service/user";
-import useContent from "../../../../../../store/content";
-import useUser from "../../../../../../store/user";
+import { IFollow } from "../../../../../interface/IFollow";
+import { onAddFollow, onDeleteFollow } from "../../../../../service/follow";
+import { onGetUser } from "../../../../../service/user";
+import useUser from "../../../../../store/user";
 import styles from "./HeaderFollow.module.scss";
 
-const HeaderFollow = () => {
+interface IHeaderFollow {
+  viewItem: any;
+}
+
+const HeaderFollow = ({ viewItem }: IHeaderFollow) => {
   const { user, setUser } = useUser();
-  const { currentContent } = useContent();
   const [isFollow, setIsFollow] = useState<boolean | null>(null);
 
   useEffect(() => {
     const result = user?.Followings.find(
-      (item: IFollow) => item.id === currentContent.UserId
+      (item: IFollow) => item.id === viewItem.UserId
     );
     if (result) {
       setIsFollow(true);
@@ -23,7 +25,7 @@ const HeaderFollow = () => {
   }, [user]);
 
   const onFollowBtn = async () => {
-    await onAddFollow(currentContent.UserId).then(async () => {
+    await onAddFollow(viewItem.UserId).then(async () => {
       const result = await onGetUser();
       if (result) {
         setUser(result);
@@ -34,7 +36,7 @@ const HeaderFollow = () => {
   };
 
   const unFollowBtn = async () => {
-    await onDeleteFollow(currentContent.UserId).then(async () => {
+    await onDeleteFollow(viewItem.UserId).then(async () => {
       const result = await onGetUser();
       if (result) {
         setUser(result);

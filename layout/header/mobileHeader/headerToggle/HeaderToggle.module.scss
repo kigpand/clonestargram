@@ -6,6 +6,8 @@
   background-color: white;
   display: flex;
   flex-direction: column;
+  border-left: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
   animation: toggleAnim 0.5s linear forwards;
 
   .homeBtn,
@@ -50,6 +52,6 @@
   }
 
   100% {
-    top: 40px;
+    top: 50px;
   }
 }

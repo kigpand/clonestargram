@@ -1,27 +1,31 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { onSearchHashTag } from "../../../../../service/post";
-import useContent from "../../../../../store/content";
-import useData from "../../../../../store/data";
-import usePosts from "../../../../../store/post";
+import { onSearchHashTag } from "../../../../service/post";
+import useContent from "../../../../store/content";
+import useData from "../../../../store/data";
+import usePosts from "../../../../store/post";
 import styles from "./ViewItemBody.module.scss";
 
-const ViewItemBody = () => {
-  const { currentContent, clearCurrentContent } = useContent();
+interface IViewItemBody {
+  viewItem: any;
+}
+
+const ViewItemBody = ({ viewItem }: IViewItemBody) => {
+  const { clearCurrentContent } = useContent();
   const { setHashTagPosts } = usePosts();
   const { setSearchTag } = useData();
   const [tags, setTags] = useState<string[]>([]);
   const router = useRouter();
 
   useEffect(() => {
-    if (currentContent && currentContent.tag) {
-      const items = currentContent.tag
+    if (viewItem && viewItem.tag) {
+      const items = viewItem.tag
         .split("#")
         .filter((item: string) => item !== "")
         .map((item: string) => "#" + item);
       setTags(items);
     }
-  }, [currentContent]);
+  }, [viewItem]);
 
   const onTagClick = async (tag: string) => {
     const item = tag.substring(1);
@@ -38,7 +42,7 @@ const ViewItemBody = () => {
 
   return (
     <div className={styles.viewItemBody}>
-      <div className={styles.content}>{currentContent.content}</div>
+      <div className={styles.content}>{viewItem.content}</div>
       <div className={styles.tags}>
         {tags.map((tag: string, i: number) => {
           return (
