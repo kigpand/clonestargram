@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { IFollow } from "../../../../../interface/IFollow";
+import FollowerView from "../../../../shared/followerView/FollowerView";
 import styles from "./FollowList.module.scss";
 
 interface IFollowList {
@@ -6,8 +8,10 @@ interface IFollowList {
 }
 
 const FollowList = ({ follow }: IFollowList) => {
-  const onTest = () => {
-    console.log(follow);
+  const [followUser, setFollowUser] = useState<any>(null);
+
+  const unFollow = () => {
+    setFollowUser(null);
   };
 
   return (
@@ -21,9 +25,10 @@ const FollowList = ({ follow }: IFollowList) => {
         className={styles.profileImg}
         alt="followImg"
       ></img>
-      <div className={styles.nickname} onClick={onTest}>
+      <div className={styles.nickname} onClick={() => setFollowUser(follow)}>
         {follow.nickname}
       </div>
+      {followUser && <FollowerView follow={followUser} unFollow={unFollow} />}
     </div>
   );
 };

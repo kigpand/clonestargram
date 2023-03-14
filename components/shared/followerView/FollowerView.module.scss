@@ -1,0 +1,73 @@
+@import "../../../styles/func.scss";
+@import "../../../styles/utils.scss";
+@import "../../../styles/variables.scss";
+
+.followerView {
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: fixed;
+  @include flexSort;
+
+  .body {
+    width: get-vw(200px);
+    height: get-vw(300px);
+    background-color: whitesmoke;
+
+    .nickName {
+      width: 100%;
+      height: 15%;
+      border-bottom: 1px solid $borderColor;
+      @include flexSort;
+    }
+
+    .imgContainer {
+      width: 100%;
+      height: 55%;
+      border-bottom: 1px solid $borderColor;
+      @include flexSort;
+
+      .img {
+        border-radius: 50%;
+        width: get-vw(100px);
+        height: get-vw(100px);
+      }
+    }
+
+    .intro {
+      width: 100%;
+      height: 30%;
+      padding: 10px;
+    }
+  }
+
+  .back {
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  @include mobile {
+    .body {
+      width: 200px;
+      height: 300px;
+
+      .imgContainer {
+        .img {
+          width: 100px;
+          height: 100px;
+        }
+      }
+    }
+  }
+}
