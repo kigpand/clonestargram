@@ -75,7 +75,7 @@ const ProfileBody = () => {
         <img
           src={
             imgUrl !== ""
-              ? `${process.env.NEXT_PUBLIC_API_URL}/${imgUrl}`
+              ? `http://localhost:4000/${imgUrl}`
               : "/profileImg.png"
           }
           className={styles.profileImage}

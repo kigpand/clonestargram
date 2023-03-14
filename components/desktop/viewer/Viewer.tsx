@@ -11,11 +11,7 @@ const Viewer = () => {
         className={styles.img}
         src={
           currentContent.Images.length > 0
-            ? `${
-                process.env.NEXT_PUBLIC_API_URL +
-                "/" +
-                currentContent.Images[0].src
-              }`
+            ? `${"http://localhost:4000/" + currentContent.Images[0].src}`
             : "/noimg.png"
         }
         alt="viewerImg"

@@ -54,7 +54,7 @@ const AddComment = ({ viewItem, setViewItem }: IAddComment) => {
       <img
         src={
           user && user.userImg
-            ? `${process.env.NEXT_PUBLIC_API_URL}/${user.userImg}`
+            ? `http://localhost:4000/${user.userImg}`
             : "/profileImg.png"
         }
         alt="profile"

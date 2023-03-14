@@ -34,7 +34,7 @@ const ContentItem = ({ post }: IContentItem) => {
         className={styles.img}
         src={
           post.Images.length > 0
-            ? `${process.env.NEXT_PUBLIC_API_URL + "/" + post.Images[0].src}`
+            ? `http://localhost:4000/${post.Images[0].src}`
             : "/noimg.png"
         }
         alt="viewerImg"

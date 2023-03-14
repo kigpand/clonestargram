@@ -32,7 +32,7 @@ const ViewItemHeader = ({ viewItem }: IViewItemHeader) => {
       <img
         src={
           viewItem && viewItem.User.userImg
-            ? `${process.env.NEXT_PUBLIC_API_URL}/${viewItem.User.userImg}`
+            ? `http://localhost:4000/${viewItem.User.userImg}`
             : "/profileImg.png"
         }
         alt="prifle"

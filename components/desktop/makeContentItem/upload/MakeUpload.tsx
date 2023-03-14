@@ -39,7 +39,7 @@ const MakeUpload = ({ onUploadImg, loading, imgUrl }: IMakeUpload) => {
       {imgUrl.length > 0 && (
         <img
           className={styles.uploadImg}
-          src={process.env.NEXT_PUBLIC_API_URL + "/" + imgUrl}
+          src={"http://localhost:4000/" + imgUrl}
           alt="img"
         />
       )}

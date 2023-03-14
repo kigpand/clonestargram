@@ -15,7 +15,7 @@ const FollowerView = ({ follow, unFollow }: IFollowerView) => {
           <img
             src={
               follow && follow.userImg
-                ? `${process.env.NEXT_PUBLIC_API_URL}/${follow.userImg}`
+                ? `http://localhost:4000/${follow.userImg}`
                 : "/profileImg.png"
             }
             alt="img"

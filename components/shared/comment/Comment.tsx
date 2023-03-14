@@ -13,7 +13,7 @@ const Comment = ({ info }: ICommentContainer) => {
       <img
         src={
           info.User.userImg
-            ? `${process.env.NEXT_PUBLIC_API_URL}/${info.User.userImg}`
+            ? `http://localhost:4000/${info.User.userImg}`
             : "/profileImg.png"
         }
         alt="profile"
