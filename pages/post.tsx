@@ -79,11 +79,12 @@ const Post: NextPage = () => {
 //   );
 // };
 
-// export async function getServerSideProps(context: any) {
-//   const res = await onLoadPost(0);
-//   const post = res.data;
+export async function getServerSideProps() {
+  const res = await onLoadPost(0);
+  console.log(res);
+  const post = res.data;
 
-//   return { props: { post } };
-// }
+  return { props: { post } };
+}
 
 export default Post;
