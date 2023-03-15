@@ -23,7 +23,8 @@ const Layout = ({ component }: any) => {
   }, []);
 
   const checkUser = async () => {
-    const result = await onGetUser();
+    if (!user) return;
+    const result = await onGetUser(user.id);
     if (result) {
       setUser(result);
     }
