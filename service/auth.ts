@@ -6,6 +6,7 @@ export const onLogin = async (id: string, pw: string) => {
       id,
       pw,
     });
+    console.log(result);
     return result;
   } catch (e) {
     alert("입력된 정보가 잘못됬습니다");
