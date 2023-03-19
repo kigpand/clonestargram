@@ -9,6 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const { setMobile } = useData();
 
   useEffect(() => {
+    console.log("git test");
     window.addEventListener("resize", () => {
       if (window.innerWidth <= MOBILE_SIZE) {
         setMobile(true);

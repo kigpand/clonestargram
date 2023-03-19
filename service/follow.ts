@@ -1,12 +1,9 @@
 import axios from "axios";
 
-export const onAddFollow = async (data: any, id: any) => {
+export const onAddFollow = async (data: any) => {
   try {
     const result = await axios.patch(
-      `http://localhost:4000/user/${data}/follow`,
-      {
-        id: id,
-      }
+      `http://localhost:4000/user/${data}/follow`
     );
     return result;
   } catch {
@@ -14,10 +11,10 @@ export const onAddFollow = async (data: any, id: any) => {
   }
 };
 
-export const onDeleteFollow = async (data: any, id: any) => {
+export const onDeleteFollow = async (data: any) => {
   try {
     const result = await axios.delete(
-      `http://localhost:4000/user/${data}/${id}/follow`
+      `http://localhost:4000/user/${data}/follow`
     );
     return result;
   } catch {

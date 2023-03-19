@@ -44,9 +44,9 @@ export const onUserUpdate = async (data: any) => {
   }
 };
 
-export const onGetUser = async (id: any) => {
+export const onGetUser = async () => {
   try {
-    const result = await axios.post(`http://localhost:4000/user`, { id: id });
+    const result = await axios.post(`http://localhost:4000/user`);
     return result.data;
   } catch {
     return false;

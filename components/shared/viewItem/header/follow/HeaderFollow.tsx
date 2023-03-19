@@ -26,8 +26,8 @@ const HeaderFollow = ({ viewItem }: IHeaderFollow) => {
 
   const onFollowBtn = async () => {
     if (!user) return alert("오류가 발생했습니다");
-    await onAddFollow(viewItem.UserId, user.id).then(async () => {
-      const result = await onGetUser(user.id);
+    await onAddFollow(viewItem.UserId).then(async () => {
+      const result = await onGetUser();
       if (result) {
         setUser(result);
       } else {
@@ -38,8 +38,8 @@ const HeaderFollow = ({ viewItem }: IHeaderFollow) => {
 
   const unFollowBtn = async () => {
     if (!user) return alert("오류가 발생했습니다");
-    await onDeleteFollow(viewItem.UserId, user.id).then(async () => {
-      const result = await onGetUser(user.id);
+    await onDeleteFollow(viewItem.UserId).then(async () => {
+      const result = await onGetUser();
       if (result) {
         setUser(result);
       } else {
