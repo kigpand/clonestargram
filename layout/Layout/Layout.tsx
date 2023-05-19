@@ -1,23 +1,32 @@
-import { useRouter } from "next/router";
+"use client";
+
 import { useEffect, useState } from "react";
 import Loading from "../../components/shared/loading/Loading";
-import { useWindowSize } from "../../hooks/useWindowHook";
 import { onGetUser } from "../../service/user";
 import useData from "../../store/data";
-import usePosts from "../../store/post";
 import useUser from "../../store/user";
 import { MOBILE_SIZE } from "../../utils/common";
 import Header from "../header/Header";
 import MobileHeader from "../header/mobileHeader/mobileHeader";
 import styles from "./Layout.module.scss";
 
-const Layout = ({ component }: any) => {
-  const windowWidth = useWindowSize();
+interface ILayout {
+  component: React.ReactNode;
+}
+
+const Layout = ({ component }: ILayout) => {
   const { user, setUser } = useUser();
   const [rendering, setRendering] = useState<boolean>(false);
-  const { loading } = useData();
+  const { loading, isMobile, setMobile } = useData();
 
   useEffect(() => {
+    window.addEventListener("resize", () => {
+      if (window.innerWidth <= MOBILE_SIZE) {
+        setMobile(true);
+      } else {
+        setMobile(false);
+      }
+    });
     setRendering(true);
     checkUser();
   }, []);
@@ -32,7 +41,7 @@ const Layout = ({ component }: any) => {
 
   return rendering ? (
     <div className={styles.layout}>
-      {user && (windowWidth < MOBILE_SIZE ? <MobileHeader /> : <Header />)}
+      {user && (isMobile ? <MobileHeader /> : <Header />)}
       {component}
       {loading && <Loading />}
     </div>

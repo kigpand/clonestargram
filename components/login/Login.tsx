@@ -1,5 +1,4 @@
 import useData from "../../store/data";
-import { MOBILE_SIZE } from "../../utils/common";
 import DeskLogin from "./desktop/DeskLogin";
 import styles from "./Login.module.scss";
 import MobileLogin from "./mobile/MobileLogin";

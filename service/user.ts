@@ -1,4 +1,26 @@
 import axios from "axios";
+import { client } from "./sanity";
+
+interface IAuthUser {
+  id: string;
+  email: string;
+  name: string;
+  phone: string;
+}
+
+export const addUser = ({ id, email, name, phone }: IAuthUser) => {
+  return client.createIfNotExists({
+    _id: id,
+    _type: "user",
+    name: name,
+    username: name,
+    email: email,
+    phone: phone,
+    following: [],
+    followers: [],
+    bookmarks: [],
+  });
+};
 
 export const onIdCheck = async (id: string) => {
   try {
