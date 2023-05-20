@@ -1,17 +1,21 @@
-import usePosts from "../../../store/post";
+"use client";
+
 import styles from "./Contents.module.scss";
 import ContentsItem from "../../shared/contentsItem/ContentsItem";
+import useSWR from "swr";
 import React from "react";
 
 const Contents = React.memo(() => {
-  const { posts } = usePosts();
+  const { data, isLoading, error } = useSWR("/api/hello");
+
+  console.log(data);
 
   return (
     <div className={styles.contents}>
       <div className={styles.lists}>
-        {posts.map((item: any, i: number) => {
+        {/* {posts.map((item: any, i: number) => {
           return <ContentsItem post={item} key={i} />;
-        })}
+        })} */}
       </div>
     </div>
   );

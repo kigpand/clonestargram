@@ -11,21 +11,9 @@ interface IViewItemHeader {
 
 const ViewItemHeader = ({ viewItem }: IViewItemHeader) => {
   const { clearCurrentContent } = useContent();
-  const { setPosts } = usePosts();
   const { user } = useUser();
 
-  const onDeleteBtn = async () => {
-    try {
-      await onDeletePost(viewItem.id, { id: user!.id }).then(async () => {
-        const res = await onLoadPost(0);
-        const post = res.data;
-        setPosts(post);
-        clearCurrentContent();
-      });
-    } catch {
-      alert("게시글 삭제에 실패했습니다");
-    }
-  };
+  const onDeleteBtn = async () => {};
 
   return (
     <div className={styles.viewItemHeader}>
