@@ -19,6 +19,11 @@ export default {
       type: 'string',
     },
     {
+      title: 'Phone',
+      name: 'phone',
+      type: 'string',
+    },
+    {
       title: 'Image',
       name: 'image',
       type: 'string',
