@@ -6,8 +6,7 @@ import Contents from "../components/desktop/contents/Contents";
 const Home: NextPage = () => {
   return (
     <div className={styles.container} style={{ height: "100%" }}>
-      {/* <Login /> */}
-      <Contents />
+      <Login />
     </div>
   );
 };

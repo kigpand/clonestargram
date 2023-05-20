@@ -8,8 +8,6 @@ import React from "react";
 const Contents = React.memo(() => {
   const { data, isLoading, error } = useSWR("/api/hello");
 
-  console.log(data);
-
   return (
     <div className={styles.contents}>
       <div className={styles.lists}>
