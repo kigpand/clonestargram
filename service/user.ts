@@ -10,7 +10,6 @@ interface IAuthUser {
 }
 
 export const addUser = ({ id, email, pw, name, phone }: IAuthUser) => {
-  console.log(client);
   return client.createIfNotExists({
     _id: id,
     _type: "user",

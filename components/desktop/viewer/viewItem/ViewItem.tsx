@@ -6,14 +6,12 @@ import ViewItemHeader from "../../../shared/viewItem/header/ViewItemHeader";
 import styles from "./ViewItem.module.scss";
 
 const ViewItem = () => {
-  const { currentContent, setCurrentContent } = useContent();
-
   return (
     <div className={styles.viewItem}>
-      <ViewItemHeader viewItem={currentContent} />
-      <ViewItemBody viewItem={currentContent} />
-      <ViewItemComment viewItem={currentContent} />
-      <AddComment viewItem={currentContent} setViewItem={setCurrentContent} />
+      <ViewItemHeader />
+      <ViewItemBody />
+      <ViewItemComment />
+      <AddComment />
     </div>
   );
 };

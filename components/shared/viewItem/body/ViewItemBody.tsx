@@ -6,26 +6,22 @@ import useData from "../../../../store/data";
 import usePosts from "../../../../store/post";
 import styles from "./ViewItemBody.module.scss";
 
-interface IViewItemBody {
-  viewItem: any;
-}
-
-const ViewItemBody = ({ viewItem }: IViewItemBody) => {
-  const { clearCurrentContent } = useContent();
+const ViewItemBody = () => {
+  const { currentContent, clearCurrentContent } = useContent();
   const { setHashTagPosts } = usePosts();
   const { setSearchTag } = useData();
   const [tags, setTags] = useState<string[]>([]);
   const router = useRouter();
 
-  useEffect(() => {
-    if (viewItem && viewItem.tag) {
-      const items = viewItem.tag
-        .split("#")
-        .filter((item: string) => item !== "")
-        .map((item: string) => "#" + item);
-      setTags(items);
-    }
-  }, [viewItem]);
+  // useEffect(() => {
+  //   if (currentContent && currentContent.) {
+  //     const items = currentContent.tag
+  //       .split("#")
+  //       .filter((item: string) => item !== "")
+  //       .map((item: string) => "#" + item);
+  //     setTags(items);
+  //   }
+  // }, [currentContent]);
 
   const onTagClick = async (tag: string) => {
     const item = tag.substring(1);
@@ -42,7 +38,7 @@ const ViewItemBody = ({ viewItem }: IViewItemBody) => {
 
   return (
     <div className={styles.viewItemBody}>
-      <div className={styles.content}>{viewItem.content}</div>
+      <div className={styles.content}>{currentContent!.text}</div>
       <div className={styles.tags}>
         {tags.map((tag: string, i: number) => {
           return (

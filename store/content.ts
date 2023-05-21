@@ -1,7 +1,8 @@
 import create from "zustand";
+import { IPost } from "../interface/IPost";
 
 interface IContentStore {
-  currentContent: any;
+  currentContent: IPost | null;
   setCurrentContent: (item: any) => void;
   clearCurrentContent: () => void;
 }

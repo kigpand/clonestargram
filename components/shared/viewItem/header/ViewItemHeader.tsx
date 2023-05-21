@@ -1,3 +1,4 @@
+import { IPost } from "../../../../interface/IPost";
 import { onDeletePost, onLoadPost } from "../../../../service/post";
 import useContent from "../../../../store/content";
 import usePosts from "../../../../store/post";
@@ -5,12 +6,8 @@ import useUser from "../../../../store/user";
 import HeaderFollow from "./follow/HeaderFollow";
 import styles from "./ViewItemHeader.module.scss";
 
-interface IViewItemHeader {
-  viewItem: any;
-}
-
-const ViewItemHeader = ({ viewItem }: IViewItemHeader) => {
-  const { clearCurrentContent } = useContent();
+const ViewItemHeader = () => {
+  const { currentContent, clearCurrentContent } = useContent();
   const { user } = useUser();
 
   const onDeleteBtn = async () => {};
@@ -19,16 +16,16 @@ const ViewItemHeader = ({ viewItem }: IViewItemHeader) => {
     <div className={styles.viewItemHeader}>
       <img
         src={
-          viewItem && viewItem.User.userImg
-            ? `http://localhost:4000/${viewItem.User.userImg}`
+          currentContent!.image
+            ? `http://localhost:4000/${currentContent!.image}`
             : "/profileImg.png"
         }
         alt="prifle"
         className={styles.img}
       />
-      <div className={styles.text}>{viewItem.User.nickname}</div>
+      <div className={styles.text}>{currentContent!.username}</div>
       <div className={styles.btn}>
-        {user?.id === viewItem.User.id ? (
+        {user?.id === currentContent!.id ? (
           <img
             src="/delete.png"
             alt="delete"
@@ -36,7 +33,7 @@ const ViewItemHeader = ({ viewItem }: IViewItemHeader) => {
             onClick={onDeleteBtn}
           />
         ) : (
-          <HeaderFollow viewItem={viewItem} />
+          <HeaderFollow currentContent={currentContent!} />
         )}
       </div>
     </div>

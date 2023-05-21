@@ -4,16 +4,18 @@ import styles from "./Contents.module.scss";
 import ContentsItem from "../../shared/contentsItem/ContentsItem";
 import useSWR from "swr";
 import React from "react";
+import { getPosts } from "../../../service/post";
+import { IPost } from "../../../interface/IPost";
 
 const Contents = React.memo(() => {
-  const { data, isLoading, error } = useSWR("/api/hello");
+  const { data, isLoading, error } = useSWR("/api/post");
 
   return (
     <div className={styles.contents}>
       <div className={styles.lists}>
-        {/* {posts.map((item: any, i: number) => {
+        {data?.map((item: IPost, i: number) => {
           return <ContentsItem post={item} key={i} />;
-        })} */}
+        })}
       </div>
     </div>
   );

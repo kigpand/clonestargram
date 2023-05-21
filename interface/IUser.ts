@@ -7,7 +7,7 @@ export interface IUser {
   Posts: IPost[];
   createdAt: string;
   email: string;
-  id: number;
+  id: string;
   intro: string;
   nickname: string;
   phone: string;

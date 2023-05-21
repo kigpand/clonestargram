@@ -10,8 +10,8 @@ const Viewer = () => {
       <img
         className={styles.img}
         src={
-          currentContent.Images.length > 0
-            ? `${"http://localhost:4000/" + currentContent.Images[0].src}`
+          currentContent?.image
+            ? `${"http://localhost:4000/" + currentContent.image}`
             : "/noimg.png"
         }
         alt="viewerImg"
