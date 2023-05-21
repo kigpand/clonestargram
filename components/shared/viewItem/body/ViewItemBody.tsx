@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { onSearchHashTag } from "../../../../service/post";
 import useContent from "../../../../store/content";
 import useData from "../../../../store/data";
 import usePosts from "../../../../store/post";
@@ -24,15 +23,15 @@ const ViewItemBody = () => {
 
   const onTagClick = async (tag: string) => {
     const item = tag.substring(1);
-    const result = await onSearchHashTag(item);
-    if (result.data && result.data.length > 0) {
-      setHashTagPosts(result.data);
-      setSearchTag(item);
-      clearCurrentContent();
-      router.push("/hashTag");
-    } else {
-      alert("검색 결과가 없습니다.");
-    }
+    // const result = await onSearchHashTag(item);
+    // if (result.data && result.data.length > 0) {
+    //   setHashTagPosts(result.data);
+    //   setSearchTag(item);
+    //   clearCurrentContent();
+    //   router.push("/hashTag");
+    // } else {
+    //   alert("검색 결과가 없습니다.");
+    // }
   };
 
   return (

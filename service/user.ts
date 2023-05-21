@@ -33,30 +33,3 @@ export const onCheckUser = (id: string, pw: string) => {
     `*[_type =="user" && username == "${id}" && password == "${pw}"]`
   );
 };
-
-export const onUserImgUpload = async (data: any) => {
-  try {
-    const result = await axios.post(`http://localhost:4000/user/image`, data);
-    return result.data;
-  } catch {
-    return false;
-  }
-};
-
-export const onUserUpdate = async (data: any) => {
-  try {
-    const result = await axios.patch(`http://localhost:4000/user/edit`, data);
-    return result;
-  } catch {
-    return false;
-  }
-};
-
-export const onGetUser = async () => {
-  try {
-    const result = await axios.post(`http://localhost:4000/user`);
-    return result.data;
-  } catch {
-    return false;
-  }
-};

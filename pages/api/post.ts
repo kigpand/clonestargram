@@ -9,5 +9,9 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  getPosts().then((data) => res.status(200).json(data));
+  if (req.method === "POST") {
+  }
+  if (req.method === "GET") {
+    getPosts().then((data) => res.status(200).json(data));
+  }
 }

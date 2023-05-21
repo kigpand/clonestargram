@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import React, { useCallback, useRef, useState } from "react";
-import { onAddPost, onImgUpload } from "../../../service/post";
 import useUser from "../../../store/user";
 import MakeBtns from "./btns/MakeBtns";
 import MakeHeader from "./header/MakeHeader";
@@ -31,6 +30,23 @@ const MakeContentItem = () => {
 
   const onSubmit = async () => {
     if (!user) return;
+    if (!textRef || !textRef.current) return;
+
+    const formData = new FormData();
+    if (imgUrl) formData.append("file", imgUrl);
+    formData.append("tag", tags.toString().replaceAll(",", ""));
+    formData.append("content", textRef.current.value);
+    formData.append("id", user.id);
+    formData.append("nickname", user.name);
+
+    fetch("/api/test/", { method: "POST", body: formData });
+    // fetch("/api/posts/", { method: "POST", body: formData })
+    //   .then((res) => {
+    //     if (!res.ok) return alert("게시글 등록에 실패하였습니다");
+    //     router.push("/");
+    //   })
+    //   .catch(() => alert("게시글 등록에 실패하였습니다"));
+
     // if (textRef && textRef.current) {
     //   const formData = new FormData();
     //   imgUrl.forEach((data) => {

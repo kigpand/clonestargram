@@ -15,6 +15,11 @@ export default {
       type: 'image',
     },
     {
+      title: 'Content',
+      name: 'content',
+      type: 'string',
+    },
+    {
       title: 'Likes',
       name: 'likes',
       type: 'array',
