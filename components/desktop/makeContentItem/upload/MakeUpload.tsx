@@ -4,7 +4,7 @@ import styles from "./MakeUpload.module.scss";
 interface IMakeUpload {
   onUploadImg: (e: any) => void;
   loading: boolean;
-  imgUrl: string[];
+  imgUrl: File | null;
 }
 
 const MakeUpload = ({ onUploadImg, loading, imgUrl }: IMakeUpload) => {
@@ -36,10 +36,10 @@ const MakeUpload = ({ onUploadImg, loading, imgUrl }: IMakeUpload) => {
           )}
         </button>
       )}
-      {imgUrl.length > 0 && (
+      {imgUrl && (
         <img
           className={styles.uploadImg}
-          src={"http://localhost:4000/" + imgUrl}
+          src={URL.createObjectURL(imgUrl)}
           alt="img"
         />
       )}

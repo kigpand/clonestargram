@@ -7,15 +7,11 @@ const MakeHeader = () => {
   return (
     <div className={styles.makeHeader}>
       <img
-        src={
-          user && user.userImg
-            ? `http://localhost:4000/${user.userImg}`
-            : "/profileImg.png"
-        }
+        src={user && user.image ? `${user.image}` : "/profileImg.png"}
         className={styles.img}
         alt="contentImg"
       ></img>
-      <div className={styles.nickname}>{user!.nickname}</div>
+      <div className={styles.nickname}>{user!.name}</div>
     </div>
   );
 };

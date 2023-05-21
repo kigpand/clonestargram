@@ -1,10 +1,16 @@
+export interface IComment {
+  comment: string;
+  username: string;
+  image: string;
+}
+
 export interface IPost {
-  UserId: number;
-  content: string;
+  id: string;
+  username: string;
+  userImage: string;
+  image: string;
+  text: string;
   createdAt: string;
-  id: number;
-  nickname: string;
-  tag: string;
-  updatedAt: string;
-  Images: any;
+  comments: IComment[];
+  tag: string[];
 }

@@ -3,7 +3,6 @@
 
 .profileBody {
   width: get-vw(300px);
-  height: 80%;
   padding: 20px;
   display: flex;
   align-items: center;
@@ -13,7 +12,6 @@
 
   .imgProfile {
     .profileImage {
-      padding: 15px;
       border: 1px solid gray;
       border-radius: 50%;
       width: get-vw(100px);
@@ -40,7 +38,7 @@
     .intro {
       margin-top: 10px;
       width: get-vw(270px);
-      height: 200px;
+      height: 180px;
       resize: none;
       font-size: 1.2rem;
       border: 1px solid lightgray;
@@ -53,7 +51,7 @@
   .btns {
     .editBtn,
     .cancleBtn {
-      margin-top: 20px;
+      margin-top: 15px;
       padding: 10px 20px;
       border: none;
       border-radius: 8px;

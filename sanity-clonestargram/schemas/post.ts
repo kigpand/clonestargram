@@ -15,6 +15,11 @@ export default {
       type: 'image',
     },
     {
+      title: 'Content',
+      name: 'content',
+      type: 'string',
+    },
+    {
       title: 'Likes',
       name: 'likes',
       type: 'array',
@@ -50,6 +55,17 @@ export default {
           ],
         },
       ],
+    },
+    {
+      title: 'Tag',
+      name: 'tag',
+      type: 'array',
+      of: [
+        {
+          type: 'string',
+        },
+      ],
+      validation: (Rule: any) => Rule.unique(),
     },
   ],
   preview: {

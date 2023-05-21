@@ -9,6 +9,11 @@ export default {
       type: 'string',
     },
     {
+      title: 'Password',
+      name: 'password',
+      type: 'string',
+    },
+    {
       title: 'Name',
       name: 'name',
       type: 'string',
@@ -26,6 +31,11 @@ export default {
     {
       title: 'Image',
       name: 'image',
+      type: 'string',
+    },
+    {
+      title: 'Intro',
+      name: 'intro',
       type: 'string',
     },
     {
@@ -48,18 +58,6 @@ export default {
         {
           type: 'reference',
           to: [{type: 'user'}],
-        },
-      ],
-      validation: (Rule: any) => Rule.unique(),
-    },
-    {
-      title: 'Bookmarks',
-      name: 'bookmarks',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [{type: 'post'}],
         },
       ],
       validation: (Rule: any) => Rule.unique(),

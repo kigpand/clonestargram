@@ -1,18 +1,29 @@
-import usePosts from "../../../store/post";
+"use client";
+
 import styles from "./Contents.module.scss";
 import ContentsItem from "../../shared/contentsItem/ContentsItem";
-import React from "react";
+import useSWR from "swr";
+import React, { useEffect } from "react";
+import { IPost } from "../../../interface/IPost";
+import useContent from "../../../store/content";
+import Viewer from "../viewer/Viewer";
 
 const Contents = React.memo(() => {
-  const { posts } = usePosts();
+  const { data, isLoading, error } = useSWR("/api/post");
+  const { currentContent } = useContent();
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   return (
     <div className={styles.contents}>
       <div className={styles.lists}>
-        {posts.map((item: any, i: number) => {
+        {data?.map((item: IPost, i: number) => {
           return <ContentsItem post={item} key={i} />;
         })}
       </div>
+      {currentContent && <Viewer />}
     </div>
   );
 });

@@ -2,7 +2,7 @@ export interface IFollow {
   Follow: any;
   createdAt: string;
   email: string;
-  id: number;
+  id: string;
   intro: string;
   nickname: string;
   phone: string;

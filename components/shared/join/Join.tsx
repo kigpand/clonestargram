@@ -1,5 +1,5 @@
 import { useInput } from "../../../hooks/useInput";
-import { onIdCheck, onJoin } from "../../../service/user";
+import { addUser, onIdCheck } from "../../../service/user";
 import CommonInput from "../Input/CommonInput/CommonInput";
 import IDInput from "../Input/IDInput/IDInput";
 import PWInput from "../Input/PWInput/PWInput";
@@ -28,19 +28,28 @@ const Join = ({ unJoin }: IJoin) => {
     }
 
     if (pw.value !== pwCheck.value) return alert("비밀번호가 다릅니다");
-    if (!(await onIdCheck(id.value))) {
+    const idCheck = await onIdCheck(id.value);
+    if (idCheck && idCheck.length > 0) {
       id.onClear();
       return alert("중복된 아이디입니다");
     }
     const data = {
       id: id.value,
       pw: pw.value,
+      name: id.value,
       email: email.value,
       phone: phone.value,
     };
 
-    const join = await onJoin(data);
-    if (join === "ok") return alert("회원가입이 되었습니다");
+    await addUser(data)
+      .then(() => {
+        alert("회원가입이 완료됬습니다");
+        unJoin();
+      })
+      .catch((e: any) => {
+        console.error(e);
+        alert("오류가 발생했습니다");
+      });
   };
 
   return (

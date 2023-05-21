@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useContent from "../../../store/content";
 import styles from "./ContentsItem.module.scss";
+import { IPost } from "../../../interface/IPost";
+import Viewer from "../../desktop/viewer/Viewer";
 
-const ContentsItem = ({ post }: any) => {
+interface IContentsItem {
+  post: IPost;
+}
+
+const ContentsItem = ({ post }: IContentsItem) => {
   const { setCurrentContent } = useContent();
 
   const onItemClick = () => {
@@ -13,11 +19,7 @@ const ContentsItem = ({ post }: any) => {
     <div className={styles.contentsItem} onClick={onItemClick}>
       <div className={styles.card}>
         <img
-          src={
-            post.Images.length > 0
-              ? `http://localhost:4000/${post.Images[0].src}`
-              : "/noimg.png"
-          }
+          src={post.image ? `${post.image}` : "/noimg.png"}
           className={styles.front}
           alt="postImg"
         />
