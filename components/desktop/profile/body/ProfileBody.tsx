@@ -16,15 +16,16 @@ const ProfileBody = () => {
   const imgRef = useRef<HTMLInputElement>(null);
   const textRef = useRef<HTMLTextAreaElement>(null);
   const [imgUrl, setImgUrl] = useState<string>("");
-  const id = useInput(user!.userid);
-  const nickname = useInput(user!.nickname);
+  const id = useInput(user!.id);
+  const nickname = useInput(user!.name);
   const phone = useInput(user!.phone);
   const email = useInput(user!.email);
 
   useEffect(() => {
     if (user) {
-      if (user.userImg) {
-        setImgUrl(user.userImg);
+      console.log(user);
+      if (user.image) {
+        setImgUrl(user.image);
       }
     }
   }, [user]);
@@ -47,25 +48,25 @@ const ProfileBody = () => {
 
   const onUpdateUser = async () => {
     if (textRef.current && user) {
-      let data: any = {
-        id: user.id,
-        intro: textRef.current.value,
-        nickname: nickname.value,
-        phone: phone.value,
-        email: email.value,
-      };
-      if (imgUrl !== "") {
-        data = { ...data, userImg: imgUrl };
-      }
-      await onUserUpdate(data).then(async () => {
-        const result = await onGetUser();
-        if (result) {
-          setUser(result);
-          router.push("/post");
-        } else {
-          alert("유저 정보를 업데이트하는데 실패했습니다");
-        }
-      });
+      // let data: any = {
+      //   id: user.id,
+      //   intro: textRef.current.value,
+      //   nickname: nickname.value,
+      //   phone: phone.value,
+      //   email: email.value,
+      // };
+      // if (imgUrl !== "") {
+      //   data = { ...data, userImg: imgUrl };
+      // }
+      // await onUserUpdate(data).then(async () => {
+      //   const result = await onGetUser();
+      //   if (result) {
+      //     setUser(result);
+      //     router.push("/post");
+      //   } else {
+      //     alert("유저 정보를 업데이트하는데 실패했습니다");
+      //   }
+      // });
     }
   };
 
@@ -73,11 +74,7 @@ const ProfileBody = () => {
     <div className={styles.profileBody}>
       <div className={styles.imgProfile}>
         <img
-          src={
-            imgUrl !== ""
-              ? `http://localhost:4000/${imgUrl}`
-              : "/profileImg.png"
-          }
+          src={imgUrl !== "" ? `${imgUrl}` : "/profileImg.png"}
           className={styles.profileImage}
           alt="profileImg"
           onClick={onClickImageUpload}
@@ -102,7 +99,7 @@ const ProfileBody = () => {
           className={styles.intro}
           cols={10}
           rows={10}
-          defaultValue={user ? user.intro : ""}
+          defaultValue={user!.intro}
           ref={textRef}
         ></textarea>
       </div>

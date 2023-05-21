@@ -13,15 +13,14 @@ const ViewItemBody = () => {
   const [tags, setTags] = useState<string[]>([]);
   const router = useRouter();
 
-  // useEffect(() => {
-  //   if (currentContent && currentContent.) {
-  //     const items = currentContent.tag
-  //       .split("#")
-  //       .filter((item: string) => item !== "")
-  //       .map((item: string) => "#" + item);
-  //     setTags(items);
-  //   }
-  // }, [currentContent]);
+  useEffect(() => {
+    if (currentContent && currentContent.tag) {
+      const items = currentContent.tag.map((item: string) => {
+        return "#" + item;
+      });
+      setTags(items);
+    }
+  }, [currentContent]);
 
   const onTagClick = async (tag: string) => {
     const item = tag.substring(1);

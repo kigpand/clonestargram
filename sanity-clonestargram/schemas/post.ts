@@ -51,6 +51,17 @@ export default {
         },
       ],
     },
+    {
+      title: 'Tag',
+      name: 'tag',
+      type: 'array',
+      of: [
+        {
+          type: 'string',
+        },
+      ],
+      validation: (Rule: any) => Rule.unique(),
+    },
   ],
   preview: {
     select: {

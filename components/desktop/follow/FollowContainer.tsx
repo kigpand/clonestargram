@@ -8,9 +8,9 @@ const FollowContaier = () => {
 
   return (
     <div className={styles.container}>
-      <FollowWrap list={user ? user.Followers : []} title="팔로워 리스트" />
+      <FollowWrap list={user ? user.followers : []} title="팔로워 리스트" />
       <div className={styles.line}></div>
-      <FollowWrap list={user ? user.Followings : []} title="팔로잉 리스트" />
+      <FollowWrap list={user ? user.followings : []} title="팔로잉 리스트" />
     </div>
   );
 };

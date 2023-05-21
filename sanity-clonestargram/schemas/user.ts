@@ -34,6 +34,11 @@ export default {
       type: 'string',
     },
     {
+      title: 'Intro',
+      name: 'intro',
+      type: 'string',
+    },
+    {
       title: 'Following',
       name: 'following',
       type: 'array',
@@ -53,18 +58,6 @@ export default {
         {
           type: 'reference',
           to: [{type: 'user'}],
-        },
-      ],
-      validation: (Rule: any) => Rule.unique(),
-    },
-    {
-      title: 'Bookmarks',
-      name: 'bookmarks',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [{type: 'post'}],
         },
       ],
       validation: (Rule: any) => Rule.unique(),

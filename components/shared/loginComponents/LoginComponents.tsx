@@ -33,12 +33,10 @@ const LoginComponents = () => {
       phone: user[0].phone,
       email: user[0].email,
       image: user[0].image || null,
+      intro: user[0].intro || "",
+      followings: user[0].following,
+      followers: user[0].followers,
     });
-    // const result = await onLogin(id.value, pw.value);
-    // if (result) {
-    //   setUser(result.data);
-    //   router.push("/post");
-    // }
   };
 
   return (

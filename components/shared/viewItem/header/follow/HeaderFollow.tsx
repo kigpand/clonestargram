@@ -15,7 +15,7 @@ const HeaderFollow = ({ currentContent }: IHeaderFollow) => {
   const [isFollow, setIsFollow] = useState<boolean | null>(null);
 
   useEffect(() => {
-    const result = user?.Followings.find(
+    const result = user?.followings.find(
       (item: IFollow) => item.id === currentContent.id
     );
     if (result) {

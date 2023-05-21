@@ -26,6 +26,22 @@ export const getPosts = async () => {
     );
 };
 
+export async function addComment(
+  postId: string,
+  userId: string,
+  comment: string
+) {
+  return client
+    .patch(postId)
+    .setIfMissing({ comments: [] })
+    .append("comments", [
+      {
+        comment,
+        author: { _ref: userId, _type: "reference" },
+      },
+    ]);
+}
+
 export const onImgUpload = (data: any) => {
   return axios.post(`http://localhost:4000/post/images`, data);
 };

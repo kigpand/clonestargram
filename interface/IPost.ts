@@ -11,6 +11,6 @@ export interface IPost {
   image: string;
   text: string;
   createdAt: string;
-  likes: string[];
   comments: IComment[];
+  tag: string[];
 }
