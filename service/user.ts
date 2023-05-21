@@ -24,30 +24,14 @@ export const addUser = ({ id, email, pw, name, phone }: IAuthUser) => {
   });
 };
 
-export const onIdCheck = async (id: string) => {
-  try {
-    const result = await axios
-      .post(`http://localhost:4000/user/check`, { data: id })
-      .then((data) => {
-        if (data.data) {
-          return true;
-        } else {
-          return false;
-        }
-      });
-    return result;
-  } catch {
-    return false;
-  }
+export const onIdCheck = (id: string) => {
+  return client.fetch(`*[_type =="user" && username == "${id}"]`);
 };
 
-export const onJoin = async (data: any) => {
-  try {
-    const result = await axios.post(`http://localhost:4000/user`, data);
-    return result.data;
-  } catch {
-    return alert("회원가입에 실패했습니다.");
-  }
+export const onCheckUser = (id: string, pw: string) => {
+  return client.fetch(
+    `*[_type =="user" && username == "${id}" && password == "${pw}"]`
+  );
 };
 
 export const onUserImgUpload = async (data: any) => {

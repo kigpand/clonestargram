@@ -1,5 +1,6 @@
 import axios from "axios";
-import { client } from "./sanity";
+import { client, urlFor } from "./sanity";
+import { IPost } from "../interface/IPost";
 
 export const getPosts = async () => {
   const simplePostProjection = `
@@ -13,11 +14,16 @@ export const getPosts = async () => {
     "id":_id,
     "createdAt": _createdAt
   `;
-  return client.fetch(`*[_type =="post"]{${simplePostProjection}}`);
-};
-
-export const onLoadPost = (lastId: number) => {
-  return axios.get(`http://localhost:4000/posts?lastId=${lastId || 0}`);
+  return client
+    .fetch(`*[_type =="post"]{${simplePostProjection}}`)
+    .then((posts) =>
+      posts.map((post: IPost) => {
+        if (post.image) {
+          return { ...post, image: urlFor(post.image) };
+        }
+        return post;
+      })
+    );
 };
 
 export const onImgUpload = (data: any) => {

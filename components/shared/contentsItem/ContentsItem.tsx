@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useContent from "../../../store/content";
 import styles from "./ContentsItem.module.scss";
 import { IPost } from "../../../interface/IPost";
+import Viewer from "../../desktop/viewer/Viewer";
 
 interface IContentsItem {
   post: IPost;
@@ -18,9 +19,7 @@ const ContentsItem = ({ post }: IContentsItem) => {
     <div className={styles.contentsItem} onClick={onItemClick}>
       <div className={styles.card}>
         <img
-          src={
-            post.image ? `http://localhost:4000/${post.image}` : "/noimg.png"
-          }
+          src={post.image ? `${post.image}` : "/noimg.png"}
           className={styles.front}
           alt="postImg"
         />

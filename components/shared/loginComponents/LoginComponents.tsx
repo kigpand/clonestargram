@@ -5,6 +5,7 @@ import { onLogin } from "../../../service/auth";
 import useUser from "../../../store/user";
 import Join from "../join/Join";
 import { useRouter } from "next/router";
+import { onCheckUser } from "../../../service/user";
 
 const LoginComponents = () => {
   const id = useInput("");
@@ -24,11 +25,21 @@ const LoginComponents = () => {
   };
 
   const onSubmit = async () => {
-    const result = await onLogin(id.value, pw.value);
-    if (result) {
-      setUser(result.data);
-      router.push("/post");
-    }
+    const user = await onCheckUser(id.value, pw.value);
+    if (user.length === 0) return alert("로그인 정보가 없습니다.");
+    console.log(user);
+    setUser({
+      id: user[0].username,
+      name: user[0].name,
+      phone: user[0].phone,
+      email: user[0].email,
+      image: user[0].image || null,
+    });
+    // const result = await onLogin(id.value, pw.value);
+    // if (result) {
+    //   setUser(result.data);
+    //   router.push("/post");
+    // }
   };
 
   return (

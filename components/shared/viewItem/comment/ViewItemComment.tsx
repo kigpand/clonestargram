@@ -7,7 +7,7 @@ const ViewItemComment = () => {
   return (
     <div className={styles.viewItemComment}>
       {currentContent &&
-        currentContent.comments.map((comment: any, i: number) => {
+        currentContent.comments?.map((comment: any, i: number) => {
           return <Comment info={comment} key={i} />;
         })}
     </div>

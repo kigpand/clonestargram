@@ -1,5 +1,4 @@
 import { IPost } from "../../../../interface/IPost";
-import { onDeletePost, onLoadPost } from "../../../../service/post";
 import useContent from "../../../../store/content";
 import usePosts from "../../../../store/post";
 import useUser from "../../../../store/user";
@@ -16,8 +15,8 @@ const ViewItemHeader = () => {
     <div className={styles.viewItemHeader}>
       <img
         src={
-          currentContent!.image
-            ? `http://localhost:4000/${currentContent!.image}`
+          currentContent!.userImage
+            ? `${currentContent!.userImage}`
             : "/profileImg.png"
         }
         alt="prifle"

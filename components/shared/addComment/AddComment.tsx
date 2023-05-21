@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useInput } from "../../../hooks/useInput";
-import { onAddComment } from "../../../service/post";
 import useContent from "../../../store/content";
 import useUser from "../../../store/user";
 import styles from "./AddComment.module.scss";

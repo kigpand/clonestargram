@@ -4,11 +4,13 @@ import styles from "./Contents.module.scss";
 import ContentsItem from "../../shared/contentsItem/ContentsItem";
 import useSWR from "swr";
 import React from "react";
-import { getPosts } from "../../../service/post";
 import { IPost } from "../../../interface/IPost";
+import useContent from "../../../store/content";
+import Viewer from "../viewer/Viewer";
 
 const Contents = React.memo(() => {
   const { data, isLoading, error } = useSWR("/api/post");
+  const { currentContent } = useContent();
 
   return (
     <div className={styles.contents}>
@@ -17,6 +19,7 @@ const Contents = React.memo(() => {
           return <ContentsItem post={item} key={i} />;
         })}
       </div>
+      {currentContent && <Viewer />}
     </div>
   );
 });

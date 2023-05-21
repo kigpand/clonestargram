@@ -9,11 +9,7 @@ const Viewer = () => {
     <div className={styles.viewer}>
       <img
         className={styles.img}
-        src={
-          currentContent?.image
-            ? `${"http://localhost:4000/" + currentContent.image}`
-            : "/noimg.png"
-        }
+        src={currentContent?.image ? `${currentContent.image}` : "/noimg.png"}
         alt="viewerImg"
       />
       <ViewItem />
