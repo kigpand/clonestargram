@@ -27,7 +27,6 @@ const LoginComponents = () => {
   const onSubmit = async () => {
     const user = await onCheckUser(id.value, pw.value);
     if (user.length === 0) return alert("로그인 정보가 없습니다.");
-    console.log(user);
     setUser({
       id: user[0].username,
       name: user[0].name,
