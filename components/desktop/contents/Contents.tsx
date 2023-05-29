@@ -9,12 +9,8 @@ import useContent from "../../../store/content";
 import Viewer from "../viewer/Viewer";
 
 const Contents = React.memo(() => {
-  const { data, isLoading, error } = useSWR("/api/post");
+  const { data, isLoading, error } = useSWR("/api/posts");
   const { currentContent } = useContent();
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   return (
     <div className={styles.contents}>

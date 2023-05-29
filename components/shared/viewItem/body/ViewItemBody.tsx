@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import useContent from "../../../../store/content";
 import useData from "../../../../store/data";

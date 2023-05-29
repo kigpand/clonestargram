@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { IFollow } from "../../../../../interface/IFollow";
-import { onAddFollow, onDeleteFollow } from "../../../../../service/follow";
-import { onGetUser } from "../../../../../service/user";
 import useUser from "../../../../../store/user";
 import styles from "./HeaderFollow.module.scss";
 import { IPost } from "../../../../../interface/IPost";

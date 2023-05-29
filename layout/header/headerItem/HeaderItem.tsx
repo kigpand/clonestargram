@@ -1,6 +1,7 @@
-import { useRouter } from "next/router";
+"use client";
+
+import { useRouter } from "next/navigation";
 import React from "react";
-import { onLogout } from "../../../service/auth";
 import useUser from "../../../store/user";
 import styles from "./headerItems.module.scss";
 
@@ -25,10 +26,8 @@ const HeaderItems = () => {
   };
 
   const logoutBtn = async () => {
-    await onLogout().then(() => {
-      setUser(null);
-      router.push("/");
-    });
+    setUser(null);
+    router.push("/");
   };
 
   return (

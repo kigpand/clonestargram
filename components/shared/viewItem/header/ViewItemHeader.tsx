@@ -1,6 +1,4 @@
-import { IPost } from "../../../../interface/IPost";
 import useContent from "../../../../store/content";
-import usePosts from "../../../../store/post";
 import useUser from "../../../../store/user";
 import HeaderFollow from "./follow/HeaderFollow";
 import styles from "./ViewItemHeader.module.scss";

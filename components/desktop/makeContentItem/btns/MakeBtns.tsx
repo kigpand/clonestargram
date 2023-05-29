@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import styles from "./MakeBtns.module.scss";
 
 interface IMakeBtns {

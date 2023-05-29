@@ -1,11 +1,8 @@
-import { useRouter } from "next/router";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useInput } from "../../../../hooks/useInput";
-import {
-  onGetUser,
-  onUserImgUpload,
-  onUserUpdate,
-} from "../../../../service/user";
 import useUser from "../../../../store/user";
 import ProfileInput from "../input/ProfileInput";
 import styles from "./ProfileBody.module.scss";
@@ -40,10 +37,6 @@ const ProfileBody = () => {
     const img = e.target.files[0];
     const imageFormData = new FormData();
     imageFormData.append("image", img);
-    const result = await onUserImgUpload(imageFormData);
-    if (result) {
-      setImgUrl(result);
-    }
   };
 
   const onUpdateUser = async () => {

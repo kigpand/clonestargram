@@ -1,3 +1,5 @@
+"use client";
+
 import useUser from "../../../store/user";
 import ProfileBody from "./body/ProfileBody";
 import styles from "./ProfileMain.module.scss";

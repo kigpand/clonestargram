@@ -1,10 +1,12 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import styles from "./LoginComponents.module.scss";
 import { useInput } from "../../../hooks/useInput";
 import { onLogin } from "../../../service/auth";
 import useUser from "../../../store/user";
 import Join from "../join/Join";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { onCheckUser } from "../../../service/user";
 
 const LoginComponents = () => {

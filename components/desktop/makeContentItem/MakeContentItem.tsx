@@ -1,5 +1,7 @@
-import { useRouter } from "next/router";
-import React, { useCallback, useRef, useState } from "react";
+"use client";
+
+import { useRouter } from "next/navigation";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import useUser from "../../../store/user";
 import MakeBtns from "./btns/MakeBtns";
 import MakeHeader from "./header/MakeHeader";
@@ -14,6 +16,10 @@ const MakeContentItem = () => {
   const [tags, setTags] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
 
   const onAddTag = (item: string) => {
     const tagArr = [...tags];
@@ -39,7 +45,6 @@ const MakeContentItem = () => {
     formData.append("id", user.id);
     formData.append("nickname", user.name);
 
-    fetch("/api/test/", { method: "POST", body: formData });
     // fetch("/api/posts/", { method: "POST", body: formData })
     //   .then((res) => {
     //     if (!res.ok) return alert("게시글 등록에 실패하였습니다");

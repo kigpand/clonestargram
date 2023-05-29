@@ -4,10 +4,11 @@ import styles from "./Login.module.scss";
 import MobileLogin from "./mobile/MobileLogin";
 
 const Login = () => {
-  const { isMobile } = useData();
+  // const { isMobile } = useData();
   return (
     <div className={styles.login}>
-      {isMobile ? <MobileLogin /> : <DeskLogin />}
+      <DeskLogin />
+      {/* {isMobile ? <MobileLogin /> : <DeskLogin />} */}
     </div>
   );
 };
