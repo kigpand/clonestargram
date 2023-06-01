@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { useInput } from "../../../hooks/useInput";
-import useContent from "../../../store/content";
 import useUser from "../../../store/user";
 import styles from "./AddComment.module.scss";
 
 const AddComment = () => {
-  const { currentContent, setCurrentContent } = useContent();
   const { user } = useUser();
   const [addFlag, setAddFlag] = useState<boolean>(false);
   const input = useInput("");
@@ -24,8 +22,8 @@ const AddComment = () => {
     <div className={styles.addComment}>
       <img
         src={
-          user && user.userImg
-            ? `http://localhost:4000/${user.userImg}`
+          user && user.image
+            ? `http://localhost:4000/${user.image}`
             : "/profileImg.png"
         }
         alt="profile"

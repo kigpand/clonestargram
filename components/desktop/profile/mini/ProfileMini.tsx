@@ -6,11 +6,11 @@ const ProfileMini = () => {
   return (
     <div className={styles.profileMini}>
       <div className={styles.container}>
-        <div className={styles.headerNick}>{user?.nickname}</div>
+        <div className={styles.headerNick}>{user?.name}</div>
         <img
           src={
-            user && user.userImg
-              ? `http://localhost:4000/${user.userImg}`
+            user && user.image
+              ? `http://localhost:4000/${user.image}`
               : "/profileImg.png"
           }
           className={styles.headerImg}

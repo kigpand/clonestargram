@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import styles from "./CommentText.module.scss";
 
 interface ICommentText {
