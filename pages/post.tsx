@@ -77,7 +77,6 @@ const Post: NextPage = ({
 
 export async function getServerSideProps() {
   const res = await onLoadPost(0);
-  console.log(res);
   const post = res.data;
 
   return { props: { post } };

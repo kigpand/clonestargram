@@ -1,8 +1,7 @@
 import axios from "axios";
 
 export const onLoadPost = (lastId: number) => {
-  return axios.get("https://pokeapi.co/api/v2/berry/1/");
-  // return axios.get(`http://localhost:4000/posts?lastId=${lastId || 0}`);
+  return axios.get(`http://localhost:4000/posts?lastId=${lastId || 0}`);
 };
 
 export const onImgUpload = (data: any) => {

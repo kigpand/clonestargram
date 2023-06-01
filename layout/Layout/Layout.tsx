@@ -4,7 +4,6 @@ import Loading from "../../components/shared/loading/Loading";
 import { useWindowSize } from "../../hooks/useWindowHook";
 import { onGetUser } from "../../service/user";
 import useData from "../../store/data";
-import usePosts from "../../store/post";
 import useUser from "../../store/user";
 import { MOBILE_SIZE } from "../../utils/common";
 import Header from "../header/Header";
@@ -16,6 +15,7 @@ const Layout = ({ component }: any) => {
   const { user, setUser } = useUser();
   const [rendering, setRendering] = useState<boolean>(false);
   const { loading } = useData();
+  const router = useRouter();
 
   useEffect(() => {
     setRendering(true);
@@ -23,7 +23,10 @@ const Layout = ({ component }: any) => {
   }, []);
 
   const checkUser = async () => {
-    if (!user) return;
+    if (!user) {
+      router.push("/");
+      return;
+    }
     const result = await onGetUser();
     if (result) {
       setUser(result);
