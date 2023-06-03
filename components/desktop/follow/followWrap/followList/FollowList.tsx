@@ -2,9 +2,10 @@ import { useState } from "react";
 import { IFollow } from "../../../../../interface/IFollow";
 import FollowerView from "../../../../shared/followerView/FollowerView";
 import styles from "./FollowList.module.scss";
+import { IUser } from "../../../../../interface/IUser";
 
 interface IFollowList {
-  follow: IFollow;
+  follow: IUser;
 }
 
 const FollowList = ({ follow }: IFollowList) => {
@@ -18,15 +19,15 @@ const FollowList = ({ follow }: IFollowList) => {
     <div className={styles.followList}>
       <img
         src={
-          follow.userImg
-            ? `http://localhost:4000/${follow.userImg}`
+          follow.image
+            ? `http://localhost:4000/${follow.image}`
             : "/profileImg.png"
         }
         className={styles.profileImg}
         alt="followImg"
       ></img>
       <div className={styles.nickname} onClick={() => setFollowUser(follow)}>
-        {follow.nickname}
+        {follow.name}
       </div>
       {followUser && <FollowerView follow={followUser} unFollow={unFollow} />}
     </div>
