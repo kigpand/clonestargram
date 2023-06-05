@@ -1,5 +1,4 @@
-import axios from "axios";
-import { client, urlFor } from "./sanity";
+import { assetURL, client, urlFor } from "./sanity";
 import { IPost } from "../interface/IPost";
 
 export const getPosts = async () => {
@@ -40,4 +39,35 @@ export async function addComment(
         author: { _ref: userId, _type: "reference" },
       },
     ]);
+}
+
+export async function createPost(
+  id: string,
+  tag: string,
+  content: string,
+  image: Blob
+) {
+  return fetch(assetURL, {
+    method: "POST",
+    headers: {
+      "content-type": image.type,
+      authorization: `Bearer ${process.env.NEXT_PUBLIC_SANITY_TOKEN}`,
+    },
+    body: image,
+  })
+    .then((res) => res.json())
+    .then((result) => {
+      return client.create(
+        {
+          _type: "post",
+          author: { _ref: id },
+          photo: { asset: { _ref: result.document._id } },
+          content: content,
+          likes: [],
+          comments: [],
+          tag: tag,
+        },
+        { autoGenerateArrayKeys: true }
+      );
+    });
 }

@@ -59,18 +59,13 @@ export default {
     {
       title: 'Tag',
       name: 'tag',
-      type: 'array',
-      of: [
-        {
-          type: 'string',
-        },
-      ],
+      type: 'string',
       validation: (Rule: any) => Rule.unique(),
     },
   ],
   preview: {
     select: {
-      title: 'comments.0.comment',
+      title: 'content',
       authorName: 'author.name',
       authorUsername: 'author.username',
       media: 'photo',

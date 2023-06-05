@@ -1,11 +1,22 @@
+import { useEffect } from "react";
 import useContent from "../../../../store/content";
 import useUser from "../../../../store/user";
 import HeaderFollow from "./follow/HeaderFollow";
 import styles from "./ViewItemHeader.module.scss";
+import { onIdCheck } from "../../../../service/user";
 
 const ViewItemHeader = () => {
   const { currentContent, clearCurrentContent } = useContent();
   const { user } = useUser();
+
+  useEffect(() => {
+    if (user && currentContent) {
+      console.log(currentContent);
+      onIdCheck(user.id).then((data: any) => {
+        console.log(data);
+      });
+    }
+  }, [user]);
 
   const onDeleteBtn = async () => {};
 

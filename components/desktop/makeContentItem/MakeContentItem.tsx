@@ -37,20 +37,21 @@ const MakeContentItem = () => {
   const onSubmit = async () => {
     if (!user) return;
     if (!textRef || !textRef.current) return;
+    setLoading(true);
 
     const formData = new FormData();
     if (imgUrl) formData.append("file", imgUrl);
     formData.append("tag", tags.toString().replaceAll(",", ""));
     formData.append("content", textRef.current.value);
     formData.append("id", user.id);
-    formData.append("nickname", user.name);
 
-    // fetch("/api/posts/", { method: "POST", body: formData })
-    //   .then((res) => {
-    //     if (!res.ok) return alert("게시글 등록에 실패하였습니다");
-    //     router.push("/");
-    //   })
-    //   .catch(() => alert("게시글 등록에 실패하였습니다"));
+    fetch("/api/posts/", { method: "POST", body: formData })
+      .then((res) => {
+        if (!res.ok) return alert("게시글 등록에 실패하였습니다");
+        router.push("/");
+      })
+      .catch(() => alert("게시글 등록에 실패하였습니다"))
+      .finally(() => setLoading(true));
 
     // if (textRef && textRef.current) {
     //   const formData = new FormData();
