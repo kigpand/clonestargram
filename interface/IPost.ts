@@ -13,4 +13,5 @@ export interface IPost {
   createdAt: string;
   comments: IComment[];
   tag: string;
+  _id: string;
 }

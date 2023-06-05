@@ -6,7 +6,7 @@ import styles from "./ViewItemHeader.module.scss";
 import { onIdCheck } from "../../../../service/user";
 
 const ViewItemHeader = () => {
-  const { currentContent, clearCurrentContent } = useContent();
+  const { currentContent } = useContent();
   const { user } = useUser();
 
   useEffect(() => {
@@ -14,8 +14,6 @@ const ViewItemHeader = () => {
       onIdCheck(user.id).then((data: any) => {});
     }
   }, [user]);
-
-  const onDeleteBtn = async () => {};
 
   return (
     <div className={styles.viewItemHeader}>

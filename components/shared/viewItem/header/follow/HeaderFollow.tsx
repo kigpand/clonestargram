@@ -9,10 +9,11 @@ interface IHeaderFollow {
 }
 
 const HeaderFollow = ({ currentContent }: IHeaderFollow) => {
-  const { user, setUser } = useUser();
+  const { user } = useUser();
   const [isFollow, setIsFollow] = useState<boolean | null>(null);
 
   useEffect(() => {
+    console.log(user);
     const result = user?.followings.find(
       (item: IFollow) => item.id === currentContent.id
     );

@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useInput } from "../../../hooks/useInput";
 import useUser from "../../../store/user";
 import styles from "./AddComment.module.scss";
+import useContent from "../../../store/content";
 
 const AddComment = () => {
   const { user } = useUser();
+  const { currentContent } = useContent();
   const [addFlag, setAddFlag] = useState<boolean>(false);
   const input = useInput("");
 
@@ -16,7 +18,26 @@ const AddComment = () => {
     }
   }, [input]);
 
-  const onSubmit = async () => {};
+  const onSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!user || !currentContent) return;
+
+    console.log(currentContent._id);
+    fetch("/api/comment/", {
+      method: "POST",
+      body: JSON.stringify({
+        postId: currentContent._id,
+        id: user.id,
+        comment: input.value,
+      }),
+    })
+      .then((res) => {
+        if (!res.ok) return alert("댓글 등록에 실패하였습니다");
+        return alert("댓글이 등록되었습니다");
+      })
+      .catch(() => alert("댓글 등록에 실패하였습니다"));
+    // .finally(() => setLoading(true));
+  };
 
   return (
     <div className={styles.addComment}>

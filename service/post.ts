@@ -8,10 +8,11 @@ export const getPosts = async () => {
     "userImage": author->image,
     "image": photo,
     "likes": likes[]->username,
-    "text": comments[0].comment,
-    "comments": count(comment),
+    "content": content,
+    "comments": comments,
     "id":author->username,
-    "createdAt": _createdAt
+    "createdAt": _createdAt,
+    "postId":_id
   `;
   return client
     .fetch(`*[_type =="post"]{${simplePostProjection}}`)
@@ -24,22 +25,6 @@ export const getPosts = async () => {
       })
     );
 };
-
-export async function addComment(
-  postId: string,
-  userId: string,
-  comment: string
-) {
-  return client
-    .patch(postId)
-    .setIfMissing({ comments: [] })
-    .append("comments", [
-      {
-        comment,
-        author: { _ref: userId, _type: "reference" },
-      },
-    ]);
-}
 
 export async function createPost(
   id: string,
@@ -70,4 +55,24 @@ export async function createPost(
         { autoGenerateArrayKeys: true }
       );
     });
+}
+
+export async function addComment(
+  postId: string,
+  userId: string,
+  comment: string
+) {
+  console.log(postId);
+  console.log(userId);
+  console.log(comment);
+  return client
+    .patch(postId)
+    .setIfMissing({ comments: [] })
+    .append("comments", [
+      {
+        comment,
+        author: { _ref: userId, _type: "reference" },
+      },
+    ])
+    .commit({ autoGenerateArrayKeys: true });
 }
