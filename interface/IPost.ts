@@ -9,8 +9,8 @@ export interface IPost {
   username: string;
   userImage: string;
   image: string;
-  text: string;
+  content: string;
   createdAt: string;
   comments: IComment[];
-  tag: string[];
+  tag: string;
 }

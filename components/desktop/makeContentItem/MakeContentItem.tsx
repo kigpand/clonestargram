@@ -52,23 +52,6 @@ const MakeContentItem = () => {
       })
       .catch(() => alert("게시글 등록에 실패하였습니다"))
       .finally(() => setLoading(true));
-
-    // if (textRef && textRef.current) {
-    //   const formData = new FormData();
-    //   imgUrl.forEach((data) => {
-    //     formData.append("image", data);
-    //   });
-    //   formData.append("tag", tags.toString().replaceAll(",", ""));
-    //   formData.append("content", textRef.current.value);
-    //   formData.append("id", String(user.id));
-    //   formData.append("nickname", user.nickname);
-    //   try {
-    //     await onAddPost(formData);
-    //     router.push("/post");
-    //   } catch (e) {
-    //     alert("게시글 등록에 실패했습니다");
-    //   }
-    // }
   };
 
   return (

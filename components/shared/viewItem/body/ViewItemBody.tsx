@@ -14,10 +14,12 @@ const ViewItemBody = () => {
 
   useEffect(() => {
     if (currentContent && currentContent.tag) {
-      const items = currentContent.tag.map((item: string) => {
-        return "#" + item;
+      const tag = currentContent.tag.split("#");
+      const tagItem: string[] = [];
+      tag.forEach((data: string) => {
+        if (data !== "") tagItem.push("#" + data);
       });
-      setTags(items);
+      setTags(tagItem);
     }
   }, [currentContent]);
 
@@ -36,7 +38,7 @@ const ViewItemBody = () => {
 
   return (
     <div className={styles.viewItemBody}>
-      <div className={styles.content}>{currentContent!.text}</div>
+      <div className={styles.content}>{currentContent?.content}</div>
       <div className={styles.tags}>
         {tags.map((tag: string, i: number) => {
           return (

@@ -11,10 +11,7 @@ const ViewItemHeader = () => {
 
   useEffect(() => {
     if (user && currentContent) {
-      console.log(currentContent);
-      onIdCheck(user.id).then((data: any) => {
-        console.log(data);
-      });
+      onIdCheck(user.id).then((data: any) => {});
     }
   }, [user]);
 
@@ -33,14 +30,7 @@ const ViewItemHeader = () => {
       />
       <div className={styles.text}>{currentContent!.username}</div>
       <div className={styles.btn}>
-        {user?.id === currentContent!.id ? (
-          <img
-            src="/delete.png"
-            alt="delete"
-            className={styles.delete}
-            onClick={onDeleteBtn}
-          />
-        ) : (
+        {user?.id !== currentContent!.id && (
           <HeaderFollow currentContent={currentContent!} />
         )}
       </div>
