@@ -17,10 +17,6 @@ const MakeContentItem = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
 
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
-
   const onAddTag = (item: string) => {
     const tagArr = [...tags];
     if (tagArr.find((tag: string) => tag === item)) {

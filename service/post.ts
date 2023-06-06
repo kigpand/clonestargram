@@ -60,18 +60,22 @@ export async function createPost(
 export async function addComment(
   postId: string,
   userId: string,
-  comment: string
+  comment: string,
+  image: string,
+  nickname: string
 ) {
-  console.log(postId);
-  console.log(userId);
-  console.log(comment);
   return client
     .patch(postId)
     .setIfMissing({ comments: [] })
     .append("comments", [
       {
         comment,
-        author: { _ref: userId, _type: "reference" },
+        author: {
+          _ref: userId,
+          _type: "reference",
+        },
+        photo: image,
+        nickname: nickname,
       },
     ])
     .commit({ autoGenerateArrayKeys: true });

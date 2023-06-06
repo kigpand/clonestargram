@@ -52,6 +52,16 @@ export default {
               name: 'comment',
               type: 'string',
             },
+            {
+              title: 'Photo',
+              name: 'photo',
+              type: 'string',
+            },
+            {
+              title: 'Nickname',
+              name: 'nickname',
+              type: 'string',
+            },
           ],
         },
       ],

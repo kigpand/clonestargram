@@ -8,16 +8,17 @@ import { IPost } from "../../../interface/IPost";
 import useContent from "../../../store/content";
 import Viewer from "../viewer/Viewer";
 import Loading from "../../shared/loading/Loading";
+import { usePost } from "../../../hooks/usePost";
 
 const Contents = React.memo(() => {
-  const { data, isLoading, error } = useSWR("/api/posts");
+  const { posts, isLoading, error } = usePost();
   const { currentContent } = useContent();
 
   return (
     <div className={styles.contents}>
       {isLoading && <Loading />}
       <div className={styles.lists}>
-        {data?.map((item: IPost, i: number) => {
+        {posts?.map((item: IPost, i: number) => {
           return <ContentsItem post={item} key={i} />;
         })}
       </div>

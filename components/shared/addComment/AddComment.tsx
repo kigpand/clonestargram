@@ -3,12 +3,24 @@ import { useInput } from "../../../hooks/useInput";
 import useUser from "../../../store/user";
 import styles from "./AddComment.module.scss";
 import useContent from "../../../store/content";
+import { usePost } from "../../../hooks/usePost";
+import { IPost } from "../../../interface/IPost";
 
 const AddComment = () => {
+  const { posts, updatePosts } = usePost();
   const { user } = useUser();
-  const { currentContent } = useContent();
+  const { currentContent, setCurrentContent } = useContent();
   const [addFlag, setAddFlag] = useState<boolean>(false);
   const input = useInput("");
+
+  useEffect(() => {
+    if (posts && posts.length > 0) {
+      const result = posts.find(
+        (item: IPost) => item._id === currentContent?._id
+      );
+      if (result) setCurrentContent(result);
+    }
+  }, [posts]);
 
   useEffect(() => {
     if (input.value === "") {
@@ -22,18 +34,21 @@ const AddComment = () => {
     e.preventDefault();
     if (!user || !currentContent) return;
 
-    console.log(currentContent._id);
     fetch("/api/comment/", {
       method: "POST",
       body: JSON.stringify({
         postId: currentContent._id,
         id: user.id,
         comment: input.value,
+        image: user.image || "",
+        nickname: user.name,
       }),
     })
       .then((res) => {
         if (!res.ok) return alert("댓글 등록에 실패하였습니다");
-        return alert("댓글이 등록되었습니다");
+        alert("댓글이 등록되었습니다");
+        input.onClear();
+        return updatePosts();
       })
       .catch(() => alert("댓글 등록에 실패하였습니다"));
     // .finally(() => setLoading(true));

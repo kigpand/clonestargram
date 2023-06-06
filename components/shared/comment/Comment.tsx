@@ -11,12 +11,12 @@ const Comment = ({ info }: ICommentContainer) => {
     <div className={styles.comment}>
       <img
         src={
-          info.image ? `http://localhost:4000/${info.image}` : "/profileImg.png"
+          info.photo ? `http://localhost:4000/${info.photo}` : "/profileImg.png"
         }
         alt="profile"
         className={styles.img}
       />
-      <CommentText nickName={info.username} content={info.comment} />
+      <CommentText nickName={info.nickname} content={info.comment} />
     </div>
   );
 };

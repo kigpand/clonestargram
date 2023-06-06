@@ -1,7 +1,7 @@
 export interface IComment {
   comment: string;
-  username: string;
-  image: string;
+  nickname: string;
+  photo: string;
 }
 
 export interface IPost {
