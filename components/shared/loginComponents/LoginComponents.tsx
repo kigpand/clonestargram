@@ -28,16 +28,16 @@ const LoginComponents = () => {
 
   const onSubmit = async () => {
     const user = await onCheckUser(id.value, pw.value);
-    if (user.length === 0) return alert("로그인 정보가 없습니다.");
+    if (!user) return alert("로그인 정보가 없습니다.");
     setUser({
-      id: user[0].username,
-      name: user[0].name,
-      phone: user[0].phone,
-      email: user[0].email,
-      image: user[0].image || null,
-      intro: user[0].intro || "",
-      followings: user[0].following,
-      followers: user[0].followers,
+      id: user.username,
+      name: user.name,
+      phone: user.phone,
+      email: user.email,
+      image: user.image || null,
+      intro: user.intro || "",
+      followings: user.following,
+      followers: user.followers,
     });
   };
 

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { client } from "./sanity";
+import { assetURL, client, urlFor } from "./sanity";
 
 interface IAuthUser {
   id: string;
@@ -27,17 +27,51 @@ export const onIdCheck = (id: string) => {
   return client.fetch(`*[_type =="user" && username == "${id}"]`);
 };
 
-export const onCheckUser = (id: string, pw: string) => {
-  return client.fetch(
+export const onCheckUser = async (id: string, pw: string) => {
+  const result = await client.fetch(
     `*[_type =="user" && username == "${id}" && password == "${pw}"]`
   );
+  if (result.length === 0) return false;
+  if (result[0].image) {
+    return { ...result[0], image: urlFor(result[0].image) };
+  }
+  return result[0];
 };
 
 export const updateUser = async (
   username: string,
   name: string,
-  email: string
+  email: string,
+  phone: string,
+  intro: string,
+  imgUrl?: Blob
 ) => {
-  console.log(username);
-  return client.patch(username).set({ phone: "00000000000" }).commit();
+  if (imgUrl) {
+    return fetch(assetURL, {
+      method: "POST",
+      headers: {
+        "content-type": imgUrl.type,
+        authorization: `Bearer ${process.env.NEXT_PUBLIC_SANITY_TOKEN}`,
+      },
+      body: imgUrl,
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        return client
+          .patch(username)
+          .set({
+            name: name,
+            email: email,
+            phone: phone,
+            intro: intro,
+            image: { asset: { _ref: result.document._id } },
+          })
+          .commit();
+      });
+  } else {
+    return client
+      .patch(username)
+      .set({ name: name, email: email, phone: phone, intro: intro })
+      .commit();
+  }
 };

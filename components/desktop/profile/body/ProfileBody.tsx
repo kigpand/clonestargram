@@ -12,7 +12,7 @@ const ProfileBody = () => {
   const router = useRouter();
   const imgRef = useRef<HTMLInputElement>(null);
   const textRef = useRef<HTMLTextAreaElement>(null);
-  const [imgUrl, setImgUrl] = useState<string>("");
+  const [imgUrl, setImgUrl] = useState<File | null>(null);
   const id = useInput(user!.id);
   const nickname = useInput(user!.name);
   const phone = useInput(user!.phone);
@@ -20,10 +20,9 @@ const ProfileBody = () => {
 
   useEffect(() => {
     if (user) {
-      console.log(user);
-      if (user.image) {
-        setImgUrl(user.image);
-      }
+      // if (user.image) {
+      //   setImgUrl(user.image);
+      // }
     }
   }, [user]);
 
@@ -34,18 +33,19 @@ const ProfileBody = () => {
   }, [imgRef]);
 
   const changeImages = async (e: any) => {
-    const img = e.target.files[0];
-    const imageFormData = new FormData();
-    imageFormData.append("image", img);
+    setImgUrl(e.target.files[0]);
   };
 
   const onUpdateUser = async () => {
     if (textRef.current && user) {
       const formData = new FormData();
-      // if (imgUrl) formData.append("file", imgUrl);
+      if (imgUrl) formData.append("image", imgUrl);
+
       formData.append("id", user.id);
       formData.append("nickname", nickname.value);
       formData.append("email", email.value);
+      formData.append("phone", phone.value);
+      formData.append("intro", textRef.current.value);
 
       fetch("/api/user/", { method: "PATCH", body: formData })
         .then((res) => {
@@ -53,25 +53,6 @@ const ProfileBody = () => {
           router.push("/");
         })
         .catch(() => alert("게시글 등록에 실패하였습니다"));
-      // let data: any = {
-      //   id: user.id,
-      //   intro: textRef.current.value,
-      //   nickname: nickname.value,
-      //   phone: phone.value,
-      //   email: email.value,
-      // };
-      // if (imgUrl !== "") {
-      //   data = { ...data, userImg: imgUrl };
-      // }
-      // await onUserUpdate(data).then(async () => {
-      //   const result = await onGetUser();
-      //   if (result) {
-      //     setUser(result);
-      //     router.push("/post");
-      //   } else {
-      //     alert("유저 정보를 업데이트하는데 실패했습니다");
-      //   }
-      // });
     }
   };
 
@@ -79,7 +60,7 @@ const ProfileBody = () => {
     <div className={styles.profileBody}>
       <div className={styles.imgProfile}>
         <img
-          src={imgUrl !== "" ? `${imgUrl}` : "/profileImg.png"}
+          src={imgUrl ? `${URL.createObjectURL(imgUrl)}` : "/profileImg.png"}
           className={styles.profileImage}
           alt="profileImg"
           onClick={onClickImageUpload}

@@ -8,7 +8,6 @@ import { onIdCheck } from "../../../../service/user";
 const ViewItemHeader = () => {
   const { currentContent } = useContent();
   const { user } = useUser();
-
   useEffect(() => {
     if (user && currentContent) {
       onIdCheck(user.id).then((data: any) => {});

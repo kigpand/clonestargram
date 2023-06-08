@@ -31,7 +31,7 @@ export default {
     {
       title: 'Image',
       name: 'image',
-      type: 'string',
+      type: 'image',
     },
     {
       title: 'Intro',

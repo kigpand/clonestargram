@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createPost, getPosts } from "../../../service/post";
 import { updateUser } from "../../../service/user";
 
 export async function PATCH(req: NextRequest) {
@@ -8,11 +7,20 @@ export async function PATCH(req: NextRequest) {
   const userId = form.get("id")!.toString();
   const nickname = form.get("nickname")!.toString();
   const email = form.get("email")!.toString();
+  const phone = form.get("phone")!.toString();
+  const intro = form.get("intro")!.toString();
+  const image = form.get("image") as Blob;
 
-  // const image = form.get("file") as Blob;
+  if (image) {
+    console.log(image);
+    return updateUser(userId, nickname, email, phone, intro, image).then(
+      (data) => {
+        return NextResponse.json(data);
+      }
+    );
+  }
 
-  return updateUser(userId, nickname, email).then((data) => {
-    console.log(data);
+  return updateUser(userId, nickname, email, phone, intro).then((data) => {
     return NextResponse.json(data);
   });
 }
