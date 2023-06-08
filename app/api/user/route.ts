@@ -12,7 +12,6 @@ export async function PATCH(req: NextRequest) {
   const image = form.get("image") as Blob;
 
   if (image) {
-    console.log(image);
     return updateUser(userId, nickname, email, phone, intro, image).then(
       (data) => {
         return NextResponse.json(data);

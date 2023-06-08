@@ -10,9 +10,7 @@ const Comment = ({ info }: ICommentContainer) => {
   return (
     <div className={styles.comment}>
       <img
-        src={
-          info.photo ? `http://localhost:4000/${info.photo}` : "/profileImg.png"
-        }
+        src={info.photo ? `${info.photo}` : "/profileImg.png"}
         alt="profile"
         className={styles.img}
       />

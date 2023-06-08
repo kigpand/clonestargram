@@ -4,7 +4,7 @@ import { IPost } from "../interface/IPost";
 export const getPosts = async () => {
   const simplePostProjection = `
     ...,
-    "username": author->name,
+    "username": author->username,
     "userImage": author->image,
     "image": photo,
     "likes": likes[]->username,

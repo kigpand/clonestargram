@@ -23,8 +23,12 @@ export const addUser = ({ id, email, pw, name, phone }: IAuthUser) => {
   });
 };
 
-export const onIdCheck = (id: string) => {
-  return client.fetch(`*[_type =="user" && username == "${id}"]`);
+export const onIdCheck = async (id: string) => {
+  const result = await client.fetch(`*[_type =="user" && username == "${id}"]`);
+  if (result[0].image) {
+    return { ...result[0], image: urlFor(result[0].image) };
+  }
+  return result[0];
 };
 
 export const onCheckUser = async (id: string, pw: string) => {

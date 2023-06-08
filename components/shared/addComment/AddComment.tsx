@@ -57,11 +57,7 @@ const AddComment = () => {
   return (
     <div className={styles.addComment}>
       <img
-        src={
-          user && user.image
-            ? `http://localhost:4000/${user.image}`
-            : "/profileImg.png"
-        }
+        src={user && user.image ? `${user.image}` : "/profileImg.png"}
         alt="profile"
         className={styles.img}
       />
