@@ -3,8 +3,11 @@
 .comment {
   width: 100%;
   display: flex;
+  align-items: center;
+  height: 40px;
 
   .img {
+    margin-left: rem(10px);
     border-radius: 50%;
     width: rem(25px);
     height: rem(25px);

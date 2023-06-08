@@ -5,14 +5,16 @@
   width: 100%;
   height: 30%;
   border-bottom: 1px solid $borderColor;
-  padding: rem(10px);
+  padding: rem(10px) 0;
   position: relative;
 
   .content {
+    margin-left: rem(10px);
     font-size: rem(13px);
   }
 
   .tags {
+    margin-left: rem(10px);
     display: flex;
     flex-wrap: wrap;
     position: absolute;
