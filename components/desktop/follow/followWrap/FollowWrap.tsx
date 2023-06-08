@@ -1,4 +1,3 @@
-import { IFollow } from "../../../../interface/IFollow";
 import { IUser } from "../../../../interface/IUser";
 import FollowList from "./followList/FollowList";
 import styles from "./FollowWrap.module.scss";

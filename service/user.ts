@@ -20,7 +20,6 @@ export const addUser = ({ id, email, pw, name, phone }: IAuthUser) => {
     phone: phone,
     following: [],
     followers: [],
-    bookmarks: [],
   });
 };
 
@@ -32,4 +31,13 @@ export const onCheckUser = (id: string, pw: string) => {
   return client.fetch(
     `*[_type =="user" && username == "${id}" && password == "${pw}"]`
   );
+};
+
+export const updateUser = async (
+  username: string,
+  name: string,
+  email: string
+) => {
+  console.log(username);
+  return client.patch(username).set({ phone: "00000000000" }).commit();
 };

@@ -3,7 +3,7 @@
 import styles from "./Contents.module.scss";
 import ContentsItem from "../../shared/contentsItem/ContentsItem";
 import useSWR from "swr";
-import React from "react";
+import React, { useEffect } from "react";
 import { IPost } from "../../../interface/IPost";
 import useContent from "../../../store/content";
 import Viewer from "../viewer/Viewer";
@@ -13,6 +13,10 @@ import { usePost } from "../../../hooks/usePost";
 const Contents = React.memo(() => {
   const { posts, isLoading, error } = usePost();
   const { currentContent } = useContent();
+
+  useEffect(() => {
+    console.log(posts);
+  }, [posts]);
 
   return (
     <div className={styles.contents}>

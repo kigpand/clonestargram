@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import useUser from "../../../store/user";
 import styles from "./FollowContainer.module.scss";

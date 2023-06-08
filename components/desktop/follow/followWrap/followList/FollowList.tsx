@@ -1,5 +1,6 @@
+"use client";
+
 import { useState } from "react";
-import { IFollow } from "../../../../../interface/IFollow";
 import FollowerView from "../../../../shared/followerView/FollowerView";
 import styles from "./FollowList.module.scss";
 import { IUser } from "../../../../../interface/IUser";

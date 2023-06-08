@@ -41,6 +41,18 @@ const ProfileBody = () => {
 
   const onUpdateUser = async () => {
     if (textRef.current && user) {
+      const formData = new FormData();
+      // if (imgUrl) formData.append("file", imgUrl);
+      formData.append("id", user.id);
+      formData.append("nickname", nickname.value);
+      formData.append("email", email.value);
+
+      fetch("/api/user/", { method: "PATCH", body: formData })
+        .then((res) => {
+          if (!res.ok) return alert("게시글 등록에 실패하였습니다");
+          router.push("/");
+        })
+        .catch(() => alert("게시글 등록에 실패하였습니다"));
       // let data: any = {
       //   id: user.id,
       //   intro: textRef.current.value,

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import styles from "./FollowerView.module.scss";
 
 interface IFollowerView {

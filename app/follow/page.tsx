@@ -1,7 +1,7 @@
 import { NextPage } from "next";
-import FollowContaier from "../components/desktop/follow/FollowContainer";
-import styles from "../styles/Home.module.scss";
-import Header from "../layout/header/Header";
+import Header from "../../layout/header/Header";
+import FollowContaier from "../../components/desktop/follow/FollowContainer";
+import styles from "../../styles/Home.module.scss";
 
 const Follow: NextPage = () => {
   return (
