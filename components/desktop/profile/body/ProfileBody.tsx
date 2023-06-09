@@ -6,23 +6,25 @@ import { useInput } from "../../../../hooks/useInput";
 import useUser from "../../../../store/user";
 import ProfileInput from "../input/ProfileInput";
 import styles from "./ProfileBody.module.scss";
+import { onIdCheck } from "../../../../service/user";
+import Loading from "../../../shared/loading/Loading";
 
 const ProfileBody = () => {
   const { user, setUser } = useUser();
   const router = useRouter();
   const imgRef = useRef<HTMLInputElement>(null);
   const textRef = useRef<HTMLTextAreaElement>(null);
+  const [loading, setLoading] = useState<boolean>(false);
   const [imgUrl, setImgUrl] = useState<File | null>(null);
+  const [img, setImg] = useState<string>("");
   const id = useInput(user!.id);
   const nickname = useInput(user!.name);
   const phone = useInput(user!.phone);
   const email = useInput(user!.email);
 
   useEffect(() => {
-    if (user) {
-      // if (user.image) {
-      //   setImgUrl(user.image);
-      // }
+    if (user && user.image) {
+      setImg(user.image);
     }
   }, [user]);
 
@@ -38,6 +40,7 @@ const ProfileBody = () => {
 
   const onUpdateUser = async () => {
     if (textRef.current && user) {
+      setLoading(true);
       const formData = new FormData();
       if (imgUrl) formData.append("image", imgUrl);
 
@@ -48,19 +51,37 @@ const ProfileBody = () => {
       formData.append("intro", textRef.current.value);
 
       fetch("/api/user/", { method: "PATCH", body: formData })
-        .then((res) => {
-          if (!res.ok) return alert("게시글 등록에 실패하였습니다");
+        .then(async () => {
+          const newUser = await onIdCheck(user.id);
+          setUser({
+            id: newUser.username,
+            name: newUser.name,
+            phone: newUser.phone,
+            email: newUser.email,
+            image: newUser.image || null,
+            intro: newUser.intro || "",
+            followings: newUser.following,
+            followers: newUser.followers,
+          });
+          setLoading(false);
           router.push("/");
         })
-        .catch(() => alert("게시글 등록에 실패하였습니다"));
+        .catch(() => alert("프로필 업데이트에 실패하였습니다"));
     }
   };
 
   return (
     <div className={styles.profileBody}>
+      {loading && <Loading />}
       <div className={styles.imgProfile}>
         <img
-          src={imgUrl ? `${URL.createObjectURL(imgUrl)}` : "/profileImg.png"}
+          src={
+            imgUrl
+              ? `${URL.createObjectURL(imgUrl)}`
+              : img !== ""
+              ? img
+              : "/profileImg.png"
+          }
           className={styles.profileImage}
           alt="profileImg"
           onClick={onClickImageUpload}

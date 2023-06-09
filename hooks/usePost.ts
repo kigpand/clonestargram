@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { IPost } from "../interface/IPost";
 import useSWR, { useSWRConfig } from "swr";
 
