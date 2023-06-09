@@ -1,16 +1,30 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FollowerView from "../../../../shared/followerView/FollowerView";
 import styles from "./FollowList.module.scss";
 import { IUser } from "../../../../../interface/IUser";
+import { onIdCheck } from "../../../../../service/user";
 
 interface IFollowList {
-  follow: IUser;
+  follow: any;
 }
 
 const FollowList = ({ follow }: IFollowList) => {
   const [followUser, setFollowUser] = useState<any>(null);
+  const [imgUrl, setImgUrl] = useState<string>("");
+  const [nickname, setNickname] = useState<string>("");
+
+  useEffect(() => {
+    if (follow) {
+      onIdCheck(follow._ref).then((data: IUser) => {
+        if (data.image) {
+          setImgUrl(data.image);
+        }
+        setNickname(data.name);
+      });
+    }
+  }, [follow]);
 
   const unFollow = () => {
     setFollowUser(null);
@@ -19,16 +33,12 @@ const FollowList = ({ follow }: IFollowList) => {
   return (
     <div className={styles.followList}>
       <img
-        src={
-          follow.image
-            ? `http://localhost:4000/${follow.image}`
-            : "/profileImg.png"
-        }
+        src={imgUrl !== "" ? imgUrl : "/profileImg.png"}
         className={styles.profileImg}
         alt="followImg"
       ></img>
       <div className={styles.nickname} onClick={() => setFollowUser(follow)}>
-        {follow.name}
+        {nickname}
       </div>
       {followUser && <FollowerView follow={followUser} unFollow={unFollow} />}
     </div>
