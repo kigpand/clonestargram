@@ -99,7 +99,7 @@ export const follow = (id: string, other: string) => {
 export const unFollow = (id: string, other: string) => {
   return client
     .transaction()
-    .patch(id, (user) => user.unset([`following[_ref=="${other}]`]))
-    .patch(other, (user) => user.unset([`followers[_ref=="${id}]`]))
+    .patch(id, (user) => user.unset([`following[_ref=="${other}"]`]))
+    .patch(other, (user) => user.unset([`followers[_ref=="${id}"]`]))
     .commit({ autoGenerateArrayKeys: true });
 };

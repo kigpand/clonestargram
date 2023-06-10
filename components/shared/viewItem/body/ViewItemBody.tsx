@@ -1,14 +1,10 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import useContent from "../../../../store/content";
-import useData from "../../../../store/data";
-import usePosts from "../../../../store/post";
 import styles from "./ViewItemBody.module.scss";
 
 const ViewItemBody = () => {
-  const { currentContent, clearCurrentContent } = useContent();
-  const { setHashTagPosts } = usePosts();
-  const { setSearchTag } = useData();
+  const { currentContent } = useContent();
   const [tags, setTags] = useState<string[]>([]);
   const router = useRouter();
 

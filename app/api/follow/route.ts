@@ -4,7 +4,7 @@ import { follow, unFollow } from "../../../service/user";
 export async function PUT(req: NextRequest) {
   const { id, other, isFollow } = await req.json();
 
-  if (!id || !other || !isFollow) {
+  if (!id || !other) {
     return new Response("Bad Request", { status: 400 });
   }
 
@@ -12,5 +12,7 @@ export async function PUT(req: NextRequest) {
 
   return request(id, other)
     .then((res) => NextResponse.json(res))
-    .catch((error) => new Response(JSON.stringify(error), { status: 500 }));
+    .catch((error) => {
+      return new Response(JSON.stringify(error), { status: 500 });
+    });
 }

@@ -25,6 +25,10 @@ const ViewItemHeader = () => {
     }
   }, [user]);
 
+  const changeLoading = (flag: boolean) => {
+    setLoading(flag);
+  };
+
   return (
     <div className={styles.viewItemHeader}>
       {loading && <SubLoading />}
@@ -36,7 +40,10 @@ const ViewItemHeader = () => {
       <div className={styles.text}>{nickname}</div>
       <div className={styles.btn}>
         {user?.id !== currentContent!.id && (
-          <HeaderFollow currentContent={currentContent!} />
+          <HeaderFollow
+            currentContent={currentContent!}
+            changeLoading={changeLoading}
+          />
         )}
       </div>
     </div>
