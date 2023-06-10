@@ -5,42 +5,45 @@ import FollowerView from "../../../../shared/followerView/FollowerView";
 import styles from "./FollowList.module.scss";
 import { IUser } from "../../../../../interface/IUser";
 import { onIdCheck } from "../../../../../service/user";
+import SubLoading from "../../../../shared/subLoading/SubLoading";
 
 interface IFollowList {
   follow: any;
 }
 
 const FollowList = ({ follow }: IFollowList) => {
-  const [followUser, setFollowUser] = useState<any>(null);
-  const [imgUrl, setImgUrl] = useState<string>("");
-  const [nickname, setNickname] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [followUser, setFollowUser] = useState<IUser | null>(null);
+  const [onFollowView, setOnFollowView] = useState<boolean>(false);
 
   useEffect(() => {
     if (follow) {
+      setLoading(true);
       onIdCheck(follow._ref).then((data: IUser) => {
-        if (data.image) {
-          setImgUrl(data.image);
-        }
-        setNickname(data.name);
+        setFollowUser(data);
+        setLoading(false);
       });
     }
   }, [follow]);
 
   const unFollow = () => {
-    setFollowUser(null);
+    setOnFollowView(false);
   };
 
   return (
     <div className={styles.followList}>
+      {loading && <SubLoading />}
       <img
-        src={imgUrl !== "" ? imgUrl : "/profileImg.png"}
+        src={followUser?.image ? followUser.image : "/profileImg.png"}
         className={styles.profileImg}
         alt="followImg"
       ></img>
-      <div className={styles.nickname} onClick={() => setFollowUser(follow)}>
-        {nickname}
+      <div className={styles.nickname} onClick={() => setOnFollowView(true)}>
+        {followUser?.name}
       </div>
-      {followUser && <FollowerView follow={followUser} unFollow={unFollow} />}
+      {onFollowView && followUser && (
+        <FollowerView follow={followUser} unFollow={unFollow} />
+      )}
     </div>
   );
 };

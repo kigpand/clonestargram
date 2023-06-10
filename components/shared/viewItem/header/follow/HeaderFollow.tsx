@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { IFollow } from "../../../../../interface/IFollow";
 import useUser from "../../../../../store/user";
 import styles from "./HeaderFollow.module.scss";
 import { IPost } from "../../../../../interface/IPost";
@@ -14,7 +13,7 @@ const HeaderFollow = ({ currentContent }: IHeaderFollow) => {
 
   useEffect(() => {
     const result = user?.followings.find(
-      (item: IFollow) => item.id === currentContent.id
+      (item: any) => item._ref === currentContent.username
     );
     if (result) {
       setIsFollow(true);

@@ -79,3 +79,27 @@ export const updateUser = async (
       .commit();
   }
 };
+
+export const follow = (id: string, other: string) => {
+  return client
+    .transaction()
+    .patch(id, (user) =>
+      user
+        .setIfMissing({ following: [] })
+        .append("following", [{ _ref: other, _type: "reference" }])
+    )
+    .patch(other, (user) =>
+      user
+        .setIfMissing({ followers: [] })
+        .append("followers", [{ _ref: id, _type: "reference" }])
+    )
+    .commit({ autoGenerateArrayKeys: true });
+};
+
+export const unFollow = (id: string, other: string) => {
+  return client
+    .transaction()
+    .patch(id, (user) => user.unset([`following[_ref=="${other}]`]))
+    .patch(other, (user) => user.unset([`followers[_ref=="${id}]`]))
+    .commit({ autoGenerateArrayKeys: true });
+};
