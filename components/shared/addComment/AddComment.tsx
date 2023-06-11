@@ -5,12 +5,14 @@ import styles from "./AddComment.module.scss";
 import useContent from "../../../store/content";
 import { usePost } from "../../../hooks/usePost";
 import { IPost } from "../../../interface/IPost";
+import Loading from "../loading/Loading";
 
 const AddComment = () => {
   const { posts, updatePosts } = usePost();
   const { user } = useUser();
   const { currentContent, setCurrentContent } = useContent();
   const [addFlag, setAddFlag] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const input = useInput("");
 
   useEffect(() => {
@@ -34,6 +36,7 @@ const AddComment = () => {
     e.preventDefault();
     if (!user || !currentContent) return;
 
+    setLoading(true);
     fetch("/api/comment/", {
       method: "POST",
       body: JSON.stringify({
@@ -50,12 +53,13 @@ const AddComment = () => {
         input.onClear();
         return updatePosts();
       })
-      .catch(() => alert("댓글 등록에 실패하였습니다"));
-    // .finally(() => setLoading(true));
+      .catch(() => alert("댓글 등록에 실패하였습니다"))
+      .finally(() => setLoading(false));
   };
 
   return (
     <div className={styles.addComment}>
+      {loading && <Loading />}
       <img
         src={user && user.image ? `${user.image}` : "/profileImg.png"}
         alt="profile"
