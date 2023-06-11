@@ -1,12 +1,15 @@
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import useContent from "../../../../store/content";
 import styles from "./ViewItemBody.module.scss";
+import usePosts from "../../../../store/post";
+import { IPost } from "../../../../interface/IPost";
+import useData from "../../../../store/data";
 
 const ViewItemBody = () => {
-  const { currentContent } = useContent();
+  const { post, setHashTagPosts } = usePosts();
+  const { setSearchTag } = useData();
+  const { currentContent, clearCurrentContent } = useContent();
   const [tags, setTags] = useState<string[]>([]);
-  const router = useRouter();
 
   useEffect(() => {
     if (currentContent && currentContent.tag) {
@@ -20,16 +23,18 @@ const ViewItemBody = () => {
   }, [currentContent]);
 
   const onTagClick = async (tag: string) => {
-    const item = tag.substring(1);
-    // const result = await onSearchHashTag(item);
-    // if (result.data && result.data.length > 0) {
-    //   setHashTagPosts(result.data);
-    //   setSearchTag(item);
-    //   clearCurrentContent();
-    //   router.push("/hashTag");
-    // } else {
-    //   alert("검색 결과가 없습니다.");
-    // }
+    const tagData = tag.substring(1);
+    const filter = post.filter((item: IPost) => {
+      const tag = item.tag.split("#");
+      const result = tag.find((data: string) => data === tagData);
+      if (result) return true;
+      return false;
+    });
+    if (filter.length > 0) {
+      setSearchTag(tagData);
+      setHashTagPosts(filter);
+      clearCurrentContent();
+    }
   };
 
   return (

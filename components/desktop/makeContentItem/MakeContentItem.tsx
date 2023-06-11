@@ -8,6 +8,7 @@ import MakeHeader from "./header/MakeHeader";
 import styles from "./MakeContentItem.module.scss";
 import MakeTag from "./tag/MakeTag";
 import MakeUpload from "./upload/MakeUpload";
+import Loading from "../../shared/loading/Loading";
 
 const MakeContentItem = () => {
   const { user } = useUser();
@@ -47,11 +48,12 @@ const MakeContentItem = () => {
         router.push("/");
       })
       .catch(() => alert("게시글 등록에 실패하였습니다"))
-      .finally(() => setLoading(true));
+      .finally(() => setLoading(false));
   };
 
   return (
     <div className={styles.makeContentItem}>
+      {loading && <Loading />}
       <div className={styles.container}>
         <MakeHeader />
         <MakeUpload
