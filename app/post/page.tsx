@@ -3,9 +3,9 @@ import type {
   InferGetServerSidePropsType,
   NextPage,
 } from "next";
-import Contents from "../../components/desktop/contents/Contents";
 import styles from "../../styles/Home.module.scss";
 import Header from "../../layout/header/Header";
+import ContentsContainer from "../../components/container/ContentsContainer";
 
 const Post: NextPage = ({
   post,
@@ -13,7 +13,7 @@ const Post: NextPage = ({
   return (
     <div className={styles.container} style={{ height: "95%" }}>
       <Header />
-      <Contents />
+      <ContentsContainer />
     </div>
   );
 };

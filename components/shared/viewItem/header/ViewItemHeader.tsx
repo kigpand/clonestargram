@@ -15,6 +15,8 @@ const ViewItemHeader = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    console.log(user);
+    console.log(currentContent);
     if (user && currentContent) {
       setLoading(true);
       onIdCheck(currentContent.username).then((data: IUser) => {
@@ -38,14 +40,14 @@ const ViewItemHeader = () => {
         className={styles.img}
       />
       <div className={styles.text}>{nickname}</div>
-      <div className={styles.btn}>
+      {/* <div className={styles.btn}>
         {user?.id !== currentContent!.id && (
           <HeaderFollow
             currentContent={currentContent!}
             changeLoading={changeLoading}
           />
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

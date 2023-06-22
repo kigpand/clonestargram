@@ -1,4 +1,3 @@
-import { useState } from "react";
 import AddComment from "../../../shared/addComment/AddComment";
 import ViewItemBody from "../../../shared/viewItem/body/ViewItemBody";
 import ViewItemComment from "../../../shared/viewItem/comment/ViewItemComment";
@@ -10,37 +9,18 @@ interface IContentItem {
 }
 
 const ContentItem = ({ post }: IContentItem) => {
-  const [updateItem, setUpdateItem] = useState<any>(null);
-
-  // useEffect(() => {
-  //   if (updateItem) {
-  //     const result = posts.find((post: any) => post.id === updateItem.id);
-  //     if (result) {
-  //       setPosts([
-  //         updateItem,
-  //         ...posts.filter((post: any) => post.id !== updateItem.id),
-  //       ]);
-  //       setUpdateItem(null);
-  //     }
-  //   }
-  // }, [updateItem]);
-
   return (
     <div className={styles.contentItem}>
-      <ViewItemHeader viewItem={post} />
+      <ViewItemHeader />
       <img
-        className={styles.img}
-        src={
-          post.Images.length > 0
-            ? `http://localhost:4000/${post.Images[0].src}`
-            : "/noimg.png"
-        }
-        alt="viewerImg"
+        src={post.image ? `${post.image}` : "/noimg.png"}
+        className={styles.front}
+        alt="postImg"
       />
       <div className={styles.texts}>
-        <ViewItemBody viewItem={post} />
-        <ViewItemComment viewItem={post} />
-        <AddComment viewItem={post} setViewItem={setUpdateItem} />
+        <ViewItemBody />
+        <ViewItemComment />
+        <AddComment />
       </div>
     </div>
   );
