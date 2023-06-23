@@ -30,7 +30,7 @@ const Contents = React.memo(() => {
     <div className={styles.contents}>
       {isLoading && <Loading />}
       {hashTagPosts.length > 0 ? (
-        <HashTagContents />
+        <HashTagContents isMobile={false} />
       ) : (
         <div className={styles.lists}>
           {posts?.map((item: IPost, i: number) => {

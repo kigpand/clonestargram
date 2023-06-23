@@ -35,6 +35,8 @@
   }
 
   @include mobile {
+    height: 20%;
+
     .input {
       width: 300px;
       background-color: whitesmoke;

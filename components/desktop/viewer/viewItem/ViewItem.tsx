@@ -8,10 +8,10 @@ import styles from "./ViewItem.module.scss";
 const ViewItem = () => {
   return (
     <div className={styles.viewItem}>
-      <ViewItemHeader />
-      <ViewItemBody />
-      <ViewItemComment />
-      <AddComment />
+      <ViewItemHeader isMobile={false} />
+      <ViewItemBody isMobile={false} />
+      <ViewItemComment isMobile={false} />
+      <AddComment isMobile={false} />
     </div>
   );
 };

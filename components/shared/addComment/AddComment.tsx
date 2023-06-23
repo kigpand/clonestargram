@@ -6,8 +6,9 @@ import useContent from "../../../store/content";
 import { usePost } from "../../../hooks/usePost";
 import { IPost } from "../../../interface/IPost";
 import Loading from "../loading/Loading";
+import { IViewItem } from "../../../interface/IViewItem";
 
-const AddComment = () => {
+const AddComment = ({ isMobile, item }: IViewItem) => {
   const { posts, updatePosts } = usePost();
   const { user } = useUser();
   const { currentContent, setCurrentContent } = useContent();
@@ -16,6 +17,7 @@ const AddComment = () => {
   const input = useInput("");
 
   useEffect(() => {
+    if (isMobile) return;
     if (posts && posts.length > 0) {
       const result = posts.find(
         (item: IPost) => item._id === currentContent?._id
@@ -34,13 +36,14 @@ const AddComment = () => {
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!user || !currentContent) return;
+    const content = isMobile ? item : currentContent;
+    if (!user || !content) return;
 
     setLoading(true);
     fetch("/api/comment/", {
       method: "POST",
       body: JSON.stringify({
-        postId: currentContent._id,
+        postId: content._id,
         id: user.id,
         comment: input.value,
         image: user.image || "",

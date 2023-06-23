@@ -7,10 +7,11 @@ import useContent from "../../../store/content";
 import usePosts from "../../../store/post";
 import ContentItem from "./item/ContentItem";
 import styles from "./MobileContents.module.scss";
+import HashTagContents from "../../desktop/hashTagContents/HashTagContents";
 
 const MobileContents = () => {
   const { posts, isLoading, error } = usePost();
-  const { hashTagPosts, setHashTagPosts, setPost } = usePosts();
+  const { post, hashTagPosts, setHashTagPosts, setPost } = usePosts();
   const { currentContent } = useContent();
 
   useEffect(() => {
@@ -25,9 +26,15 @@ const MobileContents = () => {
 
   return (
     <div className={styles.mobileContents}>
-      {posts?.map((item: IPost, i: number) => {
-        return <ContentItem post={item} key={i} />;
-      })}
+      {hashTagPosts.length > 0 ? (
+        <HashTagContents isMobile={true} />
+      ) : (
+        <div className={styles.lists}>
+          {post?.map((item: IPost, i: number) => {
+            return <ContentItem post={item} key={i} />;
+          })}
+        </div>
+      )}
     </div>
   );
 };

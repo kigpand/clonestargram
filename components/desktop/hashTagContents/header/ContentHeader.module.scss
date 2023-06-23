@@ -1,3 +1,5 @@
+@import "../../../../styles/utils.scss";
+
 .contentHeader {
   width: 70%;
   padding: 20px;
@@ -9,5 +11,10 @@
   .length {
     margin-top: 10px;
     font-size: 14px;
+  }
+
+  @include mobile {
+    width: 100%;
+    padding: 10px;
   }
 }

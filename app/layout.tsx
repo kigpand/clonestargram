@@ -1,4 +1,5 @@
 import SWRConfigContext from "../context/SWRContext";
+import "../styles/globals.scss";
 
 export default function RootLayout({
   children,
