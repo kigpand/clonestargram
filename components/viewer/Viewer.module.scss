@@ -1,0 +1,33 @@
+@import "../../styles/func.scss";
+
+.viewer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .img {
+    background-color: white;
+    width: get-vw(400px);
+    height: get-vw(400px);
+  }
+
+  .back {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.6);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

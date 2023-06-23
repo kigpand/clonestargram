@@ -1,6 +1,5 @@
 import { IUser } from "./../interface/IUser";
-import create, { StateCreator } from "zustand";
-import { persist, PersistOptions } from "zustand/middleware";
+import create from "zustand";
 
 interface IUserStore {
   user: IUser | null;

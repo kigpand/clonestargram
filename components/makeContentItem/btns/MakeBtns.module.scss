@@ -1,0 +1,37 @@
+@import "../../../styles/func.scss";
+@import "../../../styles/variables.scss";
+@import "../../../styles/utils.scss";
+
+.makeBtns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+
+  .submitBtn,
+  .cancleBtn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .submitBtn {
+    background-color: $blueColor;
+    margin-right: 1rem;
+
+    &:hover {
+      background-color: $blueHoverColor;
+    }
+  }
+
+  .cancleBtn {
+    background-color: $cancleColor;
+
+    &:hover {
+      background-color: $cancleHoverColor;
+    }
+  }
+}

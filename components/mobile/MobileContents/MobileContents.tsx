@@ -6,7 +6,7 @@ import { IPost } from "../../../interface/IPost";
 import usePosts from "../../../store/post";
 import ContentItem from "./item/ContentItem";
 import styles from "./MobileContents.module.scss";
-import HashTagContents from "../../desktop/hashTagContents/HashTagContents";
+import HashTagContents from "../../hashTagContents/HashTagContents";
 
 const MobileContents = () => {
   const { posts, isLoading, error } = usePost();

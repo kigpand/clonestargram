@@ -5,11 +5,11 @@ import ContentsItem from "../../shared/contentsItem/ContentsItem";
 import React, { useEffect } from "react";
 import { IPost } from "../../../interface/IPost";
 import useContent from "../../../store/content";
-import Viewer from "../viewer/Viewer";
 import Loading from "../../shared/loading/Loading";
 import { usePost } from "../../../hooks/usePost";
 import usePosts from "../../../store/post";
-import HashTagContents from "../hashTagContents/HashTagContents";
+import HashTagContents from "../../hashTagContents/HashTagContents";
+import Viewer from "../../viewer/Viewer";
 
 const Contents = React.memo(() => {
   const { posts, isLoading, error } = usePost();

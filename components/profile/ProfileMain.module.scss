@@ -1,0 +1,11 @@
+@import "../../styles/utils.scss";
+
+.profileMain {
+  @include flexSort;
+  width: 70%;
+  height: 100vh;
+
+  @include mobile {
+    width: 100%;
+  }
+}
