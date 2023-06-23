@@ -5,12 +5,14 @@ import usePosts from "../../../store/post";
 import HeaderToggle from "./headerToggle/HeaderToggle";
 import styles from "./mobileHeader.module.scss";
 import { IPost } from "../../../interface/IPost";
+import { usePathname } from "next/navigation";
 
 const MobileHeader = () => {
   const inputData = useInput("");
   const { setHashTagPosts, post } = usePosts();
   const { setSearchTag } = useData();
   const [toggle, setToggle] = useState<boolean>(false);
+  const path = usePathname();
 
   const onToggle = () => {
     setToggle(!toggle);
@@ -36,13 +38,15 @@ const MobileHeader = () => {
 
   return (
     <div className={styles.mobileHeader}>
-      <input
-        className={styles.text}
-        type="text"
-        placeholder="검색.."
-        onChange={inputData.onChange}
-        onKeyDown={onEnter}
-      />
+      {path === "/post" && (
+        <input
+          className={styles.text}
+          type="text"
+          placeholder="검색.."
+          onChange={inputData.onChange}
+          onKeyDown={onEnter}
+        />
+      )}
       <img
         src="/hamburgur.png"
         alt="토글버튼"

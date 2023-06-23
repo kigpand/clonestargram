@@ -1,5 +1,4 @@
 import { useRouter } from "next/navigation";
-import { onLogout } from "../../../../service/auth";
 import useUser from "../../../../store/user";
 import styles from "./HeaderToggle.module.scss";
 import { BsFillPeopleFill } from "react-icons/bs";
@@ -7,12 +6,15 @@ import { BsPencilSquare } from "react-icons/bs";
 import { BsPersonCircle } from "react-icons/bs";
 import { BsFillHouseFill } from "react-icons/bs";
 import { BsFillDoorOpenFill } from "react-icons/bs";
+import usePosts from "../../../../store/post";
 
 const HeaderToggle = () => {
   const router = useRouter();
   const { setUser } = useUser();
+  const { clearHastTagPosts } = usePosts();
 
   const homeBtn = () => {
+    clearHastTagPosts();
     router.push("/post");
   };
 

@@ -1,7 +1,8 @@
 @import "../../../styles/variables.scss";
 
 .headerItems {
-  margin-left: 300px;
+  position: absolute;
+  right: 10px;
   display: flex;
 
   .icon {
