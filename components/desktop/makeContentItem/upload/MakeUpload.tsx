@@ -25,17 +25,13 @@ const MakeUpload = ({ onUploadImg, loading, imgUrl }: IMakeUpload) => {
         hidden
         onChange={onUploadImg}
       />
-      {loading ? (
-        <div>로딩중</div>
-      ) : (
-        <button className={styles.uploadBtn} onClick={onClickImageUpload}>
-          {loading ? (
-            <div className={styles.loadingSpinner}></div>
-          ) : (
-            "이미지 업로드"
-          )}
-        </button>
-      )}
+      <button className={styles.uploadBtn} onClick={onClickImageUpload}>
+        {loading ? (
+          <div className={styles.loadingSpinner}></div>
+        ) : (
+          "이미지 업로드"
+        )}
+      </button>
       {imgUrl && (
         <img
           className={styles.uploadImg}

@@ -18,6 +18,10 @@ const MakeContentItem = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
 
+  useEffect(() => {
+    if (!user) router.push("/");
+  }, []);
+
   const onAddTag = (item: string) => {
     const tagArr = [...tags];
     if (tagArr.find((tag: string) => tag === item)) {

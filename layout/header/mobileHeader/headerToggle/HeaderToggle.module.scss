@@ -1,58 +1,28 @@
+@import "../../../../styles/variables.scss";
+
 .headerToggle {
   position: absolute;
   right: 0;
   width: 40px;
   padding: 10px 5px;
-  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   border-left: 1px solid lightgray;
   border-bottom: 1px solid lightgray;
-  animation: toggleAnim 0.5s linear forwards;
+  background-color: whitesmoke;
+  top: 50px;
+  z-index: 100;
 
-  .homeBtn,
-  .friendBtn,
-  .profileBtn,
-  .logOutBtn {
-    padding: 3px;
-    border-radius: 50%;
-  }
-
-  .homeBtn,
-  .friendBtn,
-  .logOutBtn {
+  .icon {
     width: 25px;
     height: 25px;
-  }
+    margin-bottom: 10px;
 
-  .profileBtn {
-    width: 20px;
-    height: 20px;
-    border: 1px solid gray;
-  }
-
-  .contentBtn {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-  }
-
-  .homeBtn:hover,
-  .friendBtn:hover,
-  .profileBtn:hover,
-  .contentBtn:hover,
-  .logOutBtn:hover {
-    cursor: pointer;
-  }
-}
-
-@keyframes toggleAnim {
-  0% {
-    top: -200px;
-  }
-
-  100% {
-    top: 50px;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
   }
 }

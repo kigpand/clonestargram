@@ -7,8 +7,12 @@ import usePosts from "../../store/post";
 import styles from "./header.module.scss";
 import HeaderItems from "./headerItem/HeaderItem";
 import { IPost } from "../../interface/IPost";
+import { useWindowSize } from "../../hooks/useWindowHook";
+import MobileHeader from "./mobileHeader/mobileHeader";
+import { MOBILE_SIZE } from "../../utils/common";
 
 const Header = () => {
+  const windowSize = useWindowSize();
   const { setHashTagPosts, post } = usePosts();
   const { setSearchTag } = useData();
   const inputData = useInput("");
@@ -32,18 +36,24 @@ const Header = () => {
   };
 
   return (
-    <div className={styles.header}>
-      <img src="/logo.png" className={styles.logo} alt="로고" />
-      <input
-        className={styles.text}
-        type="text"
-        placeholder="검색.."
-        value={inputData.value}
-        onChange={inputData.onChange}
-        onKeyDown={onEnter}
-      />
-      <HeaderItems />
-    </div>
+    <section style={{ width: "100%" }}>
+      {windowSize < MOBILE_SIZE ? (
+        <MobileHeader />
+      ) : (
+        <div className={styles.header}>
+          <img src="/logo.png" className={styles.logo} alt="로고" />
+          <input
+            className={styles.text}
+            type="text"
+            placeholder="검색.."
+            value={inputData.value}
+            onChange={inputData.onChange}
+            onKeyDown={onEnter}
+          />
+          <HeaderItems />
+        </div>
+      )}
+    </section>
   );
 };
 

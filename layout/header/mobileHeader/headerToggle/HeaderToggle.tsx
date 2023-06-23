@@ -1,7 +1,12 @@
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { onLogout } from "../../../../service/auth";
 import useUser from "../../../../store/user";
 import styles from "./HeaderToggle.module.scss";
+import { BsFillPeopleFill } from "react-icons/bs";
+import { BsPencilSquare } from "react-icons/bs";
+import { BsPersonCircle } from "react-icons/bs";
+import { BsFillHouseFill } from "react-icons/bs";
+import { BsFillDoorOpenFill } from "react-icons/bs";
 
 const HeaderToggle = () => {
   const router = useRouter();
@@ -24,44 +29,17 @@ const HeaderToggle = () => {
   };
 
   const logoutBtn = async () => {
-    await onLogout().then(() => {
-      setUser(null);
-      router.push("/");
-    });
+    setUser(null);
+    router.push("/");
   };
 
   return (
     <div className={styles.headerToggle}>
-      <img
-        src="/friendBtn.png"
-        className={styles.friendBtn}
-        onClick={followBtn}
-        alt="friendBtn"
-      ></img>
-      <img
-        src="/contentBtn.png"
-        className={styles.contentBtn}
-        onClick={contentBtn}
-        alt="contentBtn"
-      ></img>
-      <img
-        src="/profileBtn.png"
-        className={styles.profileBtn}
-        onClick={profileBtn}
-        alt="profileBtn"
-      ></img>
-      <img
-        src="/homeBtn.png"
-        className={styles.homeBtn}
-        onClick={homeBtn}
-        alt="homeBtn"
-      ></img>
-      <img
-        src="/logout.png"
-        className={styles.logOutBtn}
-        onClick={logoutBtn}
-        alt="logoutBtn"
-      ></img>
+      <BsFillPeopleFill className={styles.icon} onClick={followBtn} />
+      <BsPencilSquare className={styles.icon} onClick={contentBtn} />
+      <BsPersonCircle className={styles.icon} onClick={profileBtn} />
+      <BsFillHouseFill className={styles.icon} onClick={homeBtn} />
+      <BsFillDoorOpenFill className={styles.icon} onClick={logoutBtn} />
     </div>
   );
 };

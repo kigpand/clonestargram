@@ -27,13 +27,16 @@
   }
 
   @include mobile {
+    height: 50px;
     justify-content: center;
+
     .logo {
       display: none;
     }
 
     .text {
       margin-left: 0;
+      width: 100px;
     }
   }
 }

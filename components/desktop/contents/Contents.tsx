@@ -13,12 +13,18 @@ import HashTagContents from "../hashTagContents/HashTagContents";
 
 const Contents = React.memo(() => {
   const { posts, isLoading, error } = usePost();
-  const { hashTagPosts, setHashTagPosts, setPost } = usePosts();
+  const { hashTagPosts, setHashTagPosts, setPost, post } = usePosts();
   const { currentContent } = useContent();
 
   useEffect(() => {
     if (posts) {
-      setPost(posts);
+      const result = posts.sort((a: IPost, b: IPost) => {
+        if (new Date(a.createdAt).getTime() > new Date(b.createdAt).getTime()) {
+          return -1;
+        }
+        return 1;
+      });
+      setPost(result);
     }
 
     return () => {
@@ -33,7 +39,7 @@ const Contents = React.memo(() => {
         <HashTagContents isMobile={false} />
       ) : (
         <div className={styles.lists}>
-          {posts?.map((item: IPost, i: number) => {
+          {post?.map((item: IPost, i: number) => {
             return <ContentsItem post={item} key={i} />;
           })}
         </div>
