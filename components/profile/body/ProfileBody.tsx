@@ -70,6 +70,14 @@ const ProfileBody = () => {
     }
   };
 
+  const onPhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value.length > 11) {
+      e.target.value = e.target.value.substring(0, 11);
+    } else {
+      phone.onChange(e);
+    }
+  };
+
   return (
     <div className={styles.profileBody}>
       {loading && <Loading />}
@@ -97,7 +105,11 @@ const ProfileBody = () => {
       <div className={styles.texts}>
         <ProfileInput type="ID" {...id} />
         <ProfileInput type="nickname" {...nickname} />
-        <ProfileInput type="phone" {...phone} />
+        <ProfileInput
+          type="phone"
+          value={phone.value}
+          onChange={onPhoneChange}
+        />
         <ProfileInput type="email" {...email} />
       </div>
       <div className={styles.introContainer}>

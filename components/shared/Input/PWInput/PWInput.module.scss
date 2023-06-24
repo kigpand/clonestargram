@@ -4,8 +4,17 @@
 .pwInput {
   @include input;
 
-  .warning {
+  .warning,
+  .checkTitle,
+  .successTitle {
     font-size: rem(12px);
+  }
+
+  .warning {
     color: red;
+  }
+
+  .successTitle {
+    color: #5e3dea;
   }
 }

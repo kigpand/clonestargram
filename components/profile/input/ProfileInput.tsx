@@ -19,9 +19,9 @@ const ProfileInput = React.memo(({ type, value, onChange }: IProfileInput) => {
     <div className={styles.inputContainer}>
       <label className={styles.label}>{typeItem[type]}</label>
       <input
-        type="text"
+        type={type === "phone" ? "number" : "text"}
         className={styles.input}
-        disabled={type === "ID" ? true : false}
+        disabled={type === "ID" || type === "email" ? true : false}
         value={value}
         onChange={onChange}
       ></input>

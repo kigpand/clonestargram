@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import useContent from "../../../store/content";
 import styles from "./ContentsItem.module.scss";
 import { IPost } from "../../../interface/IPost";
-import Viewer from "../../desktop/viewer/Viewer";
 
 interface IContentsItem {
   post: IPost;
