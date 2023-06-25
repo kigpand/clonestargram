@@ -11,7 +11,7 @@ const MakeHeader = () => {
         className={styles.img}
         alt="contentImg"
       ></img>
-      <div className={styles.nickname}>{user!.name}</div>
+      <div className={styles.nickname}>{user?.name || ""}</div>
     </div>
   );
 };
