@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./ProfileInput.module.scss";
 
 interface IProfileInput {

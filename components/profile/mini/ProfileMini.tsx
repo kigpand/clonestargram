@@ -1,4 +1,6 @@
-import useUser from "../../../../store/user";
+"use client";
+
+import useUser from "../../../store/user";
 import styles from "./ProfileMini.module.scss";
 
 const ProfileMini = () => {

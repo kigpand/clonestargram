@@ -1,3 +1,5 @@
+"use client";
+
 import { FormEvent, useEffect, useState } from "react";
 import { useInput } from "../../../hooks/useInput";
 import useUser from "../../../store/user";
