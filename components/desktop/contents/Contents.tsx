@@ -49,4 +49,6 @@ const Contents = React.memo(() => {
   );
 });
 
+Contents.displayName = "content";
+
 export default Contents;
