@@ -62,10 +62,6 @@ const MobileContents = () => {
     setArr([...arr, post[arr.length + 1]]);
   }, [scroll]);
 
-  useEffect(() => {
-    console.log(arr);
-  }, [arr]);
-
   return (
     <div className={styles.mobileContents}>
       {hashTagPosts.length > 0 ? (
