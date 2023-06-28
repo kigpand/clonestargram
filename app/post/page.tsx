@@ -5,17 +5,15 @@ import type {
 } from "next";
 import styles from "../../styles/Home.module.scss";
 import Header from "../../layout/header/Header";
-import ContentsContainer from "../../components/container/ContentsContainer";
+import Post from "../../components/post/Post";
 
-const Post: NextPage = ({
-  post,
-}: InferGetServerSidePropsType<GetServerSideProps>) => {
+const PostPage: NextPage = () => {
   return (
     <div className={styles.container} style={{ height: "95%" }}>
       <Header />
-      <ContentsContainer />
+      <Post />
     </div>
   );
 };
 
-export default Post;
+export default PostPage;

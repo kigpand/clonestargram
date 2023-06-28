@@ -3,12 +3,12 @@
 import { useEffect } from "react";
 import { useWindowSize } from "../../hooks/useWindowHook";
 import { MOBILE_SIZE } from "../../utils/common";
-import Contents from "../desktop/contents/Contents";
-import MobileContents from "../mobile/MobileContents/MobileContents";
 import useUser from "../../store/user";
 import { useRouter } from "next/navigation";
+import MobilePosts from "./mobile/MobilePosts";
+import Posts from "./desktop/Contents";
 
-const ContentsContainer = () => {
+const Post = () => {
   const windowSize = useWindowSize();
   const { user } = useUser();
   const router = useRouter();
@@ -19,9 +19,9 @@ const ContentsContainer = () => {
 
   return (
     <section style={{ width: "100%" }}>
-      {windowSize < MOBILE_SIZE ? <MobileContents /> : <Contents />}
+      {windowSize < MOBILE_SIZE ? <MobilePosts /> : <Posts />}
     </section>
   );
 };
 
-export default ContentsContainer;
+export default Post;

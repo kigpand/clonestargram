@@ -1,17 +1,17 @@
 "use client";
 
-import styles from "./Contents.module.scss";
-import ContentsItem from "../../shared/contentsItem/ContentsItem";
-import React, { useEffect } from "react";
+import { usePost } from "../../../hooks/usePost";
 import { IPost } from "../../../interface/IPost";
 import useContent from "../../../store/content";
-import Loading from "../../shared/loading/Loading";
-import { usePost } from "../../../hooks/usePost";
 import usePosts from "../../../store/post";
 import HashTagContents from "../../hashTagContents/HashTagContents";
+import ContentsItem from "../../shared/contentsItem/ContentsItem";
+import Loading from "../../shared/loading/Loading";
 import Viewer from "../../viewer/Viewer";
+import styles from "./Contents.module.scss";
+import React, { useEffect } from "react";
 
-const Contents = React.memo(() => {
+const Posts = React.memo(() => {
   const { posts, isLoading, error } = usePost();
   const { hashTagPosts, setHashTagPosts, setPost, post } = usePosts();
   const { currentContent } = useContent();
@@ -49,6 +49,6 @@ const Contents = React.memo(() => {
   );
 });
 
-Contents.displayName = "content";
+Posts.displayName = "content";
 
-export default Contents;
+export default Posts;

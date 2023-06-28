@@ -1,6 +1,6 @@
 import { IPost } from "../../interface/IPost";
 import usePosts from "../../store/post";
-import ContentItem from "../mobile/MobileContents/item/ContentItem";
+import ContentItem from "../post/mobile/item/ContentItem";
 import ContentsItem from "../shared/contentsItem/ContentsItem";
 import styles from "./HashTagContents.module.scss";
 import ContentHeader from "./header/ContentHeader";

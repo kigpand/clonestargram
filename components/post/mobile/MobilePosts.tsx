@@ -1,14 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePost } from "../../../hooks/usePost";
-import { IPost } from "../../../interface/IPost";
-import usePosts from "../../../store/post";
 import ContentItem from "./item/ContentItem";
-import styles from "./MobileContents.module.scss";
+import { usePost } from "../../../hooks/usePost";
+import usePosts from "../../../store/post";
+import { IPost } from "../../../interface/IPost";
 import HashTagContents from "../../hashTagContents/HashTagContents";
 
-const MobileContents = () => {
+const MobilePosts = () => {
   const { posts, isLoading, error } = usePost();
   const { post, hashTagPosts, setHashTagPosts, setPost } = usePosts();
   const [arr, setArr] = useState<IPost[]>([]);
@@ -63,11 +62,11 @@ const MobileContents = () => {
   }, [scroll]);
 
   return (
-    <div className={styles.mobileContents}>
+    <div style={{ width: "100%" }}>
       {hashTagPosts.length > 0 ? (
         <HashTagContents isMobile={true} />
       ) : (
-        <div className={styles.lists}>
+        <div>
           {arr.map((item: IPost, i: number) => {
             return <ContentItem post={item} key={i} />;
           })}
@@ -77,4 +76,4 @@ const MobileContents = () => {
   );
 };
 
-export default MobileContents;
+export default MobilePosts;
