@@ -2,19 +2,16 @@
 
 import { usePost } from "../../../hooks/usePost";
 import { IPost } from "../../../interface/IPost";
-import useContent from "../../../store/content";
 import usePosts from "../../../store/post";
 import HashTagContents from "../../hashTagContents/HashTagContents";
 import ContentsItem from "../../shared/contentsItem/ContentsItem";
 import Loading from "../../shared/loading/Loading";
-import Viewer from "../../viewer/Viewer";
-import styles from "./Contents.module.scss";
+import styles from "./Posts.module.scss";
 import React, { useEffect } from "react";
 
-const Posts = React.memo(() => {
-  const { posts, isLoading, error } = usePost();
+const Posts = () => {
+  const { posts, isLoading } = usePost();
   const { hashTagPosts, setHashTagPosts, setPost, post } = usePosts();
-  const { currentContent } = useContent();
 
   useEffect(() => {
     if (posts) {
@@ -44,11 +41,8 @@ const Posts = React.memo(() => {
           })}
         </div>
       )}
-      {currentContent && <Viewer />}
     </div>
   );
-});
-
-Posts.displayName = "content";
+};
 
 export default Posts;

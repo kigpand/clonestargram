@@ -4,28 +4,26 @@ import { FormEvent, useEffect, useState } from "react";
 import { useInput } from "../../../hooks/useInput";
 import useUser from "../../../store/user";
 import styles from "./AddComment.module.scss";
-import useContent from "../../../store/content";
 import { usePost } from "../../../hooks/usePost";
 import { IPost } from "../../../interface/IPost";
 import Loading from "../loading/Loading";
 import { IViewItem } from "../../../interface/IViewItem";
 
-const AddComment = ({ isMobile, item }: IViewItem) => {
+const AddComment = ({ item }: IViewItem) => {
   const { posts, updatePosts } = usePost();
   const { user } = useUser();
-  const { currentContent, setCurrentContent } = useContent();
   const [addFlag, setAddFlag] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const input = useInput("");
 
   useEffect(() => {
-    if (isMobile) return;
-    if (posts && posts.length > 0) {
-      const result = posts.find(
-        (item: IPost) => item._id === currentContent?._id
-      );
-      if (result) setCurrentContent(result);
-    }
+    // if (isMobile) return;
+    // if (posts && posts.length > 0) {
+    //   const result = posts.find(
+    //     (item: IPost) => item._id === currentContent?._id
+    //   );
+    //   if (result) setCurrentContent(result);
+    // }
   }, [posts]);
 
   useEffect(() => {
@@ -38,14 +36,13 @@ const AddComment = ({ isMobile, item }: IViewItem) => {
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const content = isMobile ? item : currentContent;
-    if (!user || !content) return;
+    if (!user || !item) return;
 
     setLoading(true);
     fetch("/api/comment/", {
       method: "POST",
       body: JSON.stringify({
-        postId: content._id,
+        postId: item._id,
         id: user.id,
         comment: input.value,
         image: user.image || "",

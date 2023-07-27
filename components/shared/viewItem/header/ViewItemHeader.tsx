@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import useContent from "../../../../store/content";
 import useUser from "../../../../store/user";
 import HeaderFollow from "./follow/HeaderFollow";
 import styles from "./ViewItemHeader.module.scss";
@@ -9,8 +8,7 @@ import SubLoading from "../../subLoading/SubLoading";
 import { IPost } from "../../../../interface/IPost";
 import { IViewItem } from "../../../../interface/IViewItem";
 
-const ViewItemHeader = ({ isMobile, item }: IViewItem) => {
-  const { currentContent } = useContent();
+const ViewItemHeader = ({ item }: IViewItem) => {
   const { user } = useUser();
   const [imgUrl, setImgUrl] = useState<string>("");
   const [nickname, setNickname] = useState<string>("");
@@ -18,7 +16,7 @@ const ViewItemHeader = ({ isMobile, item }: IViewItem) => {
   const [content, setContent] = useState<IPost | null>(null);
 
   useEffect(() => {
-    const contentData = isMobile ? item : currentContent;
+    const contentData = item;
     if (user && contentData) {
       setContent(contentData);
       setLoading(true);
@@ -38,7 +36,7 @@ const ViewItemHeader = ({ isMobile, item }: IViewItem) => {
     <div className={styles.viewItemHeader}>
       {loading && <SubLoading />}
       <img
-        src={imgUrl !== "" ? `${imgUrl}` : "/profileImg.png"}
+        src={imgUrl && imgUrl !== "" ? `${imgUrl}` : "/profileImg.png"}
         alt="prifle"
         className={styles.img}
       />

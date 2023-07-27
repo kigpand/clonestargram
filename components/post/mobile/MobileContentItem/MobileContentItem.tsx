@@ -3,28 +3,28 @@ import AddComment from "../../../shared/addComment/AddComment";
 import ViewItemBody from "../../../shared/viewItem/body/ViewItemBody";
 import ViewItemComment from "../../../shared/viewItem/comment/ViewItemComment";
 import ViewItemHeader from "../../../shared/viewItem/header/ViewItemHeader";
-import styles from "./ContentItem.module.scss";
+import styles from "./MobileContentItem.module.scss";
 
-interface IContentItem {
+interface IMobileContentItem {
   post: IPost;
 }
 
-const ContentItem = ({ post }: IContentItem) => {
+const MobileContentItem = ({ post }: IMobileContentItem) => {
   return (
     <div className={styles.contentItem}>
-      <ViewItemHeader isMobile={true} item={post} />
+      <ViewItemHeader item={post} />
       <img
         src={post.image ? `${post.image}` : "/noimg.png"}
         className={styles.front}
         alt="postImg"
       />
       <div className={styles.texts}>
-        <ViewItemBody isMobile={true} item={post} />
-        <ViewItemComment isMobile={true} item={post} />
-        <AddComment isMobile={true} item={post} />
+        <ViewItemBody item={post} />
+        <ViewItemComment item={post} />
+        <AddComment item={post} />
       </div>
     </div>
   );
 };
 
-export default ContentItem;
+export default MobileContentItem;

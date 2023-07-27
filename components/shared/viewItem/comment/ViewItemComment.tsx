@@ -1,20 +1,17 @@
 import { useEffect, useState } from "react";
 import { IViewItem } from "../../../../interface/IViewItem";
-import useContent from "../../../../store/content";
 import Comment from "../../comment/Comment";
 import styles from "./ViewItemComment.module.scss";
 import { IPost } from "../../../../interface/IPost";
 
-const ViewItemComment = ({ isMobile, item }: IViewItem) => {
-  const { currentContent } = useContent();
+const ViewItemComment = ({ item }: IViewItem) => {
   const [content, setContent] = useState<IPost | null>(null);
 
   useEffect(() => {
-    const data = isMobile ? item : currentContent;
-    if (data) {
-      setContent(data);
+    if (item) {
+      setContent(item);
     }
-  }, [item, currentContent]);
+  }, [item]);
 
   return (
     <div className={styles.viewItemComment}>

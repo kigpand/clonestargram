@@ -1,20 +1,18 @@
 import { useEffect, useState } from "react";
-import useContent from "../../../../store/content";
 import styles from "./ViewItemBody.module.scss";
 import usePosts from "../../../../store/post";
 import { IPost } from "../../../../interface/IPost";
 import useData from "../../../../store/data";
 import { IViewItem } from "../../../../interface/IViewItem";
 
-const ViewItemBody = ({ isMobile, item }: IViewItem) => {
+const ViewItemBody = ({ item }: IViewItem) => {
   const { post, setHashTagPosts } = usePosts();
   const { setSearchTag } = useData();
-  const { currentContent, clearCurrentContent } = useContent();
   const [content, setContent] = useState<IPost | null>(null);
   const [tags, setTags] = useState<string[]>([]);
 
   useEffect(() => {
-    const contentData = isMobile ? item : currentContent;
+    const contentData = item;
     if (contentData && contentData.tag) {
       const tag = contentData.tag.split("#");
       const tagItem: string[] = [];
@@ -24,7 +22,7 @@ const ViewItemBody = ({ isMobile, item }: IViewItem) => {
       setTags(tagItem);
       setContent(contentData);
     }
-  }, [currentContent, item]);
+  }, [item]);
 
   const onTagClick = async (tag: string) => {
     const tagData = tag.substring(1);
@@ -37,7 +35,6 @@ const ViewItemBody = ({ isMobile, item }: IViewItem) => {
     if (filter.length > 0) {
       setSearchTag(tagData);
       setHashTagPosts(filter);
-      clearCurrentContent();
     }
   };
 

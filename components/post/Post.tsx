@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useWindowSize } from "../../hooks/useWindowHook";
 import { MOBILE_SIZE } from "../../utils/common";
 import useUser from "../../store/user";
 import { useRouter } from "next/navigation";
 import MobilePosts from "./mobile/MobilePosts";
-import Posts from "./desktop/Contents";
+import Posts from "./desktop/Posts";
 
 const Post = () => {
   const windowSize = useWindowSize();

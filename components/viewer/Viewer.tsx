@@ -1,11 +1,14 @@
 import { useEffect } from "react";
-import useContent from "../../store/content";
 import styles from "./Viewer.module.scss";
 import ViewItem from "./viewItem/ViewItem";
+import { IPost } from "../../interface/IPost";
 
-const Viewer = () => {
-  const { currentContent, clearCurrentContent } = useContent();
+type Props = {
+  post: IPost;
+  onCloseView: () => void;
+};
 
+const Viewer = ({ post, onCloseView }: Props) => {
   useEffect(() => {
     document.body.style.overflowY = "hidden";
 
@@ -18,11 +21,11 @@ const Viewer = () => {
     <div className={styles.viewer}>
       <img
         className={styles.img}
-        src={currentContent?.image ? `${currentContent.image}` : "/noimg.png"}
+        src={post.image || "/noimg.png"}
         alt="viewerImg"
       />
-      <ViewItem />
-      <div className={styles.back} onClick={clearCurrentContent} />
+      <ViewItem post={post} />
+      <div className={styles.back} onClick={onCloseView} />
     </div>
   );
 };

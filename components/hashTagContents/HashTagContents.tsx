@@ -1,6 +1,6 @@
 import { IPost } from "../../interface/IPost";
 import usePosts from "../../store/post";
-import ContentItem from "../post/mobile/item/ContentItem";
+import MobileContentItem from "../post/mobile/MobileContentItem/MobileContentItem";
 import ContentsItem from "../shared/contentsItem/ContentsItem";
 import styles from "./HashTagContents.module.scss";
 import ContentHeader from "./header/ContentHeader";
@@ -18,7 +18,7 @@ const HashTagContents = ({ isMobile }: IHashTagContents) => {
       <div className={styles.lists}>
         {hashTagPosts.map((item: IPost, i: number) => {
           return isMobile ? (
-            <ContentItem post={item} key={i} />
+            <MobileContentItem post={item} key={i} />
           ) : (
             <ContentsItem post={item} key={i} />
           );

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ContentItem from "./item/ContentItem";
+import MobileContentItem from "./MobileContentItem/MobileContentItem";
 import { usePost } from "../../../hooks/usePost";
 import usePosts from "../../../store/post";
 import { IPost } from "../../../interface/IPost";
@@ -68,7 +68,7 @@ const MobilePosts = () => {
       ) : (
         <div>
           {arr.map((item: IPost, i: number) => {
-            return <ContentItem post={item} key={i} />;
+            return <MobileContentItem post={item} key={i} />;
           })}
         </div>
       )}
