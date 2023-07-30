@@ -12,15 +12,14 @@ const ViewItemBody = ({ item }: IViewItem) => {
   const [tags, setTags] = useState<string[]>([]);
 
   useEffect(() => {
-    const contentData = item;
-    if (contentData && contentData.tag) {
-      const tag = contentData.tag.split("#");
+    if (item && item.tag) {
+      const tag = item.tag.split("#");
       const tagItem: string[] = [];
       tag.forEach((data: string) => {
         if (data !== "") tagItem.push("#" + data);
       });
       setTags(tagItem);
-      setContent(contentData);
+      setContent(item);
     }
   }, [item]);
 

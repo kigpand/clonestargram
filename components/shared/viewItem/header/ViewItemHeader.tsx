@@ -16,11 +16,10 @@ const ViewItemHeader = ({ item }: IViewItem) => {
   const [content, setContent] = useState<IPost | null>(null);
 
   useEffect(() => {
-    const contentData = item;
-    if (user && contentData) {
-      setContent(contentData);
+    if (user && item) {
+      setContent(item);
       setLoading(true);
-      onIdCheck(contentData.username).then((data: IUser) => {
+      onIdCheck(item.username).then((data: IUser) => {
         setImgUrl(data.image);
         setNickname(data.name);
         setLoading(false);

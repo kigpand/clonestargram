@@ -17,16 +17,6 @@ const AddComment = ({ item }: IViewItem) => {
   const input = useInput("");
 
   useEffect(() => {
-    // if (isMobile) return;
-    // if (posts && posts.length > 0) {
-    //   const result = posts.find(
-    //     (item: IPost) => item._id === currentContent?._id
-    //   );
-    //   if (result) setCurrentContent(result);
-    // }
-  }, [posts]);
-
-  useEffect(() => {
     if (input.value === "") {
       setAddFlag(false);
     } else {
