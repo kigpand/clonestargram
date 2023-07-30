@@ -26,17 +26,30 @@ const LoginComponents = () => {
   };
 
   const onSubmit = async () => {
-    const user = await onCheckUser(id.value, pw.value);
-    if (!user) return alert("로그인 정보가 없습니다.");
-    setUser({
-      id: user.username,
-      name: user.name,
-      phone: user.phone,
-      email: user.email,
-      image: user.image || null,
-      intro: user.intro || "",
-      followings: user.following,
-      followers: user.followers,
+    fetch("/api/login/", {
+      method: "post",
+      body: JSON.stringify({
+        id: id.value,
+        pw: pw.value,
+      }),
+    }).then((data) => console.log(data));
+    // const user = await onCheckUser(id.value, pw.value);
+    // if (!user) return alert("로그인 정보가 없습니다.");
+    // setUser({
+    //   id: user.username,
+    //   name: user.name,
+    //   phone: user.phone,
+    //   email: user.email,
+    //   image: user.image || null,
+    //   intro: user.intro || "",
+    //   followings: user.following,
+    //   followers: user.followers,
+    // });
+  };
+
+  const onTest = () => {
+    fetch("/api/login/", {
+      method: "get",
     });
   };
 
@@ -64,6 +77,7 @@ const LoginComponents = () => {
           회원가입
         </div>
       </div>
+      <div onClick={onTest}>test</div>
       {join && <Join unJoin={unJoin} />}
     </div>
   );
