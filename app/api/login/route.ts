@@ -14,6 +14,7 @@ export async function POST(req: NextRequest) {
     name: "jwt",
     value: accessToken,
     httpOnly: true,
+    maxAge: 3600,
   });
 
   return response;
