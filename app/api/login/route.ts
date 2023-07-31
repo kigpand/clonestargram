@@ -1,20 +1,32 @@
-import JWT from "jsonwebtoken";
+// import JWT from "jsonwebtoken";
 import { NextRequest, NextResponse } from "next/server";
+import { onCheckUser, onIdCheck } from "../../../service/user";
+import JWT from "jsonwebtoken";
 
 export async function POST(req: NextRequest) {
-  const accessTokenPayload = await req.json();
-  const accessToken = JWT.sign(
-    accessTokenPayload,
-    process.env.NEXT_PUBLIC_JWT_SECRET!
-  );
+  const { id, pw } = await req.json();
+  const accessToken = JWT.sign({ id }, process.env.NEXT_PUBLIC_JWT_SECRET!);
+  const result = await onCheckUser(id, pw);
+  if (!result) return new Response("fail", { status: 400 });
 
-  return new Response("success", {
-    status: 200,
-    headers: { "Set-Cookie": `token=${accessToken}` },
+  const response = NextResponse.json({ status: 200, data: result });
+  response.cookies.set({
+    name: "jwt",
+    value: accessToken,
+    httpOnly: true,
   });
+
+  return response;
 }
 
 export async function GET(req: NextRequest) {
-  console.log(req.cookies);
-  console.log("45646464");
+  const cookie = req.cookies;
+  const value = cookie.get("jwt")?.value;
+  if (!value) return new Response("Bad Request", { status: 400 });
+  const jwt: any = JWT.verify(value, process.env.NEXT_PUBLIC_JWT_SECRET!);
+  const { id } = jwt;
+  const result = await onIdCheck(id);
+  if (!result) return new Response("fail", { status: 400 });
+
+  return NextResponse.json({ status: 200, data: result });
 }

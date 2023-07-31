@@ -1,8 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { follow, unFollow } from "../../../service/user";
+import JWT from "jsonwebtoken";
 
 export async function PUT(req: NextRequest) {
-  const { id, other, isFollow } = await req.json();
+  const { other, isFollow } = await req.json();
+  const cookie = req.cookies;
+  const value = cookie.get("jwt")?.value;
+  if (!value) return new Response("Bad Request", { status: 400 });
+  const jwt: any = JWT.verify(value, process.env.NEXT_PUBLIC_JWT_SECRET!);
+  const { id } = jwt;
 
   if (!id || !other) {
     return new Response("Bad Request", { status: 400 });

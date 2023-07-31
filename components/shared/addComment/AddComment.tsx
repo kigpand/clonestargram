@@ -2,16 +2,15 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import { useInput } from "../../../hooks/useInput";
-import useUser from "../../../store/user";
 import styles from "./AddComment.module.scss";
 import { usePost } from "../../../hooks/usePost";
-import { IPost } from "../../../interface/IPost";
 import Loading from "../loading/Loading";
 import { IViewItem } from "../../../interface/IViewItem";
+import useUserInfo from "../../../hooks/useUserInfo";
 
 const AddComment = ({ item }: IViewItem) => {
-  const { posts, updatePosts } = usePost();
-  const { user } = useUser();
+  const { updatePosts } = usePost();
+  const { user } = useUserInfo();
   const [addFlag, setAddFlag] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const input = useInput("");
@@ -33,7 +32,6 @@ const AddComment = ({ item }: IViewItem) => {
       method: "POST",
       body: JSON.stringify({
         postId: item._id,
-        id: user.id,
         comment: input.value,
         image: user.image || "",
         nickname: user.name,
