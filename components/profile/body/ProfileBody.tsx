@@ -4,13 +4,13 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import ProfileInput from "../input/ProfileInput";
 import styles from "./ProfileBody.module.scss";
-import useUser from "../../../store/user";
 import { useInput } from "../../../hooks/useInput";
 import { onIdCheck } from "../../../service/user";
 import Loading from "../../shared/loading/Loading";
+import useUserInfo from "../../../hooks/useUserInfo";
 
 const ProfileBody = () => {
-  const { user, setUser } = useUser();
+  const { user, onFetchUser } = useUserInfo();
   const router = useRouter();
   const imgRef = useRef<HTMLInputElement>(null);
   const textRef = useRef<HTMLTextAreaElement>(null);
@@ -52,17 +52,7 @@ const ProfileBody = () => {
 
       fetch("/api/user/", { method: "PATCH", body: formData })
         .then(async () => {
-          const newUser = await onIdCheck(user.id);
-          setUser({
-            id: newUser.username,
-            name: newUser.name,
-            phone: newUser.phone,
-            email: newUser.email,
-            image: newUser.image || null,
-            intro: newUser.intro || "",
-            followings: newUser.following,
-            followers: newUser.followers,
-          });
+          await onFetchUser();
           setLoading(false);
           router.push("/");
         })

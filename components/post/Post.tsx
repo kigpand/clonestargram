@@ -10,12 +10,6 @@ import Posts from "./desktop/Posts";
 
 const Post = () => {
   const windowSize = useWindowSize();
-  const { user } = useUser();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!user) router.push("/");
-  }, [user]);
 
   return (
     <section style={{ width: "100%" }}>

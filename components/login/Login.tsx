@@ -1,5 +1,3 @@
-"use client";
-
 import styles from "./Login.module.scss";
 import LoginComponents from "../shared/loginComponents/LoginComponents";
 

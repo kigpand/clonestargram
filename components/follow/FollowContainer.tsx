@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import useUser from "../../store/user";
 import styles from "./FollowContainer.module.scss";
 import FollowWrap from "./followWrap/FollowWrap";
+import useUserInfo from "../../hooks/useUserInfo";
 
 const FollowContaier = () => {
-  const { user } = useUser();
+  const { user } = useUserInfo();
 
   return (
     <div className={styles.container}>

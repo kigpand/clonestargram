@@ -1,10 +1,10 @@
 "use client";
 
-import useUser from "../../../store/user";
+import useUserInfo from "../../../hooks/useUserInfo";
 import styles from "./ProfileMini.module.scss";
 
 const ProfileMini = () => {
-  const { user } = useUser();
+  const { user } = useUserInfo();
   return (
     <div className={styles.profileMini}>
       <div className={styles.container}>

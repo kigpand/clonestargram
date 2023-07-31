@@ -7,20 +7,16 @@ import MakeHeader from "./header/MakeHeader";
 import styles from "./MakeContentItem.module.scss";
 import MakeTag from "./tag/MakeTag";
 import MakeUpload from "./upload/MakeUpload";
-import useUser from "../../store/user";
 import Loading from "../shared/loading/Loading";
+import useUserInfo from "../../hooks/useUserInfo";
 
 const MakeContentItem = () => {
-  const { user } = useUser();
+  const { user } = useUserInfo();
   const textRef = useRef<HTMLTextAreaElement>(null);
   const [imgUrl, setImgUrl] = useState<File | null>(null);
   const [tags, setTags] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
-
-  useEffect(() => {
-    if (!user) router.push("/");
-  }, []);
 
   const onAddTag = (item: string) => {
     const tagArr = [...tags];
@@ -44,12 +40,11 @@ const MakeContentItem = () => {
     if (imgUrl) formData.append("file", imgUrl);
     formData.append("tag", tags.toString().replaceAll(",", ""));
     formData.append("content", textRef.current.value);
-    formData.append("id", user.id);
 
     fetch("/api/posts/", { method: "POST", body: formData })
       .then((res) => {
         if (!res.ok) return alert("게시글 등록에 실패하였습니다");
-        router.push("/");
+        router.push("/post");
       })
       .catch(() => alert("게시글 등록에 실패하였습니다"))
       .finally(() => setLoading(false));

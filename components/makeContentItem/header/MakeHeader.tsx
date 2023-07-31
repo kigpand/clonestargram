@@ -1,8 +1,8 @@
-import useUser from "../../../store/user";
+import useUserInfo from "../../../hooks/useUserInfo";
 import styles from "./MakeHeader.module.scss";
 
 const MakeHeader = () => {
-  const { user } = useUser();
+  const { user } = useUserInfo();
 
   return (
     <div className={styles.makeHeader}>

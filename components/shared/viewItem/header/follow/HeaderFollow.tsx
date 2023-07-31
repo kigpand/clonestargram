@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import useUser from "../../../../../store/user";
 import styles from "./HeaderFollow.module.scss";
 import { IPost } from "../../../../../interface/IPost";
-import { onIdCheck } from "../../../../../service/user";
+import useUserInfo from "../../../../../hooks/useUserInfo";
 
 interface IHeaderFollow {
   currentContent: IPost;
@@ -10,7 +9,7 @@ interface IHeaderFollow {
 }
 
 const HeaderFollow = ({ currentContent, changeLoading }: IHeaderFollow) => {
-  const { user, setUser } = useUser();
+  const { user, onFetchUser } = useUserInfo();
   const [isFollow, setIsFollow] = useState<boolean | null>(null);
 
   useEffect(() => {
@@ -23,7 +22,7 @@ const HeaderFollow = ({ currentContent, changeLoading }: IHeaderFollow) => {
     } else {
       setIsFollow(false);
     }
-  }, [user]);
+  }, [user, currentContent]);
 
   const onFollowBtn = async (flag: boolean) => {
     if (!user) return alert("오류가 발생했습니다");
@@ -31,24 +30,12 @@ const HeaderFollow = ({ currentContent, changeLoading }: IHeaderFollow) => {
     await fetch("/api/follow", {
       method: "PUT",
       body: JSON.stringify({
-        id: user.id,
         other: currentContent.id,
         isFollow: flag,
       }),
     })
       .then(async () => {
-        const newUser = await onIdCheck(user.id);
-        setUser({
-          id: newUser.username,
-          name: newUser.name,
-          phone: newUser.phone,
-          email: newUser.email,
-          image: newUser.image || null,
-          intro: newUser.intro || "",
-          followings: newUser.following,
-          followers: newUser.followers,
-        });
-        changeLoading(false);
+        await onFetchUser().then(() => changeLoading(false));
       })
       .catch((e: any) => console.error(e));
   };

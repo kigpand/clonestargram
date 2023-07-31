@@ -7,16 +7,17 @@ import { IUser } from "../../../../interface/IUser";
 import SubLoading from "../../subLoading/SubLoading";
 import { IPost } from "../../../../interface/IPost";
 import { IViewItem } from "../../../../interface/IViewItem";
+import useUserInfo from "../../../../hooks/useUserInfo";
 
 const ViewItemHeader = ({ item }: IViewItem) => {
-  const { user } = useUser();
+  const { user } = useUserInfo();
   const [imgUrl, setImgUrl] = useState<string>("");
   const [nickname, setNickname] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [content, setContent] = useState<IPost | null>(null);
 
   useEffect(() => {
-    if (user && item) {
+    if (item) {
       setContent(item);
       setLoading(true);
       onIdCheck(item.username).then((data: IUser) => {
@@ -25,7 +26,7 @@ const ViewItemHeader = ({ item }: IViewItem) => {
         setLoading(false);
       });
     }
-  }, [user]);
+  }, []);
 
   const changeLoading = (flag: boolean) => {
     setLoading(flag);
