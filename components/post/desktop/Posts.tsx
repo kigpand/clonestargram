@@ -1,5 +1,6 @@
 "use client";
 
+import useFilteredPost from "../../../hooks/useFilteredPost";
 import { usePost } from "../../../hooks/usePost";
 import { IPost } from "../../../interface/IPost";
 import usePosts from "../../../store/post";
@@ -10,24 +11,9 @@ import styles from "./Posts.module.scss";
 import React, { useEffect } from "react";
 
 const Posts = () => {
-  const { posts, isLoading } = usePost();
-  const { hashTagPosts, setHashTagPosts, setPost, post } = usePosts();
-
-  useEffect(() => {
-    if (posts) {
-      const result = posts.sort((a: IPost, b: IPost) => {
-        if (new Date(a.createdAt).getTime() > new Date(b.createdAt).getTime()) {
-          return -1;
-        }
-        return 1;
-      });
-      setPost(result);
-    }
-
-    return () => {
-      setHashTagPosts([]);
-    };
-  }, [posts]);
+  const { isLoading } = usePost();
+  const { hashTagPosts } = usePosts();
+  const { post } = useFilteredPost();
 
   return (
     <div className={styles.contents}>

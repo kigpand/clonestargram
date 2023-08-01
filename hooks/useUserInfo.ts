@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import useUser from "../store/user";
 import { useRouter } from "next/navigation";
 
+// user 정보 갱신 및 유지(jwt token) 담당 custom hook
 export default function useUserInfo() {
   const { user, setUser } = useUser();
   const router = useRouter();
@@ -12,6 +13,7 @@ export default function useUserInfo() {
     }
   }, []);
 
+  // user 정보를 새로 받아와서 업데이트 해주는 메소드
   async function onFetchUser() {
     fetch("/api/login/", {
       method: "get",
