@@ -27,7 +27,7 @@ const HeaderToggle = () => {
   };
 
   const contentBtn = () => {
-    router.push("/makeContent");
+    router.push("/addPost");
   };
 
   const logoutBtn = async () => {

@@ -1,11 +1,11 @@
 import { useRouter } from "next/navigation";
-import styles from "./MakeBtns.module.scss";
+import styles from "./AddPostBtns.module.scss";
 
-interface IMakeBtns {
+interface IAddPostBtns {
   onSubmit: () => void;
 }
 
-const MakeBtns = ({ onSubmit }: IMakeBtns) => {
+const AddPostBtns = ({ onSubmit }: IAddPostBtns) => {
   const router = useRouter();
 
   const onCancleBtn = () => {
@@ -13,7 +13,7 @@ const MakeBtns = ({ onSubmit }: IMakeBtns) => {
   };
 
   return (
-    <div className={styles.makeBtns}>
+    <div className={styles.addPostBtns}>
       <button className={styles.submitBtn} onClick={onSubmit}>
         등록
       </button>
@@ -24,4 +24,4 @@ const MakeBtns = ({ onSubmit }: IMakeBtns) => {
   );
 };
 
-export default MakeBtns;
+export default AddPostBtns;

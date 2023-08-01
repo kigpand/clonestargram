@@ -1,11 +1,11 @@
 import useUserInfo from "../../../hooks/useUserInfo";
-import styles from "./MakeHeader.module.scss";
+import styles from "./AddPostHeader.module.scss";
 
-const MakeHeader = () => {
+const AddPostHeader = () => {
   const { user } = useUserInfo();
 
   return (
-    <div className={styles.makeHeader}>
+    <div className={styles.addPostHeader}>
       <img
         src={user && user.image ? `${user.image}` : "/profileImg.png"}
         className={styles.img}
@@ -16,4 +16,4 @@ const MakeHeader = () => {
   );
 };
 
-export default MakeHeader;
+export default AddPostHeader;

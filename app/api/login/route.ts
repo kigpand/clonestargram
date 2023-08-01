@@ -23,11 +23,11 @@ export async function POST(req: NextRequest) {
 export async function GET(req: NextRequest) {
   const cookie = req.cookies;
   const value = cookie.get("jwt")?.value;
-  if (!value) return new Response("Bad Request", { status: 400 });
+  if (!value) return new Response("Bad Request");
   const jwt: any = JWT.verify(value, process.env.NEXT_PUBLIC_JWT_SECRET!);
   const { id } = jwt;
   const result = await onIdCheck(id);
-  if (!result) return new Response("fail", { status: 400 });
+  if (!result) return new Response("fail");
 
   return NextResponse.json({ status: 200, data: result });
 }

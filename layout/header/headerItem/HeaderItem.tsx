@@ -30,7 +30,7 @@ const HeaderItems = () => {
   };
 
   const contentBtn = () => {
-    router.push("/makeContent");
+    router.push("/addPost");
   };
 
   const logoutBtn = async () => {

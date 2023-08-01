@@ -1,16 +1,16 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import MakeBtns from "./btns/MakeBtns";
-import MakeHeader from "./header/MakeHeader";
-import styles from "./MakeContentItem.module.scss";
-import MakeTag from "./tag/MakeTag";
-import MakeUpload from "./upload/MakeUpload";
+import React, { useCallback, useRef, useState } from "react";
+import styles from "./AddPostItem.module.scss";
 import Loading from "../shared/loading/Loading";
 import useUserInfo from "../../hooks/useUserInfo";
+import AddPostHeader from "./header/AddPostHeader";
+import AddPostUploadImg from "./upload/AddPostUploadImg";
+import AddPostTag from "./tag/AddPostTag";
+import AddPostBtns from "./btns/AddPostBtns";
 
-const MakeContentItem = () => {
+const AddPostItem = () => {
   const { user } = useUserInfo();
   const textRef = useRef<HTMLTextAreaElement>(null);
   const [imgUrl, setImgUrl] = useState<File | null>(null);
@@ -51,16 +51,16 @@ const MakeContentItem = () => {
   };
 
   return (
-    <div className={styles.makeContentItem}>
+    <div className={styles.addPostItem}>
       {loading && <Loading />}
       <div className={styles.container}>
-        <MakeHeader />
-        <MakeUpload
+        <AddPostHeader />
+        <AddPostUploadImg
           onUploadImg={onUploadImg}
           loading={loading}
           imgUrl={imgUrl}
         />
-        <MakeTag tags={tags} onAddTag={onAddTag} />
+        <AddPostTag tags={tags} onAddTag={onAddTag} />
         <div className={styles.contentBox}>
           <textarea
             ref={textRef}
@@ -69,10 +69,10 @@ const MakeContentItem = () => {
             rows={20}
           ></textarea>
         </div>
-        <MakeBtns onSubmit={onSubmit} />
+        <AddPostBtns onSubmit={onSubmit} />
       </div>
     </div>
   );
 };
 
-export default MakeContentItem;
+export default AddPostItem;
