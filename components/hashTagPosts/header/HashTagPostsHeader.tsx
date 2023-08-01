@@ -1,13 +1,13 @@
 import useData from "../../../store/data";
 import usePosts from "../../../store/post";
-import styles from "./ContentHeader.module.scss";
+import styles from "./HashTagPostsHeader.module.scss";
 
-const ContentHeader = () => {
+const HashTagPostsHeader = () => {
   const { hashTagPosts } = usePosts();
   const { searchTag } = useData();
 
   return (
-    <div className={styles.contentHeader}>
+    <div className={styles.hashTagPostsHeader}>
       <div className={styles.hashTag}>#{searchTag}</div>
       <div className={styles.length}>
         게시물: <b>{hashTagPosts.length}</b>
@@ -16,4 +16,4 @@ const ContentHeader = () => {
   );
 };
 
-export default ContentHeader;
+export default HashTagPostsHeader;
