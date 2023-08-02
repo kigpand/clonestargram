@@ -15,7 +15,7 @@ export default function useUserInfo() {
 
   // user 정보를 새로 받아와서 업데이트 해주는 메소드
   async function onFetchUser() {
-    fetch("/api/login/", {
+    const newUser = await fetch("/api/login/", {
       method: "get",
     })
       .then((data) => data.json())
@@ -31,10 +31,14 @@ export default function useUserInfo() {
           followings: user.following,
           followers: user.followers,
         });
+
+        return user;
       })
       .catch(() => {
         router.push("/");
       });
+
+    return newUser;
   }
 
   function onClearUser() {

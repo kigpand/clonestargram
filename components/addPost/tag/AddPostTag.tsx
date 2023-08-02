@@ -1,12 +1,12 @@
 import { useInput } from "../../../hooks/useInput";
-import styles from "./MakeTag.module.scss";
+import styles from "./AddPostTag.module.scss";
 
-interface IMakeTag {
+interface IAddPostTag {
   tags: string[];
   onAddTag: (item: string) => void;
 }
 
-const MakeTag = ({ tags, onAddTag }: IMakeTag) => {
+const AddPostTag = ({ tags, onAddTag }: IAddPostTag) => {
   const text = useInput("");
 
   const onSubmit = () => {
@@ -18,7 +18,7 @@ const MakeTag = ({ tags, onAddTag }: IMakeTag) => {
   };
 
   return (
-    <div className={styles.makeTag}>
+    <div className={styles.addPostTag}>
       <div className={styles.insert}>
         <input
           className={styles.tagText}
@@ -39,4 +39,4 @@ const MakeTag = ({ tags, onAddTag }: IMakeTag) => {
   );
 };
 
-export default MakeTag;
+export default AddPostTag;

@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import MobileContentItem from "./MobileContentItem/MobileContentItem";
 import usePosts from "../../../store/post";
 import { IPost } from "../../../interface/IPost";
-import HashTagContents from "../../hashTagContents/HashTagContents";
 import useFilteredPost from "../../../hooks/useFilteredPost";
+import HashTagPosts from "../../hashTagPosts/HashTagPosts";
+import MobilePostItem from "./MobilePostItem/MobilePostItem";
 
 const MobilePosts = () => {
   const { hashTagPosts } = usePosts();
@@ -53,11 +53,11 @@ const MobilePosts = () => {
   return (
     <div style={{ width: "100%" }}>
       {hashTagPosts.length > 0 ? (
-        <HashTagContents isMobile={true} />
+        <HashTagPosts isMobile={true} />
       ) : (
         <div>
           {mobilePost.map((item: IPost, i: number) => {
-            return <MobileContentItem post={item} key={i} />;
+            return <MobilePostItem post={item} key={i} />;
           })}
         </div>
       )}

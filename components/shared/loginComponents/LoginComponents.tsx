@@ -5,7 +5,6 @@ import styles from "./LoginComponents.module.scss";
 import { useInput } from "../../../hooks/useInput";
 import Join from "../join/Join";
 import { useRouter } from "next/navigation";
-import useUserInfo from "../../../hooks/useUserInfo";
 
 const LoginComponents = () => {
   const id = useInput("");
@@ -20,7 +19,8 @@ const LoginComponents = () => {
       .then((data) => data.json())
       .then(() => {
         router.push("/post");
-      });
+      })
+      .catch(() => console.log("로그인 계정 토큰이 없습니다."));
   }, []);
 
   const unJoin = () => {

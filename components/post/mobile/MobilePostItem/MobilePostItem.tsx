@@ -3,15 +3,15 @@ import AddComment from "../../../shared/addComment/AddComment";
 import ViewItemBody from "../../../shared/viewItem/body/ViewItemBody";
 import ViewItemComment from "../../../shared/viewItem/comment/ViewItemComment";
 import ViewItemHeader from "../../../shared/viewItem/header/ViewItemHeader";
-import styles from "./MobileContentItem.module.scss";
+import styles from "./MobilePostItem.module.scss";
 
-interface IMobileContentItem {
+interface IMobilePostItem {
   post: IPost;
 }
 
-const MobileContentItem = ({ post }: IMobileContentItem) => {
+const MobilePostItem = ({ post }: IMobilePostItem) => {
   return (
-    <div className={styles.contentItem}>
+    <div className={styles.postItem}>
       <ViewItemHeader item={post} />
       <img
         src={post.image ? `${post.image}` : "/noimg.png"}
@@ -27,4 +27,4 @@ const MobileContentItem = ({ post }: IMobileContentItem) => {
   );
 };
 
-export default MobileContentItem;
+export default MobilePostItem;

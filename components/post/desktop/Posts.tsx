@@ -4,11 +4,11 @@ import useFilteredPost from "../../../hooks/useFilteredPost";
 import { usePost } from "../../../hooks/usePost";
 import { IPost } from "../../../interface/IPost";
 import usePosts from "../../../store/post";
-import HashTagContents from "../../hashTagContents/HashTagContents";
-import ContentsItem from "../../shared/contentsItem/ContentsItem";
+import HashTagPosts from "../../hashTagPosts/HashTagPosts";
 import Loading from "../../shared/loading/Loading";
 import styles from "./Posts.module.scss";
-import React, { useEffect } from "react";
+import React from "react";
+import PostItem from "../../shared/postItem/PostItem";
 
 const Posts = () => {
   const { isLoading } = usePost();
@@ -19,11 +19,11 @@ const Posts = () => {
     <div className={styles.contents}>
       {isLoading && <Loading />}
       {hashTagPosts.length > 0 ? (
-        <HashTagContents isMobile={false} />
+        <HashTagPosts isMobile={false} />
       ) : (
         <div className={styles.lists}>
           {post?.map((item: IPost, i: number) => {
-            return <ContentsItem post={item} key={i} />;
+            return <PostItem post={item} key={i} />;
           })}
         </div>
       )}

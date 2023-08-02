@@ -1,15 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import styles from "./ContentsItem.module.scss";
+import styles from "./PostItem.module.scss";
 import { IPost } from "../../../interface/IPost";
 import Viewer from "../../viewer/Viewer";
 
-interface IContentsItem {
+interface IPostItem {
   post: IPost;
 }
 
-const ContentsItem = ({ post }: IContentsItem) => {
+const PostItem = ({ post }: IPostItem) => {
   const [view, setView] = useState<boolean>(false);
 
   const onItemClick = () => {
@@ -21,7 +21,7 @@ const ContentsItem = ({ post }: IContentsItem) => {
   };
 
   return (
-    <div className={styles.contentsItem}>
+    <div className={styles.postItem}>
       <div className={styles.card} onClick={onItemClick}>
         <img
           src={post.image ? `${post.image}` : "/noimg.png"}
@@ -34,4 +34,4 @@ const ContentsItem = ({ post }: IContentsItem) => {
   );
 };
 
-export default ContentsItem;
+export default PostItem;

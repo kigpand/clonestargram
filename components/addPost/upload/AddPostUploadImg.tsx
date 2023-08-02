@@ -1,13 +1,17 @@
 import { useCallback, useRef } from "react";
-import styles from "./MakeUpload.module.scss";
+import styles from "./AddPostUploadImg.module.scss";
 
-interface IMakeUpload {
+interface IAddPostUploadImg {
   onUploadImg: (e: any) => void;
   loading: boolean;
   imgUrl: File | null;
 }
 
-const MakeUpload = ({ onUploadImg, loading, imgUrl }: IMakeUpload) => {
+const AddPostUploadImg = ({
+  onUploadImg,
+  loading,
+  imgUrl,
+}: IAddPostUploadImg) => {
   const imgRef = useRef<HTMLInputElement>(null);
 
   const onClickImageUpload = useCallback(() => {
@@ -17,7 +21,7 @@ const MakeUpload = ({ onUploadImg, loading, imgUrl }: IMakeUpload) => {
   }, [imgRef]);
 
   return (
-    <div className={styles.makeUpload}>
+    <div className={styles.addPostUploadImg}>
       <input
         type="file"
         name="image"
@@ -43,4 +47,4 @@ const MakeUpload = ({ onUploadImg, loading, imgUrl }: IMakeUpload) => {
   );
 };
 
-export default MakeUpload;
+export default AddPostUploadImg;

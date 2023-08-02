@@ -1,15 +1,15 @@
 import { NextPage } from "next";
 import styles from "../../styles/Home.module.scss";
 import Header from "../../layout/header/Header";
-import MakeContentItem from "../../components/makeContentItem/MakeContentItem";
+import AddPostItem from "../../components/addPost/AddPostItem";
 
-const MakeContent: NextPage = () => {
+const AddPost: NextPage = () => {
   return (
     <div className={styles.container}>
       <Header />
-      <MakeContentItem />
+      <AddPostItem />
     </div>
   );
 };
 
-export default MakeContent;
+export default AddPost;
