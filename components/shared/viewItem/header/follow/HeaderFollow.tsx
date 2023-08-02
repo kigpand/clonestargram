@@ -14,16 +14,13 @@ const HeaderFollow = ({ currentContent, changeLoading }: IHeaderFollow) => {
 
   useEffect(() => {
     if (!currentContent) return;
-    const result = user?.followings?.find(
-      (item: any) => item._ref === currentContent.username
-    );
-    if (result) {
-      setIsFollow(true);
-    } else {
-      setIsFollow(false);
-    }
-  }, [user, currentContent]);
+    onChangeFollowing(user);
+  }, [currentContent]);
 
+  /**
+   * follow btn click event
+   * flag: follow state. true = follow상태, false = unfollow상태
+   * */
   const onFollowBtn = async (flag: boolean) => {
     if (!user) return alert("오류가 발생했습니다");
     changeLoading(true);
@@ -35,9 +32,24 @@ const HeaderFollow = ({ currentContent, changeLoading }: IHeaderFollow) => {
       }),
     })
       .then(async () => {
-        await onFetchUser().then(() => changeLoading(false));
+        await onFetchUser().then((newUser) => {
+          onChangeFollowing(newUser);
+          changeLoading(false);
+        });
       })
       .catch((e: any) => console.error(e));
+  };
+
+  // user following 확인하여 팔로우, 언팔로우 구분하는 함수
+  const onChangeFollowing = (user: any) => {
+    const result = user?.following?.find(
+      (item: any) => item._ref === currentContent.username
+    );
+    if (result) {
+      setIsFollow(true);
+    } else {
+      setIsFollow(false);
+    }
   };
 
   return (
