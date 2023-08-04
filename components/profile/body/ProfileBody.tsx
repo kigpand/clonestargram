@@ -54,7 +54,7 @@ const ProfileBody = () => {
         .then(async () => {
           await onFetchUser();
           setLoading(false);
-          router.push("/");
+          router.push("/post");
         })
         .catch(() => alert("프로필 업데이트에 실패하였습니다"));
     }

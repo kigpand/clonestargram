@@ -13,6 +13,37 @@ export default function useUserInfo() {
     }
   }, []);
 
+  // login처리 메소드
+  async function onLogin(id: string, pw: string) {
+    fetch("/api/login/", {
+      method: "post",
+      body: JSON.stringify({
+        id,
+        pw,
+      }),
+    })
+      .then((data) => data.json())
+      .then(() => {
+        router.push("/post");
+      })
+      .catch((e) => {
+        console.error(e);
+        alert("로그인에 실패했습니다");
+      });
+  }
+
+  // token 확인해서 user가 있을 경우 post page로 이동하도록 해주는 메소드.
+  async function onCheckLogin() {
+    fetch("/api/login/", {
+      method: "get",
+    })
+      .then((data) => data.json())
+      .then(() => {
+        router.push("/post");
+      })
+      .catch(() => console.log("로그인 계정 토큰이 없습니다."));
+  }
+
   // user 정보를 새로 받아와서 업데이트 해주는 메소드
   async function onFetchUser() {
     const newUser = await fetch("/api/login/", {
@@ -45,5 +76,5 @@ export default function useUserInfo() {
     setUser(null);
   }
 
-  return { user, onFetchUser, onClearUser };
+  return { user, onLogin, onCheckLogin, onFetchUser, onClearUser };
 }

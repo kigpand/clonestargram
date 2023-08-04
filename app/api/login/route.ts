@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { onCheckUser, onIdCheck } from "../../../service/user";
 import JWT from "jsonwebtoken";
 
+// login url
 export async function POST(req: NextRequest) {
   const { id, pw } = await req.json();
   const accessToken = JWT.sign({ id }, process.env.NEXT_PUBLIC_JWT_SECRET!);
@@ -20,6 +21,7 @@ export async function POST(req: NextRequest) {
   return response;
 }
 
+// get user info
 export async function GET(req: NextRequest) {
   const cookie = req.cookies;
   const value = cookie.get("jwt")?.value;

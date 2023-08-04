@@ -5,22 +5,18 @@ import styles from "./LoginComponents.module.scss";
 import { useInput } from "../../../hooks/useInput";
 import Join from "../join/Join";
 import { useRouter } from "next/navigation";
+import useUserInfo from "../../../hooks/useUserInfo";
 
 const LoginComponents = () => {
   const id = useInput("");
   const pw = useInput("");
   const [join, setJoin] = useState<boolean>(false);
+  const { onCheckLogin, onLogin } = useUserInfo();
   const router = useRouter();
 
+  //  home url 접근시 user login token 확인, token이 존재할 경우 /post로 페이지 이동.
   useEffect(() => {
-    fetch("/api/login/", {
-      method: "get",
-    })
-      .then((data) => data.json())
-      .then(() => {
-        router.push("/post");
-      })
-      .catch(() => console.log("로그인 계정 토큰이 없습니다."));
+    onCheckLogin();
   }, []);
 
   const unJoin = () => {
@@ -28,21 +24,9 @@ const LoginComponents = () => {
   };
 
   const onSubmit = async () => {
-    fetch("/api/login/", {
-      method: "post",
-      body: JSON.stringify({
-        id: id.value,
-        pw: pw.value,
-      }),
-    })
-      .then((data) => data.json())
-      .then(() => {
-        router.push("/post");
-      })
-      .catch((e) => {
-        console.error(e);
-        alert("로그인에 실패했습니다");
-      });
+    if (id.value === "") return alert("이이디를 입력해주세요");
+    if (pw.value === "") return alert("비밀번호를 입력해주세요");
+    onLogin(id.value, pw.value);
   };
 
   return (

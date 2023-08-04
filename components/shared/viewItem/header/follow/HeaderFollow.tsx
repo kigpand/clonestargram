@@ -12,6 +12,7 @@ const HeaderFollow = ({ currentContent, changeLoading }: IHeaderFollow) => {
   const { user, onFetchUser } = useUserInfo();
   const [isFollow, setIsFollow] = useState<boolean | null>(null);
 
+  // 현재 게시글 변경됬을때 팔로우 btn state 변경
   useEffect(() => {
     if (!currentContent) return;
     onChangeFollowing(user);

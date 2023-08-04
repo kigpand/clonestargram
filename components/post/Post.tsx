@@ -1,10 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useWindowSize } from "../../hooks/useWindowHook";
 import { MOBILE_SIZE } from "../../utils/common";
-import useUser from "../../store/user";
-import { useRouter } from "next/navigation";
 import MobilePosts from "./mobile/MobilePosts";
 import Posts from "./desktop/Posts";
 
