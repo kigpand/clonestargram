@@ -1,18 +1,14 @@
 "use client";
 
-import { useWindowSize } from "../../hooks/useWindowHook";
-import { MOBILE_SIZE } from "../../utils/common";
-import MobilePosts from "./mobile/MobilePosts";
-import Posts from "./desktop/Posts";
+import dynamic from "next/dynamic";
+import Loading from "../shared/loading/Loading";
+
+const PostComponent = dynamic(() => import("./PostComponent"), {
+  loading: () => <Loading />,
+});
 
 const Post = () => {
-  const windowSize = useWindowSize();
-
-  return (
-    <section style={{ width: "100%" }}>
-      {windowSize < MOBILE_SIZE ? <MobilePosts /> : <Posts />}
-    </section>
-  );
+  return <PostComponent />;
 };
 
 export default Post;

@@ -3,15 +3,17 @@
 import { useEffect, useState } from "react";
 import usePosts from "../../../store/post";
 import { IPost } from "../../../interface/IPost";
-import useFilteredPost from "../../../hooks/useFilteredPost";
 import HashTagPosts from "../../hashTagPosts/HashTagPosts";
 import MobilePostItem from "./MobilePostItem/MobilePostItem";
 
-const MobilePosts = () => {
+type Props = {
+  post: IPost[];
+};
+
+const MobilePosts = ({ post }: Props) => {
   const { hashTagPosts } = usePosts();
   const [mobilePost, setMobilePost] = useState<IPost[]>([]);
   const [scroll, setScroll] = useState<number>(0);
-  const { post } = useFilteredPost();
 
   const onScroll = () => {
     if (
