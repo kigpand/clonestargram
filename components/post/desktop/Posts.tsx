@@ -19,15 +19,11 @@ const Posts = ({ post }: Props) => {
 
   return (
     <div className={styles.contents}>
-      {hashTagPosts.length > 0 ? (
-        <HashTagPosts isMobile={false} />
-      ) : (
-        <div className={styles.lists}>
-          {post.map((item: IPost, i: number) => {
-            return <PostItem post={item} key={i} />;
-          })}
-        </div>
-      )}
+      <div className={styles.lists}>
+        {post.map((item: IPost, i: number) => {
+          return <PostItem post={item} key={i} />;
+        })}
+      </div>
     </div>
   );
 };

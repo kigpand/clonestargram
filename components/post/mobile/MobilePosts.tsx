@@ -1,9 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import usePosts from "../../../store/post";
 import { IPost } from "../../../interface/IPost";
-import HashTagPosts from "../../hashTagPosts/HashTagPosts";
 import MobilePostItem from "./MobilePostItem/MobilePostItem";
 
 type Props = {
@@ -11,7 +9,6 @@ type Props = {
 };
 
 const MobilePosts = ({ post }: Props) => {
-  const { hashTagPosts } = usePosts();
   const [mobilePost, setMobilePost] = useState<IPost[]>([]);
   const [scroll, setScroll] = useState<number>(0);
 
@@ -54,15 +51,11 @@ const MobilePosts = ({ post }: Props) => {
 
   return (
     <div style={{ width: "100%" }}>
-      {hashTagPosts.length > 0 ? (
-        <HashTagPosts isMobile={true} />
-      ) : (
-        <div>
-          {mobilePost.map((item: IPost, i: number) => {
-            return <MobilePostItem post={item} key={i} />;
-          })}
-        </div>
-      )}
+      <div>
+        {mobilePost.map((item: IPost, i: number) => {
+          return <MobilePostItem post={item} key={i} />;
+        })}
+      </div>
     </div>
   );
 };
