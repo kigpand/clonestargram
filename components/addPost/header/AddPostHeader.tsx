@@ -1,4 +1,5 @@
 import useUserInfo from "../../../hooks/useUserInfo";
+import SubLoading from "../../shared/subLoading/SubLoading";
 import styles from "./AddPostHeader.module.scss";
 
 const AddPostHeader = () => {
@@ -6,6 +7,7 @@ const AddPostHeader = () => {
 
   return (
     <div className={styles.addPostHeader}>
+      {!user && <SubLoading />}
       <img
         src={user && user.image ? `${user.image}` : "/profileImg.png"}
         className={styles.img}
