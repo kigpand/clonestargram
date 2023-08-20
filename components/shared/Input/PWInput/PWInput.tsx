@@ -12,8 +12,18 @@ const PWInput = ({ register, required, errors }: IPWInput) => {
     <div className={styles.pwInput}>
       <div className={styles.titleInput}>
         <div className={styles.label}>비밀번호</div>
-        <input className={styles.input} {...register("pw", { required })} />
-        {errors.pw && <div>올바른 비밀번호가 아닙니다.</div>}
+        <input
+          className={styles.input}
+          type="password"
+          {...register("pw", {
+            required,
+            pattern: {
+              value: /^[A-Za-z0-9]{6,20}$/,
+              message: "비밀번호 형식에 맞지 않습니다",
+            },
+          })}
+        />
+        {errors.pw && <div className={styles.error}>{errors.pw.message}</div>}
       </div>
     </div>
   );

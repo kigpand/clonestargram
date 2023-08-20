@@ -1,12 +1,10 @@
-import { useState } from "react";
-import { useInput } from "../../../hooks/useInput";
 import { addUser, onIdCheck } from "../../../service/user";
-import CommonInput from "../Input/CommonInput/CommonInput";
 import IDInput from "../Input/IDInput/IDInput";
 import PWInput from "../Input/PWInput/PWInput";
 import styles from "./Join.module.scss";
 import EmailInput from "../Input/emailInput/EmailInput";
 import { SubmitHandler, useForm } from "react-hook-form";
+import PhoneInput from "../Input/CommonInput/PhoneInput";
 
 interface IJoin {
   unJoin: () => void;
@@ -44,12 +42,12 @@ const Join = ({ unJoin }: IJoin) => {
   return (
     <div className={styles.join}>
       <div className={styles.container}>
-        <div className={styles.title}>회원 정보를 입력해주세요</div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+          <div className={styles.title}>회원 정보를 입력해주세요</div>
           <IDInput register={register} required errors={errors} />
           <PWInput register={register} required errors={errors} />
           <EmailInput register={register} required errors={errors} />
-          <CommonInput register={register} required errors={errors} />
+          <PhoneInput register={register} required errors={errors} />
           <input type="submit" className={styles.joinBtn}></input>
         </form>
         <img
