@@ -1,36 +1,20 @@
-import { IInput } from "../../../../interface/IInput";
+import { UseFormRegister } from "react-hook-form";
 import styles from "./CommonInput.module.scss";
 
-const typeObj: any = {
-  EMAIL: "이메일",
-  PHONE: "전화번호",
-};
-
 interface ICommonInput {
-  type: string;
-  input: IInput;
-  onInputEvent?: (e: React.ChangeEvent<HTMLInputElement>, num: number) => void;
-  num?: number;
+  register: UseFormRegister<any>;
+  required: boolean;
+  errors: any;
 }
 
-const CommonInput = ({ type, input, onInputEvent, num }: ICommonInput) => {
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (onInputEvent && num) {
-      onInputEvent(e, num);
-    }
-  };
-
+const CommonInput = ({ register, required, errors }: ICommonInput) => {
   return (
     <div className={styles.commonInput}>
       <div className={styles.titleInput}>
-        <div className={styles.label}>{typeObj[type]}</div>
-        <input
-          className={styles.input}
-          type="number"
-          value={input.value}
-          onChange={onChange}
-        />
+        <div className={styles.label}>전화번호</div>
+        <input className={styles.input} {...register("phone", { required })} />
       </div>
+      {errors.phone && <div>전화번호 양식이 아닙니다.</div>}
     </div>
   );
 };

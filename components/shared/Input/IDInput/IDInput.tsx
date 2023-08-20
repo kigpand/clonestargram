@@ -1,21 +1,19 @@
-import { IInput } from "../../../../interface/IInput";
+import { UseFormRegister } from "react-hook-form";
 import styles from "./IDInput.module.scss";
 
 interface IIDInput {
-  id: IInput;
+  register: UseFormRegister<any>;
+  required: boolean;
+  errors: any;
 }
 
-const IDInput = ({ id }: IIDInput) => {
+const IDInput = ({ register, required, errors }: IIDInput) => {
   return (
     <div className={styles.idInput}>
       <div className={styles.titleInput}>
         <div className={styles.label}>아이디</div>
-        <input
-          className={styles.input}
-          type="text"
-          value={id.value}
-          onChange={id.onChange}
-        />
+        <input className={styles.input} {...register("id", { required })} />
+        {errors.id && <div>아이디를 입력해주세요</div>}
       </div>
     </div>
   );
