@@ -1,10 +1,11 @@
+import { JoinType } from "../../../../type/InputType";
 import styles from "./PWInput.module.scss";
-import { UseFormRegister } from "react-hook-form";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
 
 interface IPWInput {
-  register: UseFormRegister<any>;
+  register: UseFormRegister<JoinType>;
   required: boolean;
-  errors: any;
+  errors: FieldErrors<JoinType>;
 }
 
 const PWInput = ({ register, required, errors }: IPWInput) => {

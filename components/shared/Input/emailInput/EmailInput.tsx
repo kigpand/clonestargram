@@ -1,10 +1,11 @@
-import { UseFormRegister } from "react-hook-form";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
 import styles from "./EmailInput.module.scss";
+import { JoinType } from "../../../../type/InputType";
 
 interface IEmailInput {
-  register: UseFormRegister<any>;
+  register: UseFormRegister<JoinType>;
   required: boolean;
-  errors: any;
+  errors: FieldErrors<JoinType>;
 }
 
 const EmailInput = ({ register, errors }: IEmailInput) => {

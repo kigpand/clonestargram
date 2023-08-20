@@ -5,6 +5,7 @@ import styles from "./Join.module.scss";
 import EmailInput from "../Input/emailInput/EmailInput";
 import { SubmitHandler, useForm } from "react-hook-form";
 import PhoneInput from "../Input/CommonInput/PhoneInput";
+import { JoinType } from "../../../type/InputType";
 
 interface IJoin {
   unJoin: () => void;
@@ -15,10 +16,10 @@ const Join = ({ unJoin }: IJoin) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<JoinType>();
 
-  const onSubmit: SubmitHandler<any> = async (data) => {
-    const user = {
+  const onSubmit: SubmitHandler<JoinType> = async (data) => {
+    const user: any = {
       ...data,
       name: data.id,
     };

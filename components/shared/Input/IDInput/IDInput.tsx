@@ -1,10 +1,11 @@
-import { UseFormRegister } from "react-hook-form";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
 import styles from "./IDInput.module.scss";
+import { JoinType } from "../../../../type/InputType";
 
 interface IIDInput {
-  register: UseFormRegister<any>;
+  register: UseFormRegister<JoinType>;
   required: boolean;
-  errors: any;
+  errors: FieldErrors<JoinType>;
 }
 
 const IDInput = ({ register, required, errors }: IIDInput) => {
