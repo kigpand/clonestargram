@@ -1,40 +1,5 @@
 @import "../../../../styles/utils.scss";
 @import "../../../../styles/func.scss";
-
 .emailInput {
-  width: 70%;
-  margin-top: rem(15px);
-
-  .title {
-    font-size: rem(12px);
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-
-  .inputs {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    .input {
-      margin-right: 13px;
-      width: 45%;
-      height: get-vh(50px);
-      border: 1px solid $borderColor;
-    }
-  }
-
-  .select {
-    display: block;
-    margin-left: 13px;
-    width: 45%;
-    height: get-vh(50px);
-    border: 1px solid $borderColor;
-    background: url("/selectDown.png") no-repeat 95% 50%;
-    border-radius: 6px;
-    padding: 10px 16px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-  }
+  @include input;
 }

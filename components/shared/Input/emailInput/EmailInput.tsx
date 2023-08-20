@@ -1,38 +1,33 @@
-import { IInput } from "../../../../interface/IInput";
+import { UseFormRegister } from "react-hook-form";
 import styles from "./EmailInput.module.scss";
 
 interface IEmailInput {
-  email: IInput;
-  onChangeDomain: (text: string) => void;
+  register: UseFormRegister<any>;
+  required: boolean;
+  errors: any;
 }
 
-const EmailInput = ({ email, onChangeDomain }: IEmailInput) => {
-  const changeDomain = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    onChangeDomain(e.target.value);
-  };
-
+const EmailInput = ({ register, errors }: IEmailInput) => {
   return (
     <div className={styles.emailInput}>
-      <div className={styles.title}>이메일</div>
-      <div className={styles.inputs}>
-        <input
-          className={styles.input}
-          type="text"
-          value={email.value}
-          onChange={email.onChange}
-        />
-        <span>@</span>
-        <select className={styles.select} onChange={changeDomain}>
-          <option key="gmail.com" value="gmail.com">
-            gmail.com
-          </option>
-          <option key="naver.com" value="naver.com">
-            naver.com
-          </option>
-          <option key="daum.net" value="daum.net">
-            daum.net
-          </option>
-        </select>
+      <div className={styles.titleInput}>
+        <div className={styles.title}>이메일</div>
+        <div className={styles.inputs}>
+          <input
+            className={styles.input}
+            {...register("email", {
+              required: "이메일은 필수 입력입니다.",
+              pattern: {
+                value:
+                  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i,
+                message: "이메일 형식에 맞지 않습니다.",
+              },
+            })}
+          />
+        </div>
+        {errors.email && (
+          <div className={styles.error}>{errors.email.message}</div>
+        )}
       </div>
     </div>
   );

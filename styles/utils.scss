@@ -29,6 +29,11 @@
       height: get-vh(50px);
       border: 1px solid $borderColor;
     }
+
+    .error {
+      font-size: 12px;
+      color: red;
+    }
   }
 }
 
