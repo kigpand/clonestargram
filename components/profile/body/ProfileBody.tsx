@@ -5,7 +5,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import ProfileInput from "../input/ProfileInput";
 import styles from "./ProfileBody.module.scss";
 import { useInput } from "../../../hooks/useInput";
-import { onIdCheck } from "../../../service/user";
 import Loading from "../../shared/loading/Loading";
 import useUserInfo from "../../../hooks/useUserInfo";
 

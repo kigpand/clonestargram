@@ -49,7 +49,11 @@ const Join = ({ unJoin }: IJoin) => {
           <PWInput register={register} required errors={errors} />
           <EmailInput register={register} required errors={errors} />
           <PhoneInput register={register} required errors={errors} />
-          <input type="submit" className={styles.joinBtn}></input>
+          <input
+            type="submit"
+            className={styles.joinBtn}
+            value="회원가입"
+          ></input>
         </form>
         <img
           src="/close.png"

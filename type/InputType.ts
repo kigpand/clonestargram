@@ -4,3 +4,8 @@ export type JoinType = {
   email: string;
   phone: number;
 };
+
+export type LoginType = {
+  id: string;
+  pw: string;
+};
