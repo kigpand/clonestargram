@@ -5,7 +5,7 @@ import usePosts from "../store/post";
 
 // load한 post를 생성한 날짜순으로 정렬한 결과물을 전역 상태관리 해주는 custom hook
 export default function useFilteredPost() {
-  const { posts } = usePost();
+  const { posts, isLoading } = usePost();
   const { post, setPost, setHashTagPosts } = usePosts();
 
   useEffect(() => {
@@ -24,5 +24,5 @@ export default function useFilteredPost() {
     };
   }, [posts]);
 
-  return { post };
+  return { post, isLoading };
 }

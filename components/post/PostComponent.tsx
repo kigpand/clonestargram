@@ -3,13 +3,16 @@ import { useWindowSize } from "../../hooks/useWindowHook";
 import usePosts from "../../store/post";
 import { MOBILE_SIZE } from "../../utils/common";
 import HashTagPosts from "../hashTagPosts/HashTagPosts";
+import Loading from "../shared/loading/Loading";
 import Posts from "./desktop/Posts";
 import MobilePosts from "./mobile/MobilePosts";
 
 const PostComponent = () => {
   const windowSize = useWindowSize();
   const { hashTagPosts } = usePosts();
-  const { post } = useFilteredPost();
+  const { post, isLoading } = useFilteredPost();
+
+  if (isLoading) return <Loading />;
 
   return (
     <section style={{ width: "100%" }}>
