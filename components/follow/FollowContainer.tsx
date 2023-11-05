@@ -9,7 +9,7 @@ import Loading from "../shared/loading/Loading";
 const FollowContaier = () => {
   const { user } = useUserInfo();
 
-  if (!user) return;
+  if (!user) return <></>;
 
   return (
     <div className={styles.container}>
