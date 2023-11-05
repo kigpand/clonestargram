@@ -1,11 +1,6 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import Loading from "../shared/loading/Loading";
-
-const PostComponent = dynamic(() => import("./PostComponent"), {
-  loading: () => <Loading />,
-});
+import PostComponent from "./PostComponent";
 
 const Post = () => {
   return <PostComponent />;
