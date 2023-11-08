@@ -5,10 +5,9 @@ import useUserInfo from "../../../../../hooks/useUserInfo";
 
 interface IHeaderFollow {
   currentContent: IPost;
-  changeLoading: (flag: boolean) => void;
 }
 
-const HeaderFollow = ({ currentContent, changeLoading }: IHeaderFollow) => {
+const HeaderFollow = ({ currentContent }: IHeaderFollow) => {
   const { user, onFetchUser } = useUserInfo();
   const [isFollow, setIsFollow] = useState<boolean | null>(null);
 
@@ -24,7 +23,6 @@ const HeaderFollow = ({ currentContent, changeLoading }: IHeaderFollow) => {
    * */
   const onFollowBtn = async (flag: boolean) => {
     if (!user) return alert("오류가 발생했습니다");
-    changeLoading(true);
     await fetch("/api/follow", {
       method: "PUT",
       body: JSON.stringify({
@@ -35,7 +33,6 @@ const HeaderFollow = ({ currentContent, changeLoading }: IHeaderFollow) => {
       .then(async () => {
         await onFetchUser().then((newUser) => {
           onChangeFollowing(newUser);
-          changeLoading(false);
         });
       })
       .catch((e: any) => console.error(e));
