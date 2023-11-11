@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import styles from "./Viewer.module.scss";
 import ViewItem from "./viewItem/ViewItem";
 import { IPost } from "../../interface/IPost";
+import Loading from "../shared/loading/Loading";
 
 type Props = {
   post: IPost;
@@ -24,7 +25,9 @@ const Viewer = ({ post, onCloseView }: Props) => {
         src={post.image || "/noimg.png"}
         alt="viewerImg"
       />
-      <ViewItem post={post} />
+      <Suspense fallback={<Loading />}>
+        <ViewItem post={post} />
+      </Suspense>
       <div className={styles.back} onClick={onCloseView} />
     </div>
   );

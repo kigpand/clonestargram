@@ -5,10 +5,9 @@ import styles from "./ViewItemComment.module.scss";
 const ViewItemComment = ({ item }: IViewItem) => {
   return (
     <div className={styles.viewItemComment}>
-      {item &&
-        item.comments?.map((comment: any, i: number) => {
-          return <Comment info={comment} key={i} />;
-        })}
+      {item?.comments?.map((comment: any, i: number) => {
+        return <Comment info={comment} key={i} />;
+      })}
     </div>
   );
 };

@@ -4,8 +4,7 @@ import { IUser } from "../../../interface/IUser";
 import FollowList from "./followList/FollowList";
 import styles from "./FollowWrap.module.scss";
 import { onIdCheck } from "../../../service/user";
-import useSWR, { useSWRConfig } from "swr";
-import Loading from "../../shared/loading/Loading";
+import useSWR from "swr";
 
 interface IFollowWrap {
   list: any;
