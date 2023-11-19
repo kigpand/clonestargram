@@ -12,7 +12,7 @@ const EmailInput = ({ register, errors }: IEmailInput) => {
   return (
     <div className={styles.emailInput}>
       <div className={styles.titleInput}>
-        <div className={styles.title}>이메일</div>
+        <div className={styles.label}>이메일</div>
         <div className={styles.inputs}>
           <input
             className={styles.input}

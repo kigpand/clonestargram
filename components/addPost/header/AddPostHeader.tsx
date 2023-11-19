@@ -1,5 +1,5 @@
 import useUserInfo from "../../../hooks/useUserInfo";
-import SubLoading from "../../shared/subLoading/SubLoading";
+import SubLoading from "../../common/subLoading/SubLoading";
 import styles from "./AddPostHeader.module.scss";
 
 const AddPostHeader = () => {

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { useInput } from "../../hooks/useInput";
 import useData from "../../store/data";
 import usePosts from "../../store/post";

@@ -27,9 +27,11 @@ const ViewItemHeader = ({ item }: IViewItem) => {
         className={styles.img}
       />
       <div className={styles.text}>{contentUserInfo.name}</div>
-      <div className={styles.btn}>
-        {user?.id !== item?.id && <HeaderFollow currentContent={item} />}
-      </div>
+      {user && (
+        <div className={styles.btn}>
+          {user?.id !== item?.id && <HeaderFollow currentContent={item} />}
+        </div>
+      )}
     </div>
   );
 };

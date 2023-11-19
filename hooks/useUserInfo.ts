@@ -14,7 +14,7 @@ export default function useUserInfo() {
   }, []);
 
   // login처리 메소드
-  async function onLogin(id: string, pw: string) {
+  async function onLogin(id: string, pw: string, closeModal: () => void) {
     fetch("/api/login/", {
       method: "post",
       body: JSON.stringify({
@@ -23,12 +23,23 @@ export default function useUserInfo() {
       }),
     })
       .then((data) => data.json())
-      .then(() => {
-        router.push("/post");
+      .then((result) => {
+        closeModal();
+        const user = result.data;
+        setUser({
+          id: user.username,
+          name: user.name,
+          phone: user.phone,
+          email: user.email,
+          image: user.image || null,
+          intro: user.intro || "",
+          followings: user.following,
+          followers: user.followers,
+        });
+        alert("로그인 되었습니다");
       })
       .catch((e) => {
-        console.error(e);
-        alert("로그인에 실패했습니다");
+        alert("아이디와 비밀번호를 확인해주세요.");
       });
   }
 
@@ -39,7 +50,7 @@ export default function useUserInfo() {
     })
       .then((data) => data.json())
       .then(() => {
-        router.push("/post");
+        router.push("/");
       })
       .catch(() => console.log("로그인 계정 토큰이 없습니다."));
   }

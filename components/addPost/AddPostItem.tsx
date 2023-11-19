@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import React, { useCallback, useRef, useState } from "react";
 import styles from "./AddPostItem.module.scss";
-import Loading from "../shared/loading/Loading";
+import Loading from "../common/loading/Loading";
 import useUserInfo from "../../hooks/useUserInfo";
 import AddPostHeader from "./header/AddPostHeader";
 import AddPostUploadImg from "./upload/AddPostUploadImg";
@@ -44,7 +44,7 @@ const AddPostItem = () => {
     fetch("/api/posts/", { method: "POST", body: formData })
       .then((res) => {
         if (!res.ok) return alert("게시글 등록에 실패하였습니다");
-        router.push("/post");
+        router.push("/");
       })
       .catch(() => alert("게시글 등록에 실패하였습니다"))
       .finally(() => setLoading(false));

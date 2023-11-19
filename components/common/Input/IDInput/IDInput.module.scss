@@ -3,4 +3,8 @@
 
 .idInput {
   @include input;
+
+  .input {
+    width: 250px;
+  }
 }
