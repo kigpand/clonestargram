@@ -3,7 +3,11 @@ import styles from "./LoginModal.module.scss";
 import JoinComponent from "./joinComponent/JoinComponent";
 import LoginComponent from "./loginComponent/LoginComponent";
 
-export default function LoginModal() {
+type Props = {
+  closeLoginModal: () => void;
+};
+
+export default function LoginModal({ closeLoginModal }: Props) {
   const [isJoin, setIsJoin] = useState<boolean>(false);
 
   useEffect(() => {
@@ -14,13 +18,16 @@ export default function LoginModal() {
     };
   }, []);
 
-  function handleChangeJoinState(state: boolean) {
-    setIsJoin(state);
-  }
-
   return (
     <section className={styles.modal}>
-      {isJoin ? <JoinComponent /> : <LoginComponent />}
+      {isJoin ? (
+        <JoinComponent handleCloseJoin={() => setIsJoin(false)} />
+      ) : (
+        <LoginComponent
+          handleOpenJoin={() => setIsJoin(true)}
+          closeLoginModal={closeLoginModal}
+        />
+      )}
     </section>
   );
 }

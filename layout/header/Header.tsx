@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { useInput } from "../../hooks/useInput";
 import useData from "../../store/data";
 import usePosts from "../../store/post";
@@ -14,6 +14,7 @@ import { usePathname } from "next/navigation";
 import LoginModal from "../../components/common/loginModal/LoginModal";
 
 const Header = () => {
+  const [isLogin, setIsLogin] = useState<boolean>(false);
   const windowSize = useWindowSize();
   const { setHashTagPosts, post } = usePosts();
   const { setSearchTag } = useData();
@@ -58,7 +59,7 @@ const Header = () => {
           <HeaderItems />
         </div>
       )}
-      <LoginModal />
+      <LoginModal closeLoginModal={() => setIsLogin(false)} />
     </section>
   );
 };

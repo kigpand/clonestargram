@@ -1,13 +1,23 @@
 import { useForm } from "react-hook-form";
 import styles from "./LoginComponent.module.scss";
 import { LoginType } from "../../../../type/InputType";
-import { onLogin } from "../../../../service/auth";
+import useUserInfo from "../../../../hooks/useUserInfo";
 
-export default function LoginComponent() {
+type Props = {
+  closeLoginModal: () => void;
+  handleOpenJoin: () => void;
+};
+
+export default function LoginComponent({
+  closeLoginModal,
+  handleOpenJoin,
+}: Props) {
+  const { onLogin } = useUserInfo();
   const { register, handleSubmit } = useForm<LoginType>();
 
   const handleSubmitButton = handleSubmit(async (data) => {
-    await onLogin(data.id, data.pw).then((data) => console.log(data));
+    await onLogin(data.id, data.pw);
+    closeLoginModal();
   });
 
   return (
@@ -28,7 +38,9 @@ export default function LoginComponent() {
       <button className={styles.loginButton} onClick={handleSubmitButton}>
         로그인
       </button>
-      <button className={styles.joinButton}>회원가입</button>
+      <button className={styles.joinButton} onClick={handleOpenJoin}>
+        회원가입
+      </button>
     </main>
   );
 }

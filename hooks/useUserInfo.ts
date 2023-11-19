@@ -20,11 +20,10 @@ export default function useUserInfo() {
     })
       .then((data) => data.json())
       .then(() => {
-        router.push("/");
+        alert("로그인 되었습니다");
       })
       .catch((e) => {
-        console.error(e);
-        alert("로그인에 실패했습니다");
+        alert("아이디와 비밀번호를 확인해주세요.");
       });
   }
 
