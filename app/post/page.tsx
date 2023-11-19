@@ -1,8 +1,4 @@
-import type {
-  GetServerSideProps,
-  InferGetServerSidePropsType,
-  NextPage,
-} from "next";
+import type { NextPage } from "next";
 import styles from "../../styles/Home.module.scss";
 import Header from "../../layout/header/Header";
 import Post from "../../components/post/Post";
