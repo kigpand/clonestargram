@@ -7,7 +7,11 @@ export default function useUserInfo() {
   const { user, setUser } = useUser();
   const router = useRouter();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (!user) {
+      onFetchUser();
+    }
+  }, []);
 
   // login처리 메소드
   async function onLogin(id: string, pw: string, closeModal: () => void) {
@@ -19,8 +23,19 @@ export default function useUserInfo() {
       }),
     })
       .then((data) => data.json())
-      .then(() => {
+      .then((result) => {
         closeModal();
+        const user = result.data;
+        setUser({
+          id: user.username,
+          name: user.name,
+          phone: user.phone,
+          email: user.email,
+          image: user.image || null,
+          intro: user.intro || "",
+          followings: user.following,
+          followers: user.followers,
+        });
         alert("로그인 되었습니다");
       })
       .catch((e) => {
