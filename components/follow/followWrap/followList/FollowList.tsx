@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import FollowerView from "../../../shared/followerView/FollowerView";
+import FollowerView from "../../../common/followerView/FollowerView";
 import styles from "./FollowList.module.scss";
 import { IUser } from "../../../../interface/IUser";
 

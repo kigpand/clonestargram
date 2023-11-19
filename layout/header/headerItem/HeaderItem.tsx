@@ -18,7 +18,7 @@ const HeaderItems = () => {
 
   const homeBtn = () => {
     clearHastTagPosts();
-    router.push("/post");
+    router.push("/");
   };
 
   const profileBtn = () => {

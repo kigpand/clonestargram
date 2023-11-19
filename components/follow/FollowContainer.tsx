@@ -4,7 +4,7 @@ import React, { Suspense } from "react";
 import styles from "./FollowContainer.module.scss";
 import FollowWrap from "./followWrap/FollowWrap";
 import useUserInfo from "../../hooks/useUserInfo";
-import Loading from "../shared/loading/Loading";
+import Loading from "../common/loading/Loading";
 
 const FollowContaier = () => {
   const { user } = useUserInfo();

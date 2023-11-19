@@ -7,11 +7,7 @@ export default function useUserInfo() {
   const { user, setUser } = useUser();
   const router = useRouter();
 
-  useEffect(() => {
-    if (!user) {
-      onFetchUser();
-    }
-  }, []);
+  useEffect(() => {}, []);
 
   // login처리 메소드
   async function onLogin(id: string, pw: string) {
@@ -24,7 +20,7 @@ export default function useUserInfo() {
     })
       .then((data) => data.json())
       .then(() => {
-        router.push("/post");
+        router.push("/");
       })
       .catch((e) => {
         console.error(e);
@@ -39,7 +35,7 @@ export default function useUserInfo() {
     })
       .then((data) => data.json())
       .then(() => {
-        router.push("/post");
+        router.push("/");
       })
       .catch(() => console.log("로그인 계정 토큰이 없습니다."));
   }

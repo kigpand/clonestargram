@@ -11,6 +11,7 @@ import { useWindowSize } from "../../hooks/useWindowHook";
 import MobileHeader from "./mobileHeader/mobileHeader";
 import { MOBILE_SIZE } from "../../utils/common";
 import { usePathname } from "next/navigation";
+import LoginModal from "../../components/common/loginModal/LoginModal";
 
 const Header = () => {
   const windowSize = useWindowSize();
@@ -57,6 +58,7 @@ const Header = () => {
           <HeaderItems />
         </div>
       )}
+      <LoginModal />
     </section>
   );
 };

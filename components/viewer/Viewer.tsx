@@ -2,7 +2,7 @@ import { Suspense, useEffect } from "react";
 import styles from "./Viewer.module.scss";
 import ViewItem from "./viewItem/ViewItem";
 import { IPost } from "../../interface/IPost";
-import Loading from "../shared/loading/Loading";
+import Loading from "../common/loading/Loading";
 
 type Props = {
   post: IPost;

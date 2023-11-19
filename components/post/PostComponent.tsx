@@ -1,9 +1,11 @@
+"use client";
+
 import useFilteredPost from "../../hooks/useFilteredPost";
 import { useWindowSize } from "../../hooks/useWindowHook";
 import usePosts from "../../store/post";
 import { MOBILE_SIZE } from "../../utils/common";
 import HashTagPosts from "../hashTagPosts/HashTagPosts";
-import Loading from "../shared/loading/Loading";
+import Loading from "../common/loading/Loading";
 import Posts from "./desktop/Posts";
 import MobilePosts from "./mobile/MobilePosts";
 

@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import ProfileInput from "../input/ProfileInput";
 import styles from "./ProfileBody.module.scss";
 import { useInput } from "../../../hooks/useInput";
-import Loading from "../../shared/loading/Loading";
+import Loading from "../../common/loading/Loading";
 import useUserInfo from "../../../hooks/useUserInfo";
 
 const ProfileBody = () => {
@@ -53,7 +53,7 @@ const ProfileBody = () => {
         .then(async () => {
           await onFetchUser();
           setLoading(false);
-          router.push("/post");
+          router.push("/");
         })
         .catch(() => alert("프로필 업데이트에 실패하였습니다"));
     }
@@ -115,7 +115,7 @@ const ProfileBody = () => {
         <button
           className={styles.cancleBtn}
           onClick={() => {
-            router.push("/post");
+            router.push("/");
           }}
         >
           취소
