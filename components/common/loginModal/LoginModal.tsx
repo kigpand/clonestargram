@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./LoginModal.module.scss";
 import JoinComponent from "./joinComponent/JoinComponent";
 import LoginComponent from "./loginComponent/LoginComponent";
@@ -18,8 +18,12 @@ export default function LoginModal({ closeLoginModal }: Props) {
     };
   }, []);
 
+  function handleModalClick(e: React.MouseEvent<HTMLDivElement>) {
+    closeLoginModal();
+  }
+
   return (
-    <section className={styles.modal}>
+    <section className={styles.modal} onClick={handleModalClick}>
       {isJoin ? (
         <JoinComponent handleCloseJoin={() => setIsJoin(false)} />
       ) : (

@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import styles from "./LoginComponent.module.scss";
 import { LoginType } from "../../../../type/InputType";
 import useUserInfo from "../../../../hooks/useUserInfo";
+import React from "react";
 
 type Props = {
   closeLoginModal: () => void;
@@ -16,12 +17,15 @@ export default function LoginComponent({
   const { register, handleSubmit } = useForm<LoginType>();
 
   const handleSubmitButton = handleSubmit(async (data) => {
-    await onLogin(data.id, data.pw);
-    closeLoginModal();
+    await onLogin(data.id, data.pw, closeLoginModal);
   });
 
+  function handleStopProppergation(e: React.MouseEvent<HTMLDivElement>) {
+    e.stopPropagation();
+  }
+
   return (
-    <main className={styles.loginComponent}>
+    <main className={styles.loginComponent} onClick={handleStopProppergation}>
       <div className={styles.title}>로그인</div>
       <input
         {...register("id")}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./headerItems.module.scss";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { BsPencilSquare } from "react-icons/bs";
@@ -10,11 +10,13 @@ import { BsFillHouseFill } from "react-icons/bs";
 import { BsFillDoorOpenFill } from "react-icons/bs";
 import usePosts from "../../../store/post";
 import useUserInfo from "../../../hooks/useUserInfo";
+import LoginModal from "../../../components/common/loginModal/LoginModal";
 
 const HeaderItems = () => {
   const router = useRouter();
   const { onClearUser } = useUserInfo();
   const { clearHastTagPosts } = usePosts();
+  const [isLogin, setIsLogin] = useState<boolean>(false);
 
   const homeBtn = () => {
     clearHastTagPosts();
@@ -53,7 +55,11 @@ const HeaderItems = () => {
       <BsPencilSquare className={styles.icon} onClick={contentBtn} />
       <BsPersonCircle className={styles.icon} onClick={profileBtn} />
       <BsFillHouseFill className={styles.icon} onClick={homeBtn} />
-      <BsFillDoorOpenFill className={styles.icon} onClick={logoutBtn} />
+      <BsFillDoorOpenFill
+        className={styles.icon}
+        onClick={() => setIsLogin(true)}
+      />
+      {isLogin && <LoginModal closeLoginModal={() => setIsLogin(false)} />}
     </div>
   );
 };

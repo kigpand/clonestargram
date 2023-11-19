@@ -1,4 +1,38 @@
 .joinComponent {
   padding: 30px 20px;
   background-color: white;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .joinButton,
+  .prevButton {
+    height: 30px;
+    font-weight: bold;
+  }
+
+  .joinButton {
+    margin-top: 30px;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: skyblue;
+
+    &:hover {
+      background-color: rgb(110, 214, 255);
+    }
+  }
+
+  .prevButton {
+    outline: none;
+    border: none;
+    margin-top: 10px;
+  }
 }

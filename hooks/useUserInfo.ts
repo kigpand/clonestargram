@@ -10,7 +10,7 @@ export default function useUserInfo() {
   useEffect(() => {}, []);
 
   // login처리 메소드
-  async function onLogin(id: string, pw: string) {
+  async function onLogin(id: string, pw: string, closeModal: () => void) {
     fetch("/api/login/", {
       method: "post",
       body: JSON.stringify({
@@ -20,6 +20,7 @@ export default function useUserInfo() {
     })
       .then((data) => data.json())
       .then(() => {
+        closeModal();
         alert("로그인 되었습니다");
       })
       .catch((e) => {
