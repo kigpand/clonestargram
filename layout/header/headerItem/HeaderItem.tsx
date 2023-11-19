@@ -25,14 +25,17 @@ const HeaderItems = () => {
   };
 
   const profileBtn = () => {
+    if (!user) return alert("로그인 먼저 진행해주세요");
     router.push("/profile");
   };
 
   const followBtn = () => {
+    if (!user) return alert("로그인 먼저 진행해주세요");
     router.push("/follow");
   };
 
   const contentBtn = () => {
+    if (!user) return alert("로그인 먼저 진행해주세요");
     router.push("/addPost");
   };
 

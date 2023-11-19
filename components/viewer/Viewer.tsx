@@ -20,14 +20,16 @@ const Viewer = ({ post, onCloseView }: Props) => {
 
   return (
     <div className={styles.viewer}>
-      <img
-        className={styles.img}
-        src={post.image || "/noimg.png"}
-        alt="viewerImg"
-      />
-      <Suspense fallback={<Loading />}>
-        <ViewItem post={post} />
-      </Suspense>
+      <div className={styles.container}>
+        <img
+          className={styles.img}
+          src={post.image || "/noimg.png"}
+          alt="viewerImg"
+        />
+        <Suspense fallback={<Loading />}>
+          <ViewItem post={post} />
+        </Suspense>
+      </div>
       <div className={styles.back} onClick={onCloseView} />
     </div>
   );

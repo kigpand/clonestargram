@@ -23,6 +23,10 @@ const AddComment = ({ item }: IViewItem) => {
     }
   }, [input]);
 
+  const handleBlockComment = () => {
+    if (!user) return alert("로그인을 먼저 진행해주세요");
+  };
+
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!user || !item) return;
@@ -48,7 +52,7 @@ const AddComment = ({ item }: IViewItem) => {
   };
 
   return (
-    <div className={styles.addComment}>
+    <div className={styles.addComment} onClick={handleBlockComment}>
       {loading && <Loading />}
       <img
         src={user && user.image ? `${user.image}` : "/profileImg.png"}
@@ -59,7 +63,7 @@ const AddComment = ({ item }: IViewItem) => {
         type="text"
         className={styles.input}
         value={input.value || ""}
-        onChange={input.onChange}
+        onChange={user ? input.onChange : undefined}
         placeholder="댓글 달기"
       />
       <div
