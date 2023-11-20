@@ -59,13 +59,17 @@ const AddComment = ({ item }: IViewItem) => {
         alt="profile"
         className={styles.img}
       />
-      <input
-        type="text"
-        className={styles.input}
-        value={input.value || ""}
-        onChange={user ? input.onChange : undefined}
-        placeholder="댓글 달기"
-      />
+      {user ? (
+        <input
+          type="text"
+          className={styles.input}
+          value={input.value || ""}
+          onChange={input.onChange}
+          placeholder="댓글 달기"
+        />
+      ) : (
+        <div className={styles.placeholder}>로그인을 먼저 진행해주세요.</div>
+      )}
       <div
         className={styles.add}
         style={{ color: addFlag ? "skyblue" : "lightgray" }}

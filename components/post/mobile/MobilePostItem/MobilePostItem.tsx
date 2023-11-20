@@ -18,11 +18,9 @@ const MobilePostItem = ({ post }: IMobilePostItem) => {
         className={styles.front}
         alt="postImg"
       />
-      <div className={styles.texts}>
-        <ViewItemBody item={post} />
-        <ViewItemComment item={post} />
-        <AddComment item={post} />
-      </div>
+      <ViewItemBody item={post} />
+      <ViewItemComment item={post} />
+      <AddComment item={post} />
     </div>
   );
 };
