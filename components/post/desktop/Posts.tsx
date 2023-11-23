@@ -7,14 +7,15 @@ import PostItem from "../../common/postItem/PostItem";
 
 type Props = {
   post: IPost[];
+  isLoading: boolean;
 };
 
-const Posts = ({ post }: Props) => {
+const Posts = ({ post, isLoading }: Props) => {
   return (
     <div className={styles.contents}>
       <div className={styles.lists}>
         {post.map((item: IPost, i: number) => {
-          return <PostItem post={item} key={i} />;
+          return <PostItem post={item} isLoading={isLoading} key={i} />;
         })}
       </div>
     </div>

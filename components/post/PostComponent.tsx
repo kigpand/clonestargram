@@ -23,7 +23,7 @@ const PostComponent = () => {
       ) : windowSize < MOBILE_SIZE ? (
         <MobilePosts post={post} />
       ) : (
-        <Posts post={post} />
+        <Posts post={post} isLoading={isLoading} />
       )}
     </section>
   );
