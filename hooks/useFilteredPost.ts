@@ -18,10 +18,6 @@ export default function useFilteredPost() {
       });
       setPost(result);
     }
-
-    return () => {
-      setHashTagPosts([]);
-    };
   }, [posts]);
 
   return { post, isLoading };
