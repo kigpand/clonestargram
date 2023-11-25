@@ -10,14 +10,12 @@ import { IPost } from "../../interface/IPost";
 import { useWindowSize } from "../../hooks/useWindowHook";
 import MobileHeader from "./mobileHeader/mobileHeader";
 import { MOBILE_SIZE } from "../../utils/common";
-import { usePathname } from "next/navigation";
 
 const Header = () => {
   const windowSize = useWindowSize();
   const { setHashTagPosts, post } = usePosts();
   const { setSearchTag } = useData();
   const inputData = useInput("");
-  const path = usePathname();
 
   const onEnter = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && inputData.value !== "") {
@@ -44,16 +42,14 @@ const Header = () => {
       ) : (
         <div className={styles.header}>
           <img src="/logo.png" className={styles.logo} alt="로고" />
-          {path === "/post" && (
-            <input
-              className={styles.text}
-              type="text"
-              placeholder="검색.."
-              value={inputData.value}
-              onChange={inputData.onChange}
-              onKeyDown={onEnter}
-            />
-          )}
+          <input
+            className={styles.text}
+            type="text"
+            placeholder="검색.."
+            value={inputData.value}
+            onChange={inputData.onChange}
+            onKeyDown={onEnter}
+          />
           <HeaderItems />
         </div>
       )}

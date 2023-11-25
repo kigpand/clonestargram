@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./PostItem.module.scss";
 import { IPost } from "../../../interface/IPost";
 import Viewer from "../../viewer/Viewer";
