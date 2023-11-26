@@ -3,12 +3,14 @@
 import { useEffect, useState } from "react";
 import { IPost } from "../../../interface/IPost";
 import MobilePostItem from "./MobilePostItem/MobilePostItem";
+import Loading from "../../common/loading/Loading";
 
 type Props = {
   post: IPost[];
+  isLoading: boolean;
 };
 
-const MobilePosts = ({ post }: Props) => {
+const MobilePosts = ({ post, isLoading }: Props) => {
   const [mobilePost, setMobilePost] = useState<IPost[]>([]);
   const [scroll, setScroll] = useState<number>(0);
 
@@ -51,6 +53,7 @@ const MobilePosts = ({ post }: Props) => {
 
   return (
     <div style={{ width: "100%" }}>
+      {isLoading && <Loading />}
       <div>
         {mobilePost.map((item: IPost, i: number) => {
           return <MobilePostItem post={item} key={i} />;

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { useInput } from "../../hooks/useInput";
 import useData from "../../store/data";
 import usePosts from "../../store/post";
@@ -34,6 +34,8 @@ const Header = () => {
       }
     }
   };
+
+  if (!windowSize) return <></>;
 
   return (
     <section style={{ width: "100%" }}>
