@@ -11,14 +11,16 @@ import MobilePosts from "./mobile/MobilePosts";
 const PostComponent = () => {
   const windowSize = useWindowSize();
   const { hashTagPosts } = usePosts();
-  const { post } = useFilteredPost();
+  const { post, isLoading } = useFilteredPost();
+
+  if (!windowSize) return <></>;
 
   return (
     <section style={{ width: "100%" }}>
       {hashTagPosts.length > 0 ? (
         <HashTagPosts isMobile={windowSize < MOBILE_SIZE ? true : false} />
       ) : windowSize < MOBILE_SIZE ? (
-        <MobilePosts post={post} />
+        <MobilePosts post={post} isLoading={isLoading} />
       ) : (
         <Posts post={post} />
       )}

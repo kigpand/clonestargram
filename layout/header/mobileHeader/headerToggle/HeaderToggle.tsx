@@ -4,14 +4,18 @@ import { BsFillPeopleFill } from "react-icons/bs";
 import { BsPencilSquare } from "react-icons/bs";
 import { BsPersonCircle } from "react-icons/bs";
 import { BsFillHouseFill } from "react-icons/bs";
-import { BsFillDoorOpenFill } from "react-icons/bs";
+import { RiLoginBoxFill } from "react-icons/ri";
+import { RiLogoutBoxFill } from "react-icons/ri";
 import usePosts from "../../../../store/post";
 import useUserInfo from "../../../../hooks/useUserInfo";
+import { useState } from "react";
+import LoginModal from "../../../../components/common/loginModal/LoginModal";
 
 const HeaderToggle = () => {
   const router = useRouter();
-  const { onClearUser } = useUserInfo();
+  const { user, onClearUser } = useUserInfo();
   const { clearHastTagPosts } = usePosts();
+  const [isLogin, setIsLogin] = useState<boolean>(false);
 
   const homeBtn = () => {
     clearHastTagPosts();
@@ -19,14 +23,17 @@ const HeaderToggle = () => {
   };
 
   const profileBtn = () => {
+    if (!user) return setIsLogin(true);
     router.push("/profile");
   };
 
   const followBtn = () => {
+    if (!user) return setIsLogin(true);
     router.push("/follow");
   };
 
   const contentBtn = () => {
+    if (!user) return setIsLogin(true);
     router.push("/addPost");
   };
 
@@ -50,7 +57,15 @@ const HeaderToggle = () => {
       <BsPencilSquare className={styles.icon} onClick={contentBtn} />
       <BsPersonCircle className={styles.icon} onClick={profileBtn} />
       <BsFillHouseFill className={styles.icon} onClick={homeBtn} />
-      <BsFillDoorOpenFill className={styles.icon} onClick={logoutBtn} />
+      {user ? (
+        <RiLogoutBoxFill className={styles.icon} onClick={logoutBtn} />
+      ) : (
+        <RiLoginBoxFill
+          className={styles.icon}
+          onClick={() => setIsLogin(true)}
+        />
+      )}
+      {isLogin && <LoginModal closeLoginModal={() => setIsLogin(false)} />}
     </div>
   );
 };

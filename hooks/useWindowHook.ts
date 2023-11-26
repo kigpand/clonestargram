@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 // window resize custom hook
 export const useWindowSize = () => {
-  const [windowSize, setWindowSize] = useState<number>(0);
+  const [windowSize, setWindowSize] = useState<number | null>(null);
   useEffect(() => {
     function handleResize() {
       setWindowSize(window.innerWidth);
