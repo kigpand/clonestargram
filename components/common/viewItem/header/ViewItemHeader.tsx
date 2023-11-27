@@ -19,7 +19,7 @@ const ViewItemHeader = ({ item }: IViewItem) => {
     <div className={styles.viewItemHeader}>
       <img
         src={
-          contentUserInfo?.image !== ""
+          contentUserInfo.image && contentUserInfo.image !== ""
             ? `${contentUserInfo.image}`
             : "/profileImg.png"
         }

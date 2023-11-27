@@ -1,8 +1,7 @@
 @import "../../../styles/func.scss";
 
 .viewItem {
-  width: 200px;
-  height: 400px;
+  flex-grow: 1;
   background-color: white;
   position: relative;
   display: flex;
