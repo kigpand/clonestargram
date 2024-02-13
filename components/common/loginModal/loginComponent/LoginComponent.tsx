@@ -3,18 +3,29 @@ import styles from "./LoginComponent.module.scss";
 import { LoginType } from "../../../../type/InputType";
 import useUserInfo from "../../../../hooks/useUserInfo";
 import React from "react";
+import Input from "../../../../common/Input";
 
 type Props = {
   closeLoginModal: () => void;
   handleOpenJoin: () => void;
 };
 
+interface FormValue {
+  id: string;
+  pw: string;
+}
+
 export default function LoginComponent({
   closeLoginModal,
   handleOpenJoin,
 }: Props) {
   const { onLogin } = useUserInfo();
-  const { register, handleSubmit } = useForm<LoginType>();
+  const { control, handleSubmit } = useForm<FormValue>({
+    defaultValues: {
+      id: "",
+      pw: "",
+    },
+  });
 
   const handleSubmitButton = handleSubmit(async (data) => {
     await onLogin(data.id, data.pw, closeLoginModal);
@@ -27,7 +38,9 @@ export default function LoginComponent({
   return (
     <main className={styles.loginComponent} onClick={handleStopProppergation}>
       <div className={styles.title}>로그인</div>
-      <input
+      <Input name="id" control={control} rules={{ required: "필수" }} />
+      <Input name="pw" control={control} rules={{ required: "필수" }} />
+      {/* <input
         {...register("id")}
         className={styles.input}
         type="text"
@@ -38,7 +51,7 @@ export default function LoginComponent({
         className={styles.input}
         type="password"
         placeholder="비밀번호"
-      ></input>
+      ></input> */}
       <button className={styles.loginButton} onClick={handleSubmitButton}>
         로그인
       </button>
